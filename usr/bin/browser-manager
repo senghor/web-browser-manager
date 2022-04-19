@@ -123,16 +123,12 @@ class BrowserManager(QMainWindow):
 
         self.uninstchrome.setToolTip("Uninstall Google Chrome")       
         self.instchrome = QPushButton("Install", self)  
-        if is_64bits == False:
-            self.instchrome.setEnabled(False)   
         self.instchrome.clicked.connect(self.on_instchrome)
         self.instchrome.setFixedSize(87, 30)
 
         self.instchrome.move(195, 130)
 
         self.instchrome.setToolTip("Install Google Chrome")
-        if is_64bits == False:
-            self.instchrome.setToolTip("Not Available in 32 Bit Feren OS")
     
         #Chromium
         self.uninstchromium = QPushButton("Uninstall", self)        
@@ -165,10 +161,7 @@ class BrowserManager(QMainWindow):
         self.instmsedge.move(525, 130)
 
         self.instmsedge.setToolTip("Install Microsoft Edge")
-        if is_64bits == False:
-            self.instmsedge.setEnabled(False)
-            self.instmsedge.setToolTip("Not Available in 32 Bit pzpl OS")
-        
+
         #Mozilla Firefox
         self.uninstfirefox = QPushButton("Uninstall", self)
         self.uninstfirefox.clicked.connect(self.on_uninstfirefox)
@@ -201,9 +194,6 @@ class BrowserManager(QMainWindow):
         self.instbrave.move(30, 315)
 
         self.instbrave.setToolTip("Install Brave")
-        if is_64bits == False:
-            self.instbrave.setEnabled(False)
-            self.instbrave.setToolTip("Not Available in 32 Bit pzpl OS")
 
         #Opera
         self.uninstopera = QPushButton("Uninstall", self)       
@@ -221,10 +211,6 @@ class BrowserManager(QMainWindow):
 
         self.instopera.setToolTip("Install Opera")
 
-        if is_64bits == False:
-            self.instopera.setEnabled(False)
-            self.instopera.setToolTip("Not Available in 32 Bit pzpl OS")
-        
         #Waterfox
         self.uninstwaterfox = QPushButton("Uninstall", self)       
         self.uninstwaterfox.clicked.connect(self.on_uninstwaterfox)
@@ -240,9 +226,6 @@ class BrowserManager(QMainWindow):
         self.instwaterfox.move(360, 315)
 
         self.instwaterfox.setToolTip("Install Waterfox")
-        if is_64bits == False:
-            self.instwaterfox.setEnabled(False)
-            self.instwaterfox.setToolTip("Not Available in 32 Bit pzpl OS")
 
         #Falkon
         self.uninstfalkon = QPushButton("Uninstall", self)      
