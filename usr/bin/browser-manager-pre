@@ -26,9 +26,9 @@ if [ ! -f /tmp/waterfox-logo.png ]; then
 wget https://upload.wikimedia.org/wikipedia/en/b/b5/Waterfox_Logo_June_2019.png -O /tmp/waterfox-logo.png
 fi
 if [ ! -f /tmp/microsoft-edge-logo.png ]; then
-wget https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/320px-Microsoft_Edge_logo_%282019%29.svg.png -O /tmp/microsoft-edge-logo.png
+wget https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/512px-Microsoft_Edge_logo_%282019%29.svg.png -O /tmp/microsoft-edge-logo.png
 fi
-browsericonfiles="/tmp/microsoft-edge-logo.png /tmp/cliqz-logo.png /tmp/falkon-logo.png /tmp/brave-logo.png /tmp/opera-logo.png /tmp/chromium-logo.png /tmp/vivaldi-logo.png /tmp/google-chrome-logo.png /tmp/firefox-logo.png"
+browsericonfiles="/tmp/microsoft-edge-logo.png /tmp/falkon-logo.png /tmp/brave-logo.png /tmp/opera-logo.png /tmp/chromium-logo.png /tmp/vivaldi-logo.png /tmp/google-chrome-logo.png /tmp/firefox-logo.png"
 chmod 755 $browsericonfiles
 #Check if the browser icons successfully downloaded - if they didn't remove the dummy files produced
 for browsericonfile in $browsericonfiles; do

@@ -553,7 +553,7 @@ class BrowserManager(QMainWindow):
         self.browserwork = False
         self.on_refresh()
         self.progressbar1.setVisible(False)
-        self.progressbar1.move(int(10, 405))
+        self.progressbar1.move(int(10), int(405))
         #is_64bits = sys.maxsize > 2**32
         #if is_64bits == False:
             #self.instbrave.setEnabled(False)
@@ -571,7 +571,7 @@ class BrowserManager(QMainWindow):
         self.instbrave.setVisible(False)
         self.instfalkon.setVisible(False)
         self.instmsedge.setVisible(False)
-        self.instmsedgeee.setVisible(False)
+        self.instmsedge.setVisible(False)
         self.instwaterfox.setVisible(False)
         self.uninstfirefox.setVisible(False)
         self.uninstchrome.setVisible(False)
@@ -667,7 +667,7 @@ class BrowserManager(QMainWindow):
 
     def on_instvivaldi(self, widget):                                 
         self.begin_process()
-        self.progressbar1.move(int(11, 131))
+        self.progressbar1.move(int(11), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("vivaldi", "install", self)
@@ -676,7 +676,7 @@ class BrowserManager(QMainWindow):
 
     def on_instchrome(self, widget): 
         self.begin_process()
-        self.progressbar1.move(int(176, 131))
+        self.progressbar1.move(int(176), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("chrome", "install", self)
@@ -685,7 +685,7 @@ class BrowserManager(QMainWindow):
 
     def on_instchromium(self, widget):                               
         self.begin_process()
-        self.progressbar1.move(int(341, 131))
+        self.progressbar1.move(int(341), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("chromium", "install", self)
@@ -694,7 +694,7 @@ class BrowserManager(QMainWindow):
 
     def on_instmsedge(self, widget):                                 
         self.begin_process()
-        self.progressbar1.move(int(506, 131))
+        self.progressbar1.move(int(506), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("msedge", "install", self)
@@ -703,7 +703,7 @@ class BrowserManager(QMainWindow):
 
     def on_instfirefox(self, widget):
         self.begin_process()
-        self.progressbar1.move(int(671, 131))
+        self.progressbar1.move(int(671), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("firefox", "install", self)
@@ -712,7 +712,7 @@ class BrowserManager(QMainWindow):
 
     def on_instbrave(self, widget):                              
         self.begin_process()
-        self.progressbar1.move(int(11, 316))
+        self.progressbar1.move(int(11), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("brave", "install", self)
@@ -721,7 +721,7 @@ class BrowserManager(QMainWindow):
 
     def on_instopera(self, widget): 
         self.begin_process()
-        self.progressbar1.move(int(176, 316))
+        self.progressbar1.move(int(176), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("opera", "install", self)
@@ -730,7 +730,7 @@ class BrowserManager(QMainWindow):
 
     def on_instwaterfox(self, widget):                                 
         self.begin_process()
-        self.progressbar1.move(int(341, 316))
+        self.progressbar1.move(int(341), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("waterfox", "install", self)
@@ -739,7 +739,7 @@ class BrowserManager(QMainWindow):
 
     def on_instfalkon(self, widget):                                 
         self.begin_process()
-        self.progressbar1.move(int(506, 316))
+        self.progressbar1.move(int(506), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("falkon", "install", self)
@@ -748,7 +748,7 @@ class BrowserManager(QMainWindow):
     
     def on_instweb(self, widget):                                    
         self.begin_process()
-        self.progressbar1.move(int(671, 316))
+        self.progressbar1.move(int(671), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("web", "install", self)
@@ -757,7 +757,7 @@ class BrowserManager(QMainWindow):
 
     def on_uninstvivaldi(self, widget):                               
         self.begin_process()
-        self.progressbar1.move(int(11, 131))
+        self.progressbar1.move(int(11), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("vivaldi", "uninstall", self)
@@ -766,7 +766,7 @@ class BrowserManager(QMainWindow):
 
     def on_uninstchrome(self, widget):                                   
         self.begin_process()
-        self.progressbar1.move(int(176, 131))
+        self.progressbar1.move(int(176), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("chrome", "uninstall", self)
@@ -775,7 +775,7 @@ class BrowserManager(QMainWindow):
     
     def on_uninstchromium(self, widget):                                 
         self.begin_process()
-        self.progressbar1.move(int(341, 131))
+        self.progressbar1.move(int(341), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("chromium", "uninstall", self)
@@ -784,7 +784,7 @@ class BrowserManager(QMainWindow):
 
     def on_uninstmsedge(self, widget):                               
         self.begin_process()
-        self.progressbar1.move(int(506, 131))
+        self.progressbar1.move(int(506), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("msedge", "uninstall", self)
@@ -793,7 +793,7 @@ class BrowserManager(QMainWindow):
 
     def on_uninstfirefox(self, widget):                              
         self.begin_process()
-        self.progressbar1.move(int(671, 131))
+        self.progressbar1.move(int(671), int(131))
         t = Thread(
             target=BrowserManagerManager,
             args=("firefox", "uninstall", self)
@@ -802,7 +802,7 @@ class BrowserManager(QMainWindow):
 
     def on_uninstbrave(self, widget):                                
         self.begin_process()
-        self.progressbar1.move(int(11, 316))
+        self.progressbar1.move(int(11), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("brave", "uninstall", self)
@@ -811,7 +811,7 @@ class BrowserManager(QMainWindow):
 
     def on_uninstopera(self, widget):                                
         self.begin_process()
-        self.progressbar1.move(int(176, 316))
+        self.progressbar1.move(int(176), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("opera", "uninstall", self)
@@ -820,7 +820,7 @@ class BrowserManager(QMainWindow):
 
     def on_uninstwaterfox(self, widget):                               
         self.begin_process()
-        self.progressbar1.move(int(341, 316))
+        self.progressbar1.move(int(341), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("waterfox", "uninstall", self)
@@ -829,7 +829,7 @@ class BrowserManager(QMainWindow):
 
     def on_uninstfalkon(self, widget):                               
         self.begin_process()
-        self.progressbar1.move(int(506, 316))
+        self.progressbar1.move(int(506), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("falkon", "uninstall", self)
@@ -838,7 +838,7 @@ class BrowserManager(QMainWindow):
     
     def on_uninstweb(self, widget):                                  
         self.begin_process()
-        self.progressbar1.move(int(671, 316))
+        self.progressbar1.move(int(671), int(316))
         t = Thread(
             target=BrowserManagerManager,
             args=("web", "uninstall", self)
