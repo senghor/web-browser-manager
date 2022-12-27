@@ -22,11 +22,14 @@
 # Easily install and uninstall web browsers in Feren OS.
 # This is free software made available under the GNU public license.
 
-from gi.repository import GLib, Gio
-from PyQt5 import QtGui, QtCore, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox, QLabel, QMainWindow, QProgressBar
-from PyQt5.QtCore import pyqtSlot, Qt
-from PyQt5.QtGui import QIcon, QPixmap
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+#from gi.repository import GLib, Gio
+#from PyQt5 import QtGui, QtCore, QtWidgets
+#from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox, QLabel, QMainWindow, QProgressBar
+#from PyQt5.QtCore import pyqtSlot, Qt
+#from PyQt5.QtGui import QIcon, QPixmap
 import requests
 import os
 from os import path
@@ -34,7 +37,7 @@ import sys
 from threading import Thread
 import time
 
-QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+#QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 
 os.chdir('/tmp/')
 
@@ -45,30 +48,49 @@ class BrowserManagerManager():
     try:
         os.system("/usr/share/browser-manager/"+browsername+"/"+option)
     except:
-        QMessageBox.critical(BrowserManager, "Web Browser Manager", "An error occured while initiating the package management process.")
+        Gtk.MessageDialog(BrowserManager, 0, Gtk.MessageType.CRITICAL, Gtk.ButtonsType.OK, "Web Browser Manager", "An error occured while initiating the package management process.")
+        #QMessageBox.critical(BrowserManager, "Web Browser Manager", "An error occured while initiating the package management process.")
     BrowserManager.finish_process(bmself)
 
-class BrowserManager(QMainWindow):
+class BrowserManager(Gtk.Window):
+#class BrowserManager(QMainWindow):
     
     def __init__(self):
+        # super(BrowserManager, self).__init__()
+
+        # self.set_title("Web Browser Manager")
+        # self.set_size_request(815, 440)
+        # self.set_resizable(False)
+        # self.set_icon_from_file(applogo)
+
+        # self.set_position(Gtk.WindowPosition.CENTER)
+        # self.connect("destroy",self.do_destroy)
+        # fixed = Gtk.Fixed()
+
         super().__init__()
         
         self.title = "Web Browser Manager"
         self.width = 815
         self.height = 440
         self.browserwork = False
+        
+        self.connect("delete-event", self.on_close)
+        
+        self.set_default_size(self.width, self.height)
+        self.set_resizable(False)
+        
         self.initUI()
     
-    def closeEvent(self, event):
+    def on_close(self, widget, event):
         if self.browserwork:
-            event.ignore()
+            return True
         else:
-            event.accept()
+            Gtk.main_quit()
 
     def initUI(self):
-        self.setWindowTitle(self.title)
-        self.setGeometry(10, 10, self.width, self.height)
-        self.setFixedSize(self.width, self.height)
+        self.set_title(self.title)
+        self.move(10, 10)
+        self.set_size_request(self.width, self.height)
 
 #####################
 # Adding the buttons#
@@ -99,275 +121,402 @@ class BrowserManager(QMainWindow):
         is_64bits = sys.maxsize > 2**32
     
         #Vivaldi
-        self.uninstvivaldi = QPushButton("Uninstall", self)      
-        self.uninstvivaldi.clicked.connect(self.on_uninstvivaldi)
-        self.uninstvivaldi.setFixedSize(87, 30)
- 
-        self.uninstvivaldi.move(int(30), int(130))
+        # if os.path.isfile("/usr/bin/vivaldi"):
+            # uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
+            # uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
+            # uninstvivaldi.set_size_request(87, 30)
+            # fixed.put(uninstvivaldi, 30, 130)
+            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
+        # else:
+            # instvivaldi = Gtk.Button.new_with_label("Install")
+            # instvivaldi.connect("clicked", self.on_instvivaldi)
+            # instvivaldi.set_size_request(87, 30)
+            # fixed.put(instvivaldi, 30, 130)
+            # instvivaldi.set_tooltip_text("Install Vivaldi")
 
-        self.uninstvivaldi.setToolTip("Uninstall Vivaldi")
-        self.instvivaldi = QPushButton("Install", self)          
-        self.instvivaldi.clicked.connect(self.on_instvivaldi)
-        self.instvivaldi.setFixedSize(87, 30)
-
-        self.instvivaldi.move(int(30), int(130))
-
-        self.instvivaldi.setToolTip("Install Vivaldi")
+        self.uninstvivaldi = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
+        self.uninstvivaldi.set_size_request(87, 30)
+        self.uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
+        
+        self.instvivaldi = Gtk.Button("Install", self)          
+        self.instvivaldi.connect("clicked", self.on_instvivaldi)
+        self.instvivaldi.set_size_request(87, 30)
+        self.instvivaldi.set_tooltip_text("Install Vivaldi")
 
         #Google Chrome
-        self.uninstchrome = QPushButton("Uninstall", self)          
-        self.uninstchrome.clicked.connect(self.on_uninstchrome)
-        self.uninstchrome.setFixedSize(87, 30)
+        # if os.path.isfile("/usr/bin/chrome"):
+            # uninstchrome = Gtk.Button.new_with_label("Uninstall")
+            # uninstchrome.connect("clicked", self.on_uninstchrome)
+            # uninstchrome.set_size_request(87, 30)
+            # fixed.put(uninstchrome, 30, 130)
+            # uninstchrome.set_tooltip_text("Uninstall Chrome")
+        # else:
+            # instchrome = Gtk.Button.new_with_label("Install")
+            # instchrome.connect("clicked", self.on_instchrome)
+            # instchrome.set_size_request(87, 30)
+            # fixed.put(instchrome, 30, 130)
+            # instchrome.set_tooltip_text("Install Chrome")
+            
+        self.uninstchrome = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstchrome.connect("clicked", self.on_uninstchrome)
+        self.uninstchrome.set_size_request(87, 30)
+        self.uninstchrome.set_tooltip_text("Uninstall Chrome")
+        
+        self.instchrome = Gtk.Button("Install", self)          
+        self.instchrome.connect("clicked", self.on_instchrome)
+        self.instchrome.set_size_request(87, 30)
+        self.instchrome.set_tooltip_text("Install Chrome")
 
-        self.uninstchrome.move(int(195), int(130))
-
-        self.uninstchrome.setToolTip("Uninstall Google Chrome")       
-        self.instchrome = QPushButton("Install", self)  
-        self.instchrome.clicked.connect(self.on_instchrome)
-        self.instchrome.setFixedSize(87, 30)
-
-        self.instchrome.move(int(195), int(130))
-
-        self.instchrome.setToolTip("Install Google Chrome")
     
         #Chromium
-        self.uninstchromium = QPushButton("Uninstall", self)        
-        self.uninstchromium.clicked.connect(self.on_uninstchromium)
-        self.uninstchromium.setFixedSize(87, 30)
- 
-        self.uninstchromium.move(int(360), int(130))
-
-        self.uninstchromium.setToolTip("Uninstall Chromium")
-        self.instchromium = QPushButton("Install", self)            
-        self.instchromium.clicked.connect(self.on_instchromium)
-        self.instchromium.setFixedSize(87, 30)
-
-        self.instchromium.move(int(360), int(130))
-
-        self.instchromium.setToolTip("Install Chromium")
+        # if os.path.isfile("/usr/bin/chromium"):
+            # uninstchromium = Gtk.Button.new_with_label("Uninstall")
+            # uninstchromium.connect("clicked", self.on_uninstchromium)
+            # uninstchromium.set_size_request(87, 30)
+            # fixed.put(uninstchromium, 30, 130)
+            # uninstchromium.set_tooltip_text("Uninstall Chromium")
+        # else:
+            # instchromium = Gtk.Button.new_with_label("Install")
+            # instchromium.connect("clicked", self.on_instchromium)
+            # instchromium.set_size_request(87, 30)
+            # fixed.put(instchromium, 30, 130)
+            # instchromium.set_tooltip_text("Install Chromium")
+            
+        self.uninstchromium = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstchromium.connect("clicked", self.on_uninstchromium)
+        self.uninstchromium.set_size_request(87, 30)
+        self.uninstchromium.set_tooltip_text("Uninstall Chromium")
+        
+        self.instchromium = Gtk.Button("Install", self)          
+        self.instchromium.connect("clicked", self.on_instchromium)
+        self.instchromium.set_size_request(87, 30)
+        self.instchromium.set_tooltip_text("Install Chromium")
         
         #Microsoft Edge
-        self.uninstmsedge = QPushButton("Uninstall", self)       
-        self.uninstmsedge.clicked.connect(self.on_uninstmsedge)
-        self.uninstmsedge.setFixedSize(87, 30)
- 
-        self.uninstmsedge.move(int(525), int(130))
-
-        self.uninstmsedge.setToolTip("Uninstall Microsoft Edge")
-        self.instmsedge = QPushButton("Install", self)
-        self.instmsedge.clicked.connect(self.on_instmsedge)
-        self.instmsedge.setFixedSize(87, 30)
-
-        self.instmsedge.move(int(525), int(130))
-
-        self.instmsedge.setToolTip("Install Microsoft Edge")
+        # if os.path.isfile("/usr/bin/msedge"):
+            # uninstmsedge = Gtk.Button.new_with_label("Uninstall")
+            # uninstmsedge.connect("clicked", self.on_uninstmsedge)
+            # uninstmsedge.set_size_request(87, 30)
+            # fixed.put(uninstmsedge, 30, 130)
+            # uninstmsedge.set_tooltip_text("Uninstall MS Edge")
+        # else:
+            # instmsedge = Gtk.Button.new_with_label("Install")
+            # instmsedge.connect("clicked", self.on_instmsedge)
+            # instmsedge.set_size_request(87, 30)
+            # fixed.put(instmsedge, 30, 130)
+            # instmsedge.set_tooltip_text("Install MS Edge")
+            
+        self.uninstmsedge = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstmsedge.connect("clicked", self.on_uninstmsedge)
+        self.uninstmsedge.set_size_request(87, 30)
+        self.uninstmsedge.set_tooltip_text("Uninstall Microsoft Edge")
+        
+        self.instmsedge = Gtk.Button("Install", self)          
+        self.instmsedge.connect("clicked", self.on_instmsedge)
+        self.instmsedge.set_size_request(87, 30)
+        self.instmsedge.set_tooltip_text("Install Microsoft Edge")
 
         #Mozilla Firefox
-        self.uninstfirefox = QPushButton("Uninstall", self)
-        self.uninstfirefox.clicked.connect(self.on_uninstfirefox)
-        self.uninstfirefox.setFixedSize(87, 30)
+        # if os.path.isfile("/usr/bin/firefox"):
+            # uninstfirefox = Gtk.Button.new_with_label("Uninstall")
+            # uninstfirefox.connect("clicked", self.on_uninstfirefox)
+            # uninstfirefox.set_size_request(87, 30)
+            # fixed.put(uninstfirefox, 30, 130)
+            # uninstfirefox.set_tooltip_text("Uninstall Firefox")
+        # else:
+            # instfirefox = Gtk.Button.new_with_label("Install")
+            # instfirefox.connect("clicked", self.on_instfirefox)
+            # instfirefox.set_size_request(87, 30)
+            # fixed.put(instfirefox, 30, 130)
+            # instfirefox.set_tooltip_text("Install Firefox")
+            
+        self.uninstfirefox = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstfirefox.connect("clicked", self.on_uninstfirefox)
+        self.uninstfirefox.set_size_request(87, 30)
+        self.uninstfirefox.set_tooltip_text("Uninstall Firefox")
         
-        self.uninstfirefox.move(int(690), int(130))
-
-        self.uninstfirefox.setToolTip("Uninstall Firefox")
-           
-        self.instfirefox = QPushButton("Install", self)             
-        self.instfirefox.clicked.connect(self.on_instfirefox)
-        self.instfirefox.setFixedSize(87, 30)
-
-        self.instfirefox.move(int(690), int(130))
- 
-        self.instfirefox.setToolTip("Install Firefox")
+        self.instfirefox = Gtk.Button("Install", self)          
+        self.instfirefox.connect("clicked", self.on_instfirefox)
+        self.instfirefox.set_size_request(87, 30)
+        self.instfirefox.set_tooltip_text("Install Firefox")
         
         #Brave
-        self.uninstbrave = QPushButton("Uninstall", self)       
-        self.uninstbrave.clicked.connect(self.on_uninstbrave)
-        self.uninstbrave.setFixedSize(87, 30)
- 
-        self.uninstbrave.move(int(30), int(315))
-
-        self.uninstbrave.setToolTip("Uninstall Brave")
-        self.instbrave = QPushButton("Install", self)
-        self.instbrave.clicked.connect(self.on_instbrave)
-        self.instbrave.setFixedSize(87, 30)
-
-        self.instbrave.move(int(30), int(315))
-
-        self.instbrave.setToolTip("Install Brave")
+        # if os.path.isfile("/usr/bin/brave"):
+            # uninstbrave = Gtk.Button.new_with_label("Uninstall")
+            # uninstbrave.connect("clicked", self.on_uninstbrave)
+            # uninstbrave.set_size_request(87, 30)
+            # fixed.put(uninstbrave, 30, 130)
+            # uninstbrave.set_tooltip_text("Uninstall Brave")
+        # else:
+            # instbrave = Gtk.Button.new_with_label("Install")
+            # instbrave.connect("clicked", self.on_instbrave)
+            # instbrave.set_size_request(87, 30)
+            # fixed.put(instbrave, 30, 130)
+            # instbrave.set_tooltip_text("Install Brave")
+            
+        self.uninstbrave = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstbrave.connect("clicked", self.on_uninstbrave)
+        self.uninstbrave.set_size_request(87, 30)
+        self.uninstbrave.set_tooltip_text("Uninstall Brave")
+        
+        self.instbrave = Gtk.Button("Install", self)          
+        self.instbrave.connect("clicked", self.on_instbrave)
+        self.instbrave.set_size_request(87, 30)
+        self.instbrave.set_tooltip_text("Install Brave")
 
         #Opera
-        self.uninstopera = QPushButton("Uninstall", self)       
-        self.uninstopera.clicked.connect(self.on_uninstopera)
-        self.uninstopera.setFixedSize(87, 30)
- 
-        self.uninstopera.move(int(195), int(315))
-
-        self.uninstopera.setToolTip("Uninstall Opera")
-        self.instopera = QPushButton("Install", self)           
-        self.instopera.clicked.connect(self.on_instopera)
-        self.instopera.setFixedSize(87, 30)
-
-        self.instopera.move(int(195), int(315))
-
-        self.instopera.setToolTip("Install Opera")
+        # if os.path.isfile("/usr/bin/opera"):
+            # uninstopera = Gtk.Button.new_with_label("Uninstall")
+            # uninstopera.connect("clicked", self.on_uninstopera)
+            # uninstvivaldi.set_size_request(87, 30)
+            # fixed.put(uninstvivaldi, 30, 130)
+            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
+        # else:
+            # instvivaldi = Gtk.Button.new_with_label("Install")
+            # instvivaldi.connect("clicked", self.on_instvivaldi)
+            # instvivaldi.set_size_request(87, 30)
+            # fixed.put(instvivaldi, 30, 130)
+            # instvivaldi.set_tooltip_text("Install Firefox")
+            
+        self.uninstopera = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstopera.connect("clicked", self.on_uninstopera)
+        self.uninstopera.set_size_request(87, 30)
+        self.uninstopera.set_tooltip_text("Uninstall Opera")
+        
+        self.instopera = Gtk.Button("Install", self)          
+        self.instopera.connect("clicked", self.on_instopera)
+        self.instopera.set_size_request(87, 30)
+        self.instopera.set_tooltip_text("Install Opera")
 
         #Waterfox
-        self.uninstwaterfox = QPushButton("Uninstall", self)       
-        self.uninstwaterfox.clicked.connect(self.on_uninstwaterfox)
-        self.uninstwaterfox.setFixedSize(87, 30)
- 
-        self.uninstwaterfox.move(int(360), int(315))
-
-        self.uninstwaterfox.setToolTip("Uninstall Waterfox")
-        self.instwaterfox = QPushButton("Install", self)
-        self.instwaterfox.clicked.connect(self.on_instwaterfox)
-        self.instwaterfox.setFixedSize(87, 30)
-
-        self.instwaterfox.move(int(360), int(315))
-
-        self.instwaterfox.setToolTip("Install Waterfox")
+        # if os.path.isfile("/usr/bin/vivaldi"):
+            # uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
+            # uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
+            # uninstvivaldi.set_size_request(87, 30)
+            # fixed.put(uninstvivaldi, 30, 130)
+            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
+        # else:
+            # instvivaldi = Gtk.Button.new_with_label("Install")
+            # instvivaldi.connect("clicked", self.on_instvivaldi)
+            # instvivaldi.set_size_request(87, 30)
+            # fixed.put(instvivaldi, 30, 130)
+            # instvivaldi.set_tooltip_text("Install Firefox")
+            
+        self.uninstwaterfox = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstwaterfox.connect("clicked", self.on_uninstwaterfox)
+        self.uninstwaterfox.set_size_request(87, 30)
+        self.uninstwaterfox.set_tooltip_text("Uninstall Waterfox")
+        
+        self.instwaterfox = Gtk.Button("Install", self)          
+        self.instwaterfox.connect("clicked", self.on_instwaterfox)
+        self.instwaterfox.set_size_request(87, 30)
+        self.instwaterfox.set_tooltip_text("Install Waterfox")
 
         #Falkon
-        self.uninstfalkon = QPushButton("Uninstall", self)      
-        self.uninstfalkon.clicked.connect(self.on_uninstfalkon)
-        self.uninstfalkon.setFixedSize(87, 30)
- 
-        self.uninstfalkon.move(int(525), int(315))
-
-        self.uninstfalkon.setToolTip("Uninstall Falkon")
-        self.instfalkon = QPushButton("Install", self)
-        self.instfalkon.clicked.connect(self.on_instfalkon)
-        self.instfalkon.setFixedSize(87, 30)
-
-        self.instfalkon.move(int(525), int(315))
-
-        self.instfalkon.setToolTip("Install Falkon")    
+        # if os.path.isfile("/usr/bin/vivaldi"):
+            # uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
+            # uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
+            # uninstvivaldi.set_size_request(87, 30)
+            # fixed.put(uninstvivaldi, 30, 130)
+            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
+        # else:
+            # instvivaldi = Gtk.Button.new_with_label("Install")
+            # instvivaldi.connect("clicked", self.on_instvivaldi)
+            # instvivaldi.set_size_request(87, 30)
+            # fixed.put(instvivaldi, 30, 130)
+            # instvivaldi.set_tooltip_text("Install Firefox")
+            
+        self.uninstfalkon = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstfalkon.connect("clicked", self.on_uninstfalkon)
+        self.uninstfalkon.set_size_request(87, 30)
+        self.uninstfalkon.set_tooltip_text("Uninstall Falkon")
+        
+        self.instfalkon = Gtk.Button("Install", self)          
+        self.instfalkon.connect("clicked", self.on_instfalkon)
+        self.instfalkon.set_size_request(87, 30)
+        self.instfalkon.set_tooltip_text("Install Falkon")
 
         #GNOME Web
-        self.uninstweb = QPushButton("Uninstall", self)         
-        self.uninstweb.clicked.connect(self.on_uninstweb)
-        self.uninstweb.setFixedSize(87, 30)
-
-        self.uninstweb.move(int(690), int(315))
+        # if os.path.isfile("/usr/bin/vivaldi"):
+            # uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
+            # uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
+            # uninstvivaldi.set_size_request(87, 30)
+            # fixed.put(uninstvivaldi, 30, 130)
+            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
+        # else:
+            # instvivaldi = Gtk.Button.new_with_label("Install")
+            # instvivaldi.connect("clicked", self.on_instvivaldi)
+            # instvivaldi.set_size_request(87, 30)
+            # fixed.put(instvivaldi, 30, 130)
+            # instvivaldi.set_tooltip_text("Install Firefox")
+            
+        self.uninstweb = Gtk.Button.new_with_label("Uninstall")      
+        self.uninstweb.connect("clicked", self.on_uninstweb)
+        self.uninstweb.set_size_request(87, 30)
+        self.uninstweb.set_tooltip_text("Uninstall Epiphany")
         
-        self.uninstweb.setToolTip("Uninstall Epiphany")
-        self.instweb = QPushButton("Install", self)             
-        self.instweb.clicked.connect(self.on_instweb)
-        self.instweb.setFixedSize(87, 30)
+        self.instweb = Gtk.Button("Install", self)          
+        self.instweb.connect("clicked", self.on_instweb)
+        self.instweb.set_size_request(87, 30)
+        self.instweb.set_tooltip_text("Install Epiphany")
 
-        self.instweb.move(int(690), int(315))
+		#General Window buttons
+        self.closebtn = Gtk.Button("Close", self)  
+        self.closebtn.connect("clicked", self.on_close)
+        self.closebtn.set_size_request(85, 30)
+        self.closebtn.set_tooltip_text("Close Window")
 
-        self.instweb.setToolTip("Install Epiphany")
-
-        self.closebtn = QPushButton("Close", self)  
-        self.closebtn.clicked.connect(self.on_close)
-        self.closebtn.setFixedSize(85, 30)
-
-        self.closebtn.move(int(720), int(400))
-
-        self.aboutbtn = QPushButton("About", self)  
-        self.aboutbtn.clicked.connect(self.on_aboutbm)
-        self.aboutbtn.setFixedSize(85, 30)
-
-        self.aboutbtn.move(int(10), int(400))
-        
-        self.progressbar1 = QProgressBar(self)
-        self.progressbar1.setRange(0,1)
-        self.progressbar1.setFixedSize(125, 28)
-        self.progressbar1.move(int(10), int(405))
-        self.progressbar1.setMinimum(0)
-        self.progressbar1.setMaximum(0)
-        self.progressbar1.setValue(0)
-        self.progressbar1.setVisible(False)
+        self.aboutbtn = Gtk.Button("About", self)  
+        self.aboutbtn.connect("clicked", self.on_aboutbm)
+        self.aboutbtn.set_size_request(85, 30)
+        self.aboutbtn.set_tooltip_text("About Browser Manager")
+       
+        self.progressbar1 = Gtk.ProgressBar()
+        self.progressbar1.set_size_request(85, 28)
+        self.progressbar1.set_fraction(0)
+        self.progressbar1.set_visible(False)
         
 ############################
 # Adding the program titles#
 ############################
        
-        firefoxlabel = QLabel("", self)
-        chromelabel = QLabel("", self)
-        weblabel = QLabel("", self)
-        vivaldilabel = QLabel("", self)   
-        chromiumlabel = QLabel("", self) 
-        operalabel = QLabel("", self) 
-        bravelabel = QLabel("", self) 
-        msedgelabel = QLabel("", self)
-        waterfoxlabel = QLabel("", self)
-        falkonlabel = QLabel("", self)
+        self.firefoxlabel = Gtk.Label()
+        self.chromelabel = Gtk.Label()
+        self.weblabel = Gtk.Label()
+        self.vivaldilabel = Gtk.Label()   
+        self.chromiumlabel = Gtk.Label() 
+        self.operalabel = Gtk.Label() 
+        self.bravelabel = Gtk.Label() 
+        self.msedgelabel = Gtk.Label()
+        self.waterfoxlabel = Gtk.Label()
+        self.falkonlabel = Gtk.Label()
         
-        boldFont=QtGui.QFont()
-        boldFont.setBold(True)
+        #Set the text and font for the labels
+        self.firefoxlabel.set_markup("<b>Mozilla Firefox</b>")
+        self.chromelabel.set_markup("<b>Google Chrome</b>")
+        self.weblabel.set_markup("<b>GNOME Web</b>")        
+        self.vivaldilabel.set_markup("<b>Vivaldi</b>")        
+        self.chromiumlabel.set_markup("<b>Chromium</b>")        
+        self.operalabel.set_markup("<b>Opera</b>")        
+        self.bravelabel.set_markup("<b>Brave</b>")        
+        self.msedgelabel.set_markup("<b>Microsoft Edge</b>")        
+        self.waterfoxlabel.set_markup("<b>Waterfox</b>")        
+        self.falkonlabel.set_markup("<b>Falkon</b>")
+        
+        grid = Gtk.Grid()
+        
+        labelwidth = firefoxlabel.get_layout().get_pixel_size()[0]
+        firefoxlabel.set.halign(Gtk.Align.END)
+        firefoxlabel.set.valign(Gtk.Align.END)
+        firefoxlabel.set_size_request(labelwidth, -1)
+        grid.attach(firefoxlabel, 0, 0, 1, 1)
+        
+        labelwidth = chromelabel.get_layout().get_pixel_size()[0]
+        chromelabel.set.halign(Gtk.Align.END)
+        chromelabel.set.valign(Gtk.Align.END)
+        chromelabel.set_size_request(labelwidth, -1)
+        grid.attach(chromelabel, 1, 0, 1, 1)
 
-        firefoxlabel.setText("Mozilla Firefox")
-        firefoxlabel.setFont(boldFont)
-        chromelabel.setText("Google Chrome")
-        chromelabel.setFont(boldFont)
-        weblabel.setText("GNOME Web")
-        weblabel.setFont(boldFont)
-        vivaldilabel.setText("Vivaldi")
-        vivaldilabel.setFont(boldFont)
-        chromiumlabel.setText("Chromium")
-        chromiumlabel.setFont(boldFont)
-        operalabel.setText("Opera")
-        operalabel.setFont(boldFont)
-        bravelabel.setText("Brave")
-        bravelabel.setFont(boldFont)
-        msedgelabel.setText("Microsoft Edge")
-        msedgelabel.setFont(boldFont)
-        waterfoxlabel.setText("Waterfox")
-        waterfoxlabel.setFont(boldFont)
-        falkonlabel.setText("Falkon")
-        falkonlabel.setFont(boldFont)
-        
-        labelwidth = vivaldilabel.fontMetrics().boundingRect(vivaldilabel.text()).width()
-        vivaldilabel.move(int(35 + 37.5 - (0.5 * labelwidth)), int(10))
-        vivaldilabel.setFixedWidth(labelwidth)
-        vivaldilabel.setAlignment(Qt.AlignCenter)
-        
-        labelwidth = chromelabel.fontMetrics().boundingRect(chromelabel.text()).width()
-        chromelabel.move(int(200 + 37.5 - (0.5 * labelwidth)), int(10))
-        chromelabel.setFixedWidth(labelwidth)
-        chromelabel.setAlignment(Qt.AlignCenter)
-        
-        labelwidth = chromiumlabel.fontMetrics().boundingRect(chromiumlabel.text()).width()
-        chromiumlabel.move(int(365 + 37.5 - (0.5 * labelwidth)), int(10))
-        chromiumlabel.setFixedWidth(labelwidth)
-        chromiumlabel.setAlignment(Qt.AlignCenter)
-        
-        labelwidth = msedgelabel.fontMetrics().boundingRect(msedgelabel.text()).width()
-        msedgelabel.move(int(530 + 37.5 - (0.5 * labelwidth)), int(10))
-        msedgelabel.setFixedWidth(labelwidth)
-        msedgelabel.setAlignment(Qt.AlignCenter)
+        labelwidth = weblabel.get_layout().get_pixel_size()[0]
+        weblabel.set.halign(Gtk.Align.END)
+        weblabel.set.valign(Gtk.Align.END)
+        weblabel.set_size_request(labelwidth, -1)
+        grid.attach(weblabel, 2, 0, 1, 1)
 
-        labelwidth = firefoxlabel.fontMetrics().boundingRect(firefoxlabel.text()).width()
-        firefoxlabel.move(int(695 + 37.5 - (0.5 * labelwidth)), int(10))
-        firefoxlabel.setFixedWidth(labelwidth)
-        firefoxlabel.setAlignment(Qt.AlignCenter)
+        labelwidth = vivaldilabel.get_layout().get_pixel_size()[0]
+        vivaldilabel.set.halign(Gtk.Align.END)
+        vivaldilabel.set.valign(Gtk.Align.END)
+        vivaldilabel.set_size_request(labelwidth, -1)
+        grid.attach(vivaldilabel, 3, 0, 1, 1)
+
+        labelwidth = chromiumlabel.get_layout().get_pixel_size()[0]
+        chromiumlabel.set.halign(Gtk.Align.END)
+        chromiumlabel.set.valign(Gtk.Align.END)
+        chromiumlabel.set_size_request(labelwidth, -1)
+        grid.attach(chromiumlabel, 4, 0, 1, 1)
+
+        labelwidth = operalabel.get_layout().get_pixel_size()[0]
+        operalabel.set.halign(Gtk.Align.END)
+        operalabel.set.valign(Gtk.Align.END)
+        operalabel.set_size_request(labelwidth, -1)
+        grid.attach(operalabel, 5, 0, 1, 1)
+
+        labelwidth = bravelabel.get_layout().get_pixel_size()[0]
+        bravelabel.set.halign(Gtk.Align.END)
+        bravelabel.set.valign(Gtk.Align.END)
+        bravelabel.set_size_request(labelwidth, -1)
+        grid.attach(bravelabel, 1, 0, 1, 1)
+
+        labelwidth = msedgelabel.get_layout().get_pixel_size()[0]
+        msedgelabel.set.halign(Gtk.Align.END)
+        msedgelabel.set.valign(Gtk.Align.END)
+        msedgelabel.set_size_request(labelwidth, -1)
+        grid.attach(msedgelabel, 1, 1, 1, 1)
+
+        labelwidth = waterfoxlabel.get_layout().get_pixel_size()[0]
+        waterfoxlabel.set.halign(Gtk.Align.END)
+        waterfoxlabel.set.valign(Gtk.Align.END)
+        waterfoxlabel.set_size_request(labelwidth, -1)
+        grid.attach(waterfoxlabel, 1, 2, 1, 1)
+
+        labelwidth = falkonlabel.get_layout().get_pixel_size()[0]
+        falkonlabel.set.halign(Gtk.Align.END)
+        falkonlabel.set.valign(Gtk.Align.END)
+        falkonlabel.set_size_request(labelwidth, -1)
+        grid.attach(falkonlabel, 1, 3, 1, 1)
         
-        labelwidth = bravelabel.fontMetrics().boundingRect(bravelabel.text()).width()
-        bravelabel.move(int(35 + 37.5 - (0.5 * labelwidth)), int(190))
-        bravelabel.setFixedWidth(labelwidth)
-        bravelabel.setAlignment(Qt.AlignCenter)
         
-        labelwidth = operalabel.fontMetrics().boundingRect(operalabel.text()).width()
-        operalabel.move(int(200 + 37.5 - (0.5 * labelwidth)), int(190))
-        operalabel.setFixedWidth(labelwidth)
-        operalabel.setAlignment(Qt.AlignCenter)
+                      
+        # # labelwidth = vivaldilabel.fontMetrics().boundingRect(vivaldilabel.text()).width()
+        # # vivaldilabel.move(int(35 + 37.5 - (0.5 * labelwidth)), int(10))
+        # # vivaldilabel.setFixedWidth(labelwidth)
+        # # vivaldilabel.setAlignment(Qt.AlignCenter)
         
-        labelwidth = waterfoxlabel.fontMetrics().boundingRect(waterfoxlabel.text()).width()
-        waterfoxlabel.move(int(365 + 37.5 - (0.5 * labelwidth)), int(190))
-        waterfoxlabel.setFixedWidth(labelwidth)
-        waterfoxlabel.setAlignment(Qt.AlignCenter)
+        # labelwidth = chromelabel.fontMetrics().boundingRect(chromelabel.text()).width()
+        # chromelabel.move(int(200 + 37.5 - (0.5 * labelwidth)), int(10))
+        # chromelabel.setFixedWidth(labelwidth)
+        # chromelabel.setAlignment(Qt.AlignCenter)
         
-        labelwidth = falkonlabel.fontMetrics().boundingRect(falkonlabel.text()).width()
-        falkonlabel.move(int(530 + 37.5 - (0.5 * labelwidth)), int(190))
-        falkonlabel.setFixedWidth(labelwidth)
-        falkonlabel.setAlignment(Qt.AlignCenter)
+        # labelwidth = chromiumlabel.fontMetrics().boundingRect(chromiumlabel.text()).width()
+        # chromiumlabel.move(int(365 + 37.5 - (0.5 * labelwidth)), int(10))
+        # chromiumlabel.setFixedWidth(labelwidth)
+        # chromiumlabel.setAlignment(Qt.AlignCenter)
         
-        labelwidth = weblabel.fontMetrics().boundingRect(weblabel.text()).width()
-        weblabel.move(int(695 + 37.5 - (0.5 * labelwidth)), int(190))
-        weblabel.setFixedWidth(labelwidth)
-        weblabel.setAlignment(Qt.AlignCenter)
+        # labelwidth = msedgelabel.fontMetrics().boundingRect(msedgelabel.text()).width()
+        # msedgelabel.move(int(530 + 37.5 - (0.5 * labelwidth)), int(10))
+        # msedgelabel.setFixedWidth(labelwidth)
+        # msedgelabel.setAlignment(Qt.AlignCenter)
+
+        # labelwidth = firefoxlabel.fontMetrics().boundingRect(firefoxlabel.text()).width()
+        # firefoxlabel.move(int(695 + 37.5 - (0.5 * labelwidth)), int(10))
+        # firefoxlabel.setFixedWidth(labelwidth)
+        # firefoxlabel.setAlignment(Qt.AlignCenter)
+        
+        # labelwidth = bravelabel.fontMetrics().boundingRect(bravelabel.text()).width()
+        # bravelabel.move(int(35 + 37.5 - (0.5 * labelwidth)), int(190))
+        # bravelabel.setFixedWidth(labelwidth)
+        # bravelabel.setAlignment(Qt.AlignCenter)
+        
+        # labelwidth = operalabel.fontMetrics().boundingRect(operalabel.text()).width()
+        # operalabel.move(int(200 + 37.5 - (0.5 * labelwidth)), int(190))
+        # operalabel.setFixedWidth(labelwidth)
+        # operalabel.setAlignment(Qt.AlignCenter)
+        
+        # labelwidth = waterfoxlabel.fontMetrics().boundingRect(waterfoxlabel.text()).width()
+        # waterfoxlabel.move(int(365 + 37.5 - (0.5 * labelwidth)), int(190))
+        # waterfoxlabel.setFixedWidth(labelwidth)
+        # waterfoxlabel.setAlignment(Qt.AlignCenter)
+        
+        # labelwidth = falkonlabel.fontMetrics().boundingRect(falkonlabel.text()).width()
+        # falkonlabel.move(int(530 + 37.5 - (0.5 * labelwidth)), int(190))
+        # falkonlabel.setFixedWidth(labelwidth)
+        # falkonlabel.setAlignment(Qt.AlignCenter)
+        
+        # labelwidth = weblabel.fontMetrics().boundingRect(weblabel.text()).width()
+        # weblabel.move(int(695 + 37.5 - (0.5 * labelwidth)), int(190))
+        # weblabel.setFixedWidth(labelwidth)
+        # weblabel.setAlignment(Qt.AlignCenter)
 
 ###################
 # Adding the logos#
@@ -890,6 +1039,6 @@ class BrowserManager(QMainWindow):
     def on_close(self, event):
         self.close()
 
-app = QApplication(sys.argv)
+#app = QApplication(sys.argv)
 ex = BrowserManager()
 sys.exit(app.exec_())
