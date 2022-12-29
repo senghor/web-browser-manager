@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 
-# This file is part of Feren OS Web Browser Manager.
+# This file is part of the Bodhi OS Web Browser Manager.
 #
-# Feren OS Web Browser Manager is free software: you can redistribute it and/or modify
+# Bodhi OS Web Browser Manager is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# Feren OS Web Browser Manager is distributed in the hope that it will be useful,
+# Bodhi OS Web Browser Manager is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with Feren OS Web Browser Manager.  If not, see <http://www.gnu.org/licenses/>.
+# along with Bodhi OS Web Browser Manager.  If not, see <http://www.gnu.org/licenses/>.
 
 #(c) Feren Team 2015-2020 <ferenosdev@outlook.com> 
 #(c) AZorin 2010-2015 <azorin@zoringroup.com>
@@ -25,11 +25,6 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-#from gi.repository import GLib, Gio
-#from PyQt5 import QtGui, QtCore, QtWidgets
-#from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox, QLabel, QMainWindow, QProgressBar
-#from PyQt5.QtCore import pyqtSlot, Qt
-#from PyQt5.QtGui import QIcon, QPixmap
 import requests
 import os
 from os import path
@@ -37,11 +32,11 @@ import sys
 from threading import Thread
 import time
 
-#QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
-
 os.chdir('/tmp/')
 
 applogo = "/usr/share/pixmaps/browser-manager.svg"
+
+fixed = Gtk.Fixed()
 
 class BrowserManagerManager():    
   def __init__(self, browsername, option, bmself):
@@ -49,11 +44,9 @@ class BrowserManagerManager():
         os.system("/usr/share/browser-manager/"+browsername+"/"+option)
     except:
         Gtk.MessageDialog(BrowserManager, 0, Gtk.MessageType.CRITICAL, Gtk.ButtonsType.OK, "Web Browser Manager", "An error occured while initiating the package management process.")
-        #QMessageBox.critical(BrowserManager, "Web Browser Manager", "An error occured while initiating the package management process.")
     BrowserManager.finish_process(bmself)
 
 class BrowserManager(Gtk.Window):
-#class BrowserManager(QMainWindow):
     
     def __init__(self):
         # super(BrowserManager, self).__init__()
@@ -66,27 +59,27 @@ class BrowserManager(Gtk.Window):
         # self.set_position(Gtk.WindowPosition.CENTER)
         # self.connect("destroy",self.do_destroy)
         # fixed = Gtk.Fixed()
-
+        
         super().__init__()
         
         self.title = "Web Browser Manager"
         self.width = 815
         self.height = 440
         self.browserwork = False
-        
+                 
         self.connect("delete-event", self.on_close)
         
         self.set_default_size(self.width, self.height)
         self.set_resizable(False)
         
         self.initUI()
-    
+        
     def on_close(self, widget, event):
         if self.browserwork:
             return True
         else:
             Gtk.main_quit()
-
+             
     def initUI(self):
         self.set_title(self.title)
         self.move(10, 10)
@@ -96,18 +89,6 @@ class BrowserManager(Gtk.Window):
 # Adding the buttons#
 #####################
 
-#        global uninstfirefox
-#        global uninstchrome
-#        global uninstopera
-#        global uninstweb
-#        global uninstvivaldi
-#        global uninstchromium
-#        global instfirefox
-#        global instchrome
-#        global instopera
-#        global instweb
-#        global instvivaldi
-#        global instchromium
         global imgfx
         global imgcr
         global imgvi
@@ -122,26 +103,28 @@ class BrowserManager(Gtk.Window):
     
         #Vivaldi
         # if os.path.isfile("/usr/bin/vivaldi"):
-            # uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
-            # uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
-            # uninstvivaldi.set_size_request(87, 30)
-            # fixed.put(uninstvivaldi, 30, 130)
-            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
+            # self.uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
+            # self.uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
+            # self.uninstvivaldi.set_size_request(87, 30)
+            # fixed.put(self.uninstvivaldi, 30, 130)
+            # self.uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
         # else:
-            # instvivaldi = Gtk.Button.new_with_label("Install")
-            # instvivaldi.connect("clicked", self.on_instvivaldi)
-            # instvivaldi.set_size_request(87, 30)
-            # fixed.put(instvivaldi, 30, 130)
-            # instvivaldi.set_tooltip_text("Install Vivaldi")
+            # self.instvivaldi = Gtk.Button.new_with_label("Install")
+            # self.instvivaldi.connect("clicked", self.on_instvivaldi)
+            # self.instvivaldi.set_size_request(87, 30)
+            # fixed.put(self.instvivaldi, 30, 130)
+            # self.instvivaldi.set_tooltip_text("Install Vivaldi")
 
         self.uninstvivaldi = Gtk.Button.new_with_label("Uninstall")      
         self.uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
         self.uninstvivaldi.set_size_request(87, 30)
+        fixed.put(self.uninstvivaldi, 30, 130)
         self.uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
         
         self.instvivaldi = Gtk.Button("Install", self)          
         self.instvivaldi.connect("clicked", self.on_instvivaldi)
         self.instvivaldi.set_size_request(87, 30)
+        fixed.put(self.instvivaldi, 30, 130)
         self.instvivaldi.set_tooltip_text("Install Vivaldi")
 
         #Google Chrome
@@ -161,11 +144,13 @@ class BrowserManager(Gtk.Window):
         self.uninstchrome = Gtk.Button.new_with_label("Uninstall")      
         self.uninstchrome.connect("clicked", self.on_uninstchrome)
         self.uninstchrome.set_size_request(87, 30)
+        fixed.put(self.uninstchrome, 195, 130)
         self.uninstchrome.set_tooltip_text("Uninstall Chrome")
         
         self.instchrome = Gtk.Button("Install", self)          
         self.instchrome.connect("clicked", self.on_instchrome)
         self.instchrome.set_size_request(87, 30)
+        fixed.put(self.instchrome, 195, 130)
         self.instchrome.set_tooltip_text("Install Chrome")
 
     
@@ -186,11 +171,13 @@ class BrowserManager(Gtk.Window):
         self.uninstchromium = Gtk.Button.new_with_label("Uninstall")      
         self.uninstchromium.connect("clicked", self.on_uninstchromium)
         self.uninstchromium.set_size_request(87, 30)
+        fixed.put(self.uninstchromium, 360, 130)
         self.uninstchromium.set_tooltip_text("Uninstall Chromium")
         
         self.instchromium = Gtk.Button("Install", self)          
         self.instchromium.connect("clicked", self.on_instchromium)
         self.instchromium.set_size_request(87, 30)
+        fixed.put(self.instchromium, 360, 130)
         self.instchromium.set_tooltip_text("Install Chromium")
         
         #Microsoft Edge
@@ -210,11 +197,13 @@ class BrowserManager(Gtk.Window):
         self.uninstmsedge = Gtk.Button.new_with_label("Uninstall")      
         self.uninstmsedge.connect("clicked", self.on_uninstmsedge)
         self.uninstmsedge.set_size_request(87, 30)
+        fixed.put(self.uninstmsedge, 525, 130)
         self.uninstmsedge.set_tooltip_text("Uninstall Microsoft Edge")
         
         self.instmsedge = Gtk.Button("Install", self)          
         self.instmsedge.connect("clicked", self.on_instmsedge)
         self.instmsedge.set_size_request(87, 30)
+        fixed.put(self.instmsedge, 525, 130)
         self.instmsedge.set_tooltip_text("Install Microsoft Edge")
 
         #Mozilla Firefox
@@ -234,11 +223,13 @@ class BrowserManager(Gtk.Window):
         self.uninstfirefox = Gtk.Button.new_with_label("Uninstall")      
         self.uninstfirefox.connect("clicked", self.on_uninstfirefox)
         self.uninstfirefox.set_size_request(87, 30)
+        fixed.put(self.uninstfirefox, 690, 130)
         self.uninstfirefox.set_tooltip_text("Uninstall Firefox")
         
         self.instfirefox = Gtk.Button("Install", self)          
         self.instfirefox.connect("clicked", self.on_instfirefox)
         self.instfirefox.set_size_request(87, 30)
+        fixed.put(self.instfirefox, 690, 130)
         self.instfirefox.set_tooltip_text("Install Firefox")
         
         #Brave
@@ -258,11 +249,13 @@ class BrowserManager(Gtk.Window):
         self.uninstbrave = Gtk.Button.new_with_label("Uninstall")      
         self.uninstbrave.connect("clicked", self.on_uninstbrave)
         self.uninstbrave.set_size_request(87, 30)
+        fixed.put(self.uninstbrave, 30, 315)
         self.uninstbrave.set_tooltip_text("Uninstall Brave")
         
         self.instbrave = Gtk.Button("Install", self)          
         self.instbrave.connect("clicked", self.on_instbrave)
         self.instbrave.set_size_request(87, 30)
+        fixed.put(self.instbrave, 30, 315)
         self.instbrave.set_tooltip_text("Install Brave")
 
         #Opera
@@ -282,11 +275,13 @@ class BrowserManager(Gtk.Window):
         self.uninstopera = Gtk.Button.new_with_label("Uninstall")      
         self.uninstopera.connect("clicked", self.on_uninstopera)
         self.uninstopera.set_size_request(87, 30)
+        fixed.put(self.uninstopera, 195, 315)
         self.uninstopera.set_tooltip_text("Uninstall Opera")
         
         self.instopera = Gtk.Button("Install", self)          
         self.instopera.connect("clicked", self.on_instopera)
         self.instopera.set_size_request(87, 30)
+        fixed.put(self.instopera, 195, 315)
         self.instopera.set_tooltip_text("Install Opera")
 
         #Waterfox
@@ -306,11 +301,13 @@ class BrowserManager(Gtk.Window):
         self.uninstwaterfox = Gtk.Button.new_with_label("Uninstall")      
         self.uninstwaterfox.connect("clicked", self.on_uninstwaterfox)
         self.uninstwaterfox.set_size_request(87, 30)
+        fixed.put(self.uninstwaterfox, 360, 315)
         self.uninstwaterfox.set_tooltip_text("Uninstall Waterfox")
         
         self.instwaterfox = Gtk.Button("Install", self)          
         self.instwaterfox.connect("clicked", self.on_instwaterfox)
         self.instwaterfox.set_size_request(87, 30)
+        fixed.put(self.instwaterfox, 360, 315)
         self.instwaterfox.set_tooltip_text("Install Waterfox")
 
         #Falkon
@@ -330,11 +327,13 @@ class BrowserManager(Gtk.Window):
         self.uninstfalkon = Gtk.Button.new_with_label("Uninstall")      
         self.uninstfalkon.connect("clicked", self.on_uninstfalkon)
         self.uninstfalkon.set_size_request(87, 30)
+        fixed.put(self.uninstfalkon, 525, 315)
         self.uninstfalkon.set_tooltip_text("Uninstall Falkon")
         
         self.instfalkon = Gtk.Button("Install", self)          
         self.instfalkon.connect("clicked", self.on_instfalkon)
         self.instfalkon.set_size_request(87, 30)
+        fixed.put(self.instfalkon, 525, 315)
         self.instfalkon.set_tooltip_text("Install Falkon")
 
         #GNOME Web
@@ -354,22 +353,26 @@ class BrowserManager(Gtk.Window):
         self.uninstweb = Gtk.Button.new_with_label("Uninstall")      
         self.uninstweb.connect("clicked", self.on_uninstweb)
         self.uninstweb.set_size_request(87, 30)
+        fixed.put(self.uninstweb, 690, 315)
         self.uninstweb.set_tooltip_text("Uninstall Epiphany")
         
         self.instweb = Gtk.Button("Install", self)          
         self.instweb.connect("clicked", self.on_instweb)
         self.instweb.set_size_request(87, 30)
+        fixed.put(self.instweb, 690, 315)
         self.instweb.set_tooltip_text("Install Epiphany")
 
 		#General Window buttons
         self.closebtn = Gtk.Button("Close", self)  
         self.closebtn.connect("clicked", self.on_close)
         self.closebtn.set_size_request(85, 30)
+        fixed.put(self.closebtn, 720, 400)
         self.closebtn.set_tooltip_text("Close Window")
 
         self.aboutbtn = Gtk.Button("About", self)  
         self.aboutbtn.connect("clicked", self.on_aboutbm)
         self.aboutbtn.set_size_request(85, 30)
+        fixed.put(self.aboutbtn, 10, 400)
         self.aboutbtn.set_tooltip_text("About Browser Manager")
        
         self.progressbar1 = Gtk.ProgressBar()
@@ -524,7 +527,6 @@ class BrowserManager(Gtk.Window):
 ###################
 # Adding the logos#
 ###################
-
         
         if os.path.exists('/tmp/firefox-logo.png'):
             imgfx = '/tmp/firefox-logo.png'
@@ -632,28 +634,38 @@ class BrowserManager(Gtk.Window):
         self.aboutwaterfox.set_size_request(75, 75)
         self.aboutfalkon.set_size_request(75, 75)
         self.aboutweb.set_size_request(75, 75)
-        
+               
         #Set Button Positions
-        self.aboutvivaldi.set_margin_left(35)
-        self.aboutvivaldi.set_margin_top(35)
-        self.aboutchrome.set_margin_left(200)
-        self.aboutchrome.set_margin_top(35)
-        self.aboutchromium.set_margin_left(365)
-        self.aboutchromium.set_margin_top(35)
-        self.aboutmsedge.set_margin_left(530)
-        self.aboutmsedge.set_margin_top(35)
-        self.aboutfirefox.set_margin_left(695)
-        self.aboutfirefox.set_margin_top(35)
-        self.aboutbrave.set_margin_left(35)
-        self.aboutbrave.set_margin_top(220)
-        self.aboutopera.set_margin_left(200)
-        self.aboutopera.set_margin_top(220)
-        self.aboutwaterfox.set_margin_left(365)
-        self.aboutwaterfox.set_margin_top(220)
-        self.aboutfalkon.set_margin_left(530)
-        self.aboutfalkon.set_margin_top(220)
-        self.aboutweb.set_margin_left(695)
-        self.aboutweb.set_margin_top(220)
+        #self.aboutvivaldi.set_margin_left(35)
+        #self.aboutvivaldi.set_margin_top(35)
+        fixed.put(self.aboutvivaldi, 35, 35)
+        # self.aboutchrome.set_margin_left(200)
+        # self.aboutchrome.set_margin_top(35)
+        fixed.put(self.aboutchrome, 200, 35)
+        # self.aboutchromium.set_margin_left(365)
+        # self.aboutchromium.set_margin_top(35)
+        fixed.put(self.aboutchromium, 365, 35)
+        # self.aboutmsedge.set_margin_left(530)
+        # self.aboutmsedge.set_margin_top(35)
+        fixed.put(self.aboutmsedge, 530, 35)
+        # self.aboutfirefox.set_margin_left(695)
+        # self.aboutfirefox.set_margin_top(35)
+        fixed.put(self.aboutfirefox, 695, 35)
+        # self.aboutbrave.set_margin_left(35)
+        # self.aboutbrave.set_margin_top(220)
+        fixed.put(self.aboutbrave, 35, 220)
+        # self.aboutopera.set_margin_left(200)
+        # self.aboutopera.set_margin_top(220)
+        fixed.put(self.aboutopera, 200, 220)
+        # self.aboutwaterfox.set_margin_left(365)
+        # self.aboutwaterfox.set_margin_top(220)
+        fixed.put(self.aboutwaterfox, 365, 220)
+        # self.aboutfalkon.set_margin_left(530)
+        # self.aboutfalkon.set_margin_top(220)
+        fixed.put(self.aboutfalkon, 530, 220)
+        # self.aboutweb.set_margin_left(695)
+        # self.aboutweb.set_margin_top(220)
+        fixed.put(self.aboutweb, 695, 220)
         
         #Set about tooltip
         self.aboutvivaldi.set_tooltip_text("About Vivaldi")
@@ -1072,8 +1084,9 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstbrave(self, widget):                                
         self.begin_process()
-        self.progressbar1.move(int(11), int(316))
-        t = Thread(
+        fixed.put(progressbar1, 11 , 316)
+        #self.progressbar1.move(int(11), int(316))
+        t = threading.Thread(
             target=BrowserManagerManager,
             args=("brave", "uninstall", self)
         )
@@ -1081,8 +1094,9 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstopera(self, widget):                                
         self.begin_process()
-        self.progressbar1.move(int(176), int(316))
-        t = Thread(
+        fixed.put(progressbar1, 176, 316) 
+        #self.progressbar1.move(int(176), int(316))
+        t = threading.Thread(
             target=BrowserManagerManager,
             args=("opera", "uninstall", self)
         )
@@ -1090,8 +1104,9 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstwaterfox(self, widget):                               
         self.begin_process()
-        self.progressbar1.move(int(341), int(316))
-        t = Thread(
+        fixed.put(progressbar1, 341, 316)
+        #self.progressbar1.move(int(341), int(316))
+        t = threading.Thread(
             target=BrowserManagerManager,
             args=("waterfox", "uninstall", self)
         )
@@ -1099,8 +1114,9 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstfalkon(self, widget):                               
         self.begin_process()
-        self.progressbar1.move(int(506), int(316))
-        t = Thread(
+        fixed.put(progressbar1, 506, 316)
+        #self.progressbar1.move(int(506), int(316))
+        t = threading.Thread(
             target=BrowserManagerManager,
             args=("falkon", "uninstall", self)
         )
@@ -1108,53 +1124,55 @@ class BrowserManager(Gtk.Window):
     
     def on_uninstweb(self, widget):                                  
         self.begin_process()
-        self.progressbar1.move(int(671), int(316))
-        t = Thread(
+        fixed.put(progressbar1, 671, 316)
+        #self.progressbar1.move(int(671), int(316))
+        t = threading.Thread(
             target=BrowserManagerManager,
             args=("web", "uninstall", self)
         )
         t.start()
 
     def on_aboutvivaldi(self, widget):
-            QMessageBox.information(self, " ", "Vivaldi is the defacto web browser in Feren OS, being developed by Vivaldi Technologies - a company founded by former Opera Software cofounder and CEO Jon Stephenson von Tetzchner. It is a browser that is simple by default but powerful when needed, with easily accessible features to greatly improve your browser workflow right out of the box. It also provides an optional advertisement and tracking blocker.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Vivaldi's Official Package Repository")
-            pass
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Vivaldi is the defacto web browser in Feren OS, being developed by Vivaldi Technologies - a company founded by former Opera Software cofounder and CEO Jon Stephenson von Tetzchner. It is a browser that is simple by default but powerful when needed, with easily accessible features to greatly improve your browser workflow right out of the box. It also provides an optional advertisement and tracking blocker.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Vivaldi's Official Package Repository")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutchrome(self, widget):
-            QMessageBox.information(self, " ", "Google Chrome is an web browser project backed by Google that aims to build a safer, faster, and more stable way for all internet users to experience the web.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Google Chrome's (Stable) Package Repository")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Google Chrome is an web browser project backed by Google that aims to build a safer, faster, and more stable way for all internet users to experience the web.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Google Chrome's (Stable) Package Repository")
 
     def on_aboutchromium(self, widget):
-            QMessageBox.information(self, " ", "Chromium is the open source father of Google Chrome, also being mainly made by Google. It shares a lot of the GUI that Google Chrome has, but with an alternative logo and some other features missing such as codecs being pre-installed, and so on.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Linux Mint (only required Chromium packages)")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Chromium is the open source father of Google Chrome, also being mainly made by Google. It shares a lot of the GUI that Google Chrome has, but with an alternative logo and some other features missing such as codecs being pre-installed, and so on.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Linux Mint (only required Chromium packages)")
             pass
 
     def on_aboutmsedge(self, widget):
-            QMessageBox.information(self, " ", "Microsoft Edge is Microsoft's all-new release of the Microsoft Edge browser that was used in the latest version of their flagship Operating System. It shares a lot of similarities with the original Microsoft Edge. It also comes pre-bunded with the Bing search engine and a Start Page with Microsoft News integration.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Microsoft Edge's Package Repository")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Microsoft Edge is Microsoft's all-new release of the Microsoft Edge browser that was used in the latest version of their flagship Operating System. It shares a lot of similarities with the original Microsoft Edge. It also comes pre-bunded with the Bing search engine and a Start Page with Microsoft News integration.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Microsoft Edge's Package Repository")
             pass
 
     def on_aboutfirefox(self, widget):
-            QMessageBox.information(self, " ", "Firefox delivers safe and easy web browsing with a familiar user interface, thousands of plugins, and integrated search that lets you get the most out of the web.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Flathub (Flatpak)")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Firefox delivers safe and easy web browsing with a familiar user interface, thousands of plugins, and integrated search that lets you get the most out of the web.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Flathub (Flatpak)")
 
     def on_aboutbrave(self, widget):
-            QMessageBox.information(self, " ", "Brave is yet another freeware browser based on the Chromium codebase, and Blink Engine. Brave is open-source, and is designed to block Ads and Website Trackers by default, with a Donate to Support Your Favourite Websites mindset.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Brave Browser's Package Repository")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Brave is yet another freeware browser based on the Chromium codebase, and Blink Engine. Brave is open-source, and is designed to block Ads and Website Trackers by default, with a Donate to Support Your Favourite Websites mindset.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Brave Browser's Package Repository")
             pass
 
     def on_aboutopera(self, widget):
-            QMessageBox.information(self, " ", "Opera is another freeware browser, being developed by Opera. The browser is built on the Blink Engine, and is designed to be feature rich, having built-in features such as an Ad Blocker, VPN, Battery Saver, and so on, all included with the browser.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Opera Browser's Package Repository")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Opera is another freeware browser, being developed by Opera. The browser is built on the Blink Engine, and is designed to be feature rich, having built-in features such as an Ad Blocker, VPN, Battery Saver, and so on, all included with the browser.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Opera Browser's Package Repository")
             pass
 
     def on_aboutwaterfox(self, widget):
-            QMessageBox.information(self, " ", "Waterfox is a freeware browser based on Mozilla Firefox. This browser is built with a mix of privacy and customisability in mind. This browser has a big focus on stability and limiting data collection while staying true to the browser's base.\n\nBased on: Mozilla Firefox\nMobile Version available: No\nExtra Repositories Added: Unofficial Waterfox Package Repository")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Waterfox is a freeware browser based on Mozilla Firefox. This browser is built with a mix of privacy and customisability in mind. This browser has a big focus on stability and limiting data collection while staying true to the browser's base.\n\nBased on: Mozilla Firefox\nMobile Version available: No\nExtra Repositories Added: Unofficial Waterfox Package Repository")
             pass
 
     def on_aboutfalkon(self, widget):
-            QMessageBox.information(self, " ", "Falkon is KDE's browser, which has a lot of Firefox's old design traits, a familiar look and feel, pre-built-in AdBlocker, and everything else you'd expect to see from a browser in the modern age. It's still a solid choice of browser, young as it may be.\n\nBased on: QtWebEngine\nMobile Version available: No\nExtra Repositories Added: None")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Falkon is KDE's browser, which has a lot of Firefox's old design traits, a familiar look and feel, pre-built-in AdBlocker, and everything else you'd expect to see from a browser in the modern age. It's still a solid choice of browser, young as it may be.\n\nBased on: QtWebEngine\nMobile Version available: No\nExtra Repositories Added: None")
             pass
 
     def on_aboutweb(self, widget):
-            QMessageBox.information(self, " ", "Web is the WebKit based web browser for GNOME. It offers a simple, clean, beautiful view of the Web. Its principles are simplicity and standards compliance.\n\nBased on: WebKitGTK\nMobile Version available: No*\nExtra Repositories Added: None\n\n* This web browser converts itself into a phone-friendly web browser on compatible phones")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Web is the WebKit based web browser for GNOME. It offers a simple, clean, beautiful view of the Web. Its principles are simplicity and standards compliance.\n\nBased on: WebKitGTK\nMobile Version available: No*\nExtra Repositories Added: None\n\n* This web browser converts itself into a phone-friendly web browser on compatible phones")
             pass
 
     def on_aboutbm(self, widget):
-            QMessageBox.information(self, "About Web Browser Manager", "Web Browser Manager is a utility for managing the web browsers that you have installed on your system. Choose from a variety of browsers with just a few clicks and find the browser that is right for you in no time.\n\nCopyright (GPLv3):\n- Feren OS Developer (2015-2020)\n- AZorin (2010-2015)\n- ZorinK (2010)\n\n\nWeb Browser Manager is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See Version 3 of the GNU General Public License for more details.")
+            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "About Web Browser Manager", "Web Browser Manager is a utility for managing the web browsers that you have installed on your system. Choose from a variety of browsers with just a few clicks and find the browser that is right for you in no time.\n\nCopyright (GPLv3):\n- Feren OS Developer (2015-2020)\n- AZorin (2010-2015)\n- ZorinK (2010)\n\n\nWeb Browser Manager is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See Version 3 of the GNU General Public License for more details.")
             pass
 
     def on_close(self, event):
@@ -1162,4 +1180,4 @@ class BrowserManager(Gtk.Window):
 
 #app = QApplication(sys.argv)
 ex = BrowserManager()
-sys.exit(app.exec_())
+Gtk.main()
