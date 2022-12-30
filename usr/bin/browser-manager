@@ -38,6 +38,7 @@ applogo = "/usr/share/pixmaps/browser-manager.svg"
 
 fixed = Gtk.Fixed()
 
+#I am pretty sure this does nothing
 class BrowserManagerManager():    
   def __init__(self, browsername, option, bmself):
     try:
@@ -96,10 +97,10 @@ class BrowserManager(Gtk.Window):
         global imgop
         global imgbr
         global imgfa
-        global imagemse
-        global imagewf
+        global imgmse
+        global imgwf
 
-        is_64bits = sys.maxsize > 2**32
+        # is_64bits = sys.maxsize > 2**32
     
         #Vivaldi
         # if os.path.isfile("/usr/bin/vivaldi"):
@@ -121,7 +122,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstvivaldi, 30, 130)
         self.uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
         
-        self.instvivaldi = Gtk.Button("Install", self)          
+        self.instvivaldi = Gtk.Button.new_with_label("Install")          
         self.instvivaldi.connect("clicked", self.on_instvivaldi)
         self.instvivaldi.set_size_request(87, 30)
         fixed.put(self.instvivaldi, 30, 130)
@@ -147,7 +148,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstchrome, 195, 130)
         self.uninstchrome.set_tooltip_text("Uninstall Chrome")
         
-        self.instchrome = Gtk.Button("Install", self)          
+        self.instchrome = Gtk.Button.new_with_label("Install")          
         self.instchrome.connect("clicked", self.on_instchrome)
         self.instchrome.set_size_request(87, 30)
         fixed.put(self.instchrome, 195, 130)
@@ -174,7 +175,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstchromium, 360, 130)
         self.uninstchromium.set_tooltip_text("Uninstall Chromium")
         
-        self.instchromium = Gtk.Button("Install", self)          
+        self.instchromium = Gtk.Button.new_with_label("Install")          
         self.instchromium.connect("clicked", self.on_instchromium)
         self.instchromium.set_size_request(87, 30)
         fixed.put(self.instchromium, 360, 130)
@@ -200,7 +201,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstmsedge, 525, 130)
         self.uninstmsedge.set_tooltip_text("Uninstall Microsoft Edge")
         
-        self.instmsedge = Gtk.Button("Install", self)          
+        self.instmsedge = Gtk.Button.new_with_label("Install")          
         self.instmsedge.connect("clicked", self.on_instmsedge)
         self.instmsedge.set_size_request(87, 30)
         fixed.put(self.instmsedge, 525, 130)
@@ -226,7 +227,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstfirefox, 690, 130)
         self.uninstfirefox.set_tooltip_text("Uninstall Firefox")
         
-        self.instfirefox = Gtk.Button("Install", self)          
+        self.instfirefox = Gtk.Button.new_with_label("Install")          
         self.instfirefox.connect("clicked", self.on_instfirefox)
         self.instfirefox.set_size_request(87, 30)
         fixed.put(self.instfirefox, 690, 130)
@@ -252,7 +253,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstbrave, 30, 315)
         self.uninstbrave.set_tooltip_text("Uninstall Brave")
         
-        self.instbrave = Gtk.Button("Install", self)          
+        self.instbrave = Gtk.Button.new_with_label("Install")          
         self.instbrave.connect("clicked", self.on_instbrave)
         self.instbrave.set_size_request(87, 30)
         fixed.put(self.instbrave, 30, 315)
@@ -278,7 +279,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstopera, 195, 315)
         self.uninstopera.set_tooltip_text("Uninstall Opera")
         
-        self.instopera = Gtk.Button("Install", self)          
+        self.instopera = Gtk.Button.new_with_label("Install")          
         self.instopera.connect("clicked", self.on_instopera)
         self.instopera.set_size_request(87, 30)
         fixed.put(self.instopera, 195, 315)
@@ -304,7 +305,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstwaterfox, 360, 315)
         self.uninstwaterfox.set_tooltip_text("Uninstall Waterfox")
         
-        self.instwaterfox = Gtk.Button("Install", self)          
+        self.instwaterfox = Gtk.Button.new_with_label("Install")          
         self.instwaterfox.connect("clicked", self.on_instwaterfox)
         self.instwaterfox.set_size_request(87, 30)
         fixed.put(self.instwaterfox, 360, 315)
@@ -330,7 +331,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstfalkon, 525, 315)
         self.uninstfalkon.set_tooltip_text("Uninstall Falkon")
         
-        self.instfalkon = Gtk.Button("Install", self)          
+        self.instfalkon = Gtk.Button.new_with_label("Install")          
         self.instfalkon.connect("clicked", self.on_instfalkon)
         self.instfalkon.set_size_request(87, 30)
         fixed.put(self.instfalkon, 525, 315)
@@ -356,20 +357,20 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.uninstweb, 690, 315)
         self.uninstweb.set_tooltip_text("Uninstall Epiphany")
         
-        self.instweb = Gtk.Button("Install", self)          
+        self.instweb = Gtk.Button.new_with_label("Install")          
         self.instweb.connect("clicked", self.on_instweb)
         self.instweb.set_size_request(87, 30)
         fixed.put(self.instweb, 690, 315)
         self.instweb.set_tooltip_text("Install Epiphany")
 
 		#General Window buttons
-        self.closebtn = Gtk.Button("Close", self)  
+        self.closebtn = Gtk.Button.new_with_label("Close")  
         self.closebtn.connect("clicked", self.on_close)
         self.closebtn.set_size_request(85, 30)
         fixed.put(self.closebtn, 720, 400)
         self.closebtn.set_tooltip_text("Close Window")
 
-        self.aboutbtn = Gtk.Button("About", self)  
+        self.aboutbtn = Gtk.Button.new_with_label("About")  
         self.aboutbtn.connect("clicked", self.on_aboutbm)
         self.aboutbtn.set_size_request(85, 30)
         fixed.put(self.aboutbtn, 10, 400)
@@ -379,6 +380,8 @@ class BrowserManager(Gtk.Window):
         self.progressbar1.set_size_request(85, 28)
         self.progressbar1.set_fraction(0)
         self.progressbar1.set_visible(False)
+        
+        self.add(fixed)
         
 ############################
 # Adding the program titles#
@@ -780,7 +783,7 @@ class BrowserManager(Gtk.Window):
         # self.aboutweb.setToolTip("About Web")
 
         self.on_refresh()
-        self.show()
+        self.show_all()
 
 ##############################        
 # Defining the button actions#
