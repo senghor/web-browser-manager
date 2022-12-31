@@ -373,10 +373,61 @@ class BrowserManager(Gtk.Window):
         else:
             imgms = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
         
+        #Create basic button
+        def about_button(icon_file, position, callback, tooltip):
+            #Create a pixbuf object from the image file
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file(icon_file)
+            
+            #Resize the image
+            resized_pixbuf = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+            
+            #Create gtk.Image from resized pixbuf
+            image = Gtk.Image()
+            image.set_from_pixbuf(resized_pixbuf)
+            
+            #Create button and set size, icon and position
+            button = Gtk.Button()
+            button.set_size_request(75, 75)
+            button.add(image)
+            fixed.put(button, *position)
+            
+            #Connect the click event to the callback
+            button.connect("clicked", callback)
+            
+            #Add the tooltip
+            button.set_tooltip_text(tooltip)
+            
+            return button
+            
+        #Icon button definitions
+        self.aboutvivaldi = about_button(imgvi, (35, 35), self.on_aboutvivaldi, "About Vivaldi")
+        self.aboutchrome = about_button(imgcr, (200, 35), self.on_aboutchrome, "About Chrome")
+        self.aboutchromium = about_button(imgch, (365, 35), self.on_aboutchromium, "About Chromium")
+        self.aboutmsedge = about_button(imgms, (530, 35), self.on_aboutmsedge, "About Microsoft Edge")
+        self.aboutfirefox = about_button(imgfx, (695, 35), self.on_aboutfirefox, "About Firefox")
+        self.aboutbrave = about_button(imgbr, (35, 220), self.on_aboutbrave, "About Brave")
+        self.aboutopera = about_button(imgop, (200, 220), self.on_aboutopera, "About Opera")
+        self.aboutwaterfox = about_button(imgwf, (365, 220), self.on_aboutwaterfox, "About Waterfox")
+        self.aboutfalkon = about_button(imgfa, (530, 220), self.on_aboutfalkon, "About Falkon")
+        self.aboutweb = about_button(imgwe, (695, 220), self.on_aboutweb, "About Epiphany")
+        
+        #Set Button Positions
+        # fixed.put(self.aboutvivaldi, 35, 35)
+        # fixed.put(self.aboutchrome, 200, 35)
+        # fixed.put(self.aboutchromium, 365, 35)
+        # fixed.put(self.aboutmsedge, 530, 35)
+        # fixed.put(self.aboutfirefox, 695, 35)
+        # fixed.put(self.aboutbrave, 35, 220)
+        # fixed.put(self.aboutopera, 200, 220)
+        # fixed.put(self.aboutwaterfox, 365, 220)
+        # fixed.put(self.aboutfalkon, 530, 220)
+        # fixed.put(self.aboutweb, 695, 220)
+
+        
         #Create pixbufs
         # p-imgfx = GdkPixbuf.Pixbuf.new_from_file(imgfx)
         # p-imgcr = GdkPixbuf.Pixbuf.new_from_file(imgcr)
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file(imgvi)
+        # pixbuf = GdkPixbuf.Pixbuf.new_from_file(imgvi)
         # p-imgch = GdkPixbuf.Pixbuf.new_from_file(imgch)
         # p-imgop = GdkPixbuf.Pixbuf.new_from_file(imgop)
         # p-imgbr = GdkPixbuf.Pixbuf.new_from_file(imgbr)
@@ -388,7 +439,7 @@ class BrowserManager(Gtk.Window):
         #Resize pixbufs
         # p-imgfx = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
         # p-imgcr = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        pixbuf = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        # pixbuf = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
         # p-imgch = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
         # p-imgop = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
         # p-imgbr = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
@@ -400,7 +451,7 @@ class BrowserManager(Gtk.Window):
         #Reasign image variables with pixbuf
         # imgfx = Gtk.Image.new_from_pixbuf(p-imgfx)
         # imgcr = Gtk.Image.new_from_pixbuf(p-imgcr)
-        imgvi = Gtk.Image.new_from_pixbuf(pixbuf)
+        # imgvi = Gtk.Image.new_from_pixbuf(pixbuf)
         # imgch = Gtk.Image.new_from_pixbuf(p-imgch)
         # imgop = Gtk.Image.new_from_pixbuf(p-imgop)
         # imgbr = Gtk.Image.new_from_pixbuf(p-imgbr)
@@ -410,68 +461,67 @@ class BrowserManager(Gtk.Window):
         # imgwe = Gtk.Image.new_from_pixbuf(p-imgwe)
                 
         #Create About Button    
-        self.aboutvivaldi = Gtk.Button()
-        self.aboutchrome = Gtk.Button()
-        self.aboutchromium = Gtk.Button()
-        self.aboutmsedge = Gtk.Button()
-        self.aboutfirefox = Gtk.Button()
-        self.aboutbrave = Gtk.Button()
-        self.aboutopera = Gtk.Button()
-        self.aboutwaterfox = Gtk.Button()
-        self.aboutfalkon = Gtk.Button()
-        self.aboutweb = Gtk.Button()
+        # self.aboutvivaldi = Gtk.Button()
+        # self.aboutchrome = Gtk.Button()
+        # self.aboutchromium = Gtk.Button()
+        # self.aboutmsedge = Gtk.Button()
+        # self.aboutfirefox = Gtk.Button()
+        # self.aboutbrave = Gtk.Button()
+        # self.aboutopera = Gtk.Button()
+        # self.aboutwaterfox = Gtk.Button()
+        # self.aboutfalkon = Gtk.Button()
+        # self.aboutweb = Gtk.Button()
         
         #Set fixed size of the buttons
-        self.aboutvivaldi.set_size_request(75, 75)
-        self.aboutchrome.set_size_request(75, 75)
-        self.aboutchromium.set_size_request(75, 75)
-        self.aboutmsedge.set_size_request(75, 75)
-        self.aboutfirefox.set_size_request(75, 75)
-        self.aboutbrave.set_size_request(75, 75)
-        self.aboutopera.set_size_request(75, 75)
-        self.aboutwaterfox.set_size_request(75, 75)
-        self.aboutfalkon.set_size_request(75, 75)
-        self.aboutweb.set_size_request(75, 75)
+        # self.aboutvivaldi.set_size_request(75, 75)
+        # self.aboutchrome.set_size_request(75, 75)
+        # self.aboutchromium.set_size_request(75, 75)
+        # self.aboutmsedge.set_size_request(75, 75)
+        # self.aboutfirefox.set_size_request(75, 75)
+        # self.aboutbrave.set_size_request(75, 75)
+        # self.aboutopera.set_size_request(75, 75)
+        # self.aboutwaterfox.set_size_request(75, 75)
+        # self.aboutfalkon.set_size_request(75, 75)
+        # self.aboutweb.set_size_request(75, 75)
         
         #Set Button Positions
-        fixed.put(self.aboutvivaldi, 35, 35)
-        fixed.put(self.aboutchrome, 200, 35)
-        fixed.put(self.aboutchromium, 365, 35)
-        fixed.put(self.aboutmsedge, 530, 35)
-        fixed.put(self.aboutfirefox, 695, 35)
-        fixed.put(self.aboutbrave, 35, 220)
-        fixed.put(self.aboutopera, 200, 220)
-        fixed.put(self.aboutwaterfox, 365, 220)
-        fixed.put(self.aboutfalkon, 530, 220)
-        fixed.put(self.aboutweb, 695, 220)
+        # fixed.put(self.aboutvivaldi, 35, 35)
+        # fixed.put(self.aboutchrome, 200, 35)
+        # fixed.put(self.aboutchromium, 365, 35)
+        # fixed.put(self.aboutmsedge, 530, 35)
+        # fixed.put(self.aboutfirefox, 695, 35)
+        # fixed.put(self.aboutbrave, 35, 220)
+        # fixed.put(self.aboutopera, 200, 220)
+        # fixed.put(self.aboutwaterfox, 365, 220)
+        # fixed.put(self.aboutfalkon, 530, 220)
+        # fixed.put(self.aboutweb, 695, 220)
         
         #Set about tooltip
-        self.aboutvivaldi.set_tooltip_text("About Vivaldi")
-        self.aboutchrome.set_tooltip_text("About Chrome")
-        self.aboutchromium.set_tooltip_text("About Chromium")
-        self.aboutmsedge.set_tooltip_text("About Microsoft Edge")
-        self.aboutfirefox.set_tooltip_text("About Firefox")
-        self.aboutbrave.set_tooltip_text("About Brave")
-        self.aboutopera.set_tooltip_text("About Opera")
-        self.aboutwaterfox.set_tooltip_text("About Waterfox")
-        self.aboutfalkon.set_tooltip_text("About Falkon")
-        self.aboutweb.set_tooltip_text("About Epiphany")
+        # self.aboutvivaldi.set_tooltip_text("About Vivaldi")
+        # self.aboutchrome.set_tooltip_text("About Chrome")
+        # self.aboutchromium.set_tooltip_text("About Chromium")
+        # self.aboutmsedge.set_tooltip_text("About Microsoft Edge")
+        # self.aboutfirefox.set_tooltip_text("About Firefox")
+        # self.aboutbrave.set_tooltip_text("About Brave")
+        # self.aboutopera.set_tooltip_text("About Opera")
+        # self.aboutwaterfox.set_tooltip_text("About Waterfox")
+        # self.aboutfalkon.set_tooltip_text("About Falkon")
+        # self.aboutweb.set_tooltip_text("About Epiphany")
         
         #Connect clicked signal to callback function
-        self.aboutvivaldi.connect("clicked", self.on_aboutvivaldi)
-        self.aboutchrome.connect("clicked", self.on_aboutchrome)
-        self.aboutchromium.connect("clicked", self.on_aboutchromium)
-        self.aboutmsedge.connect("clicked", self.on_aboutmsedge)
-        self.aboutfirefox.connect("clicked", self.on_aboutfirefox)
-        self.aboutbrave.connect("clicked", self.on_aboutbrave)
-        self.aboutopera.connect("clicked", self.on_aboutopera)
-        self.aboutwaterfox.connect("clicked", self.on_aboutwaterfox)
-        self.aboutfalkon.connect("clicked", self.on_aboutfalkon)
-        self.aboutweb.connect("clicked", self.on_aboutweb)
+        # self.aboutvivaldi.connect("clicked", self.on_aboutvivaldi)
+        # self.aboutchrome.connect("clicked", self.on_aboutchrome)
+        # self.aboutchromium.connect("clicked", self.on_aboutchromium)
+        # self.aboutmsedge.connect("clicked", self.on_aboutmsedge)
+        # self.aboutfirefox.connect("clicked", self.on_aboutfirefox)
+        # self.aboutbrave.connect("clicked", self.on_aboutbrave)
+        # self.aboutopera.connect("clicked", self.on_aboutopera)
+        # self.aboutwaterfox.connect("clicked", self.on_aboutwaterfox)
+        # self.aboutfalkon.connect("clicked", self.on_aboutfalkon)
+        # self.aboutweb.connect("clicked", self.on_aboutweb)
         
         #Set the button icons
-        self.aboutvivaldi.set_image(imgvi)
-        # self.aboutvivaldi.get_image().set_size_request(65, 65)
+        # self.aboutvivaldi.set_image(imgvi)
         # self.aboutvivaldi.set_image(Gtk.Image.new_from_file(imgvi))
         # self.aboutchrome.set_image(Gtk.Image.new_from_file(imgcr))
         # self.aboutchromium.set_image(Gtk.Image.new_from_file(imgch))
@@ -484,6 +534,7 @@ class BrowserManager(Gtk.Window):
         # self.aboutweb.set_image(Gtk.Image.new_from_file(imgwe))
         
         #Set Icon Size for Each About Button
+        # self.aboutvivaldi.set_size_request(65, 65)
         # self.aboutchrome.set_size_request(65, 65)
         # self.aboutchromium.set_size_request(65, 65)
         # self.aboutmsedge.set_size_request(65, 65)
