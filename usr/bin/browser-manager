@@ -24,7 +24,7 @@
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gtk, GdkPixbuf
 import requests
 import os
 from os import path
@@ -38,28 +38,9 @@ applogo = "/usr/share/pixmaps/browser-manager.svg"
 
 fixed = Gtk.Fixed()
 
-#I am pretty sure this does nothing
-class BrowserManagerManager():    
-  def __init__(self, browsername, option, bmself):
-    try:
-        os.system("/usr/share/browser-manager/"+browsername+"/"+option)
-    except:
-        Gtk.MessageDialog(BrowserManager, 0, Gtk.MessageType.CRITICAL, Gtk.ButtonsType.OK, "Web Browser Manager", "An error occured while initiating the package management process.")
-    BrowserManager.finish_process(bmself)
-
 class BrowserManager(Gtk.Window):
     
     def __init__(self):
-        # super(BrowserManager, self).__init__()
-
-        # self.set_title("Web Browser Manager")
-        # self.set_size_request(815, 440)
-        # self.set_resizable(False)
-        # self.set_icon_from_file(applogo)
-
-        # self.set_position(Gtk.WindowPosition.CENTER)
-        # self.connect("destroy",self.do_destroy)
-        # fixed = Gtk.Fixed()
         
         super().__init__()
         
@@ -75,7 +56,7 @@ class BrowserManager(Gtk.Window):
         
         self.initUI()
         
-    def on_close(self, widget, event):
+    def on_close(self, widget):
         if self.browserwork:
             return True
         else:
@@ -89,33 +70,8 @@ class BrowserManager(Gtk.Window):
 #####################
 # Adding the buttons#
 #####################
-
-        global imgfx
-        global imgcr
-        global imgvi
-        global imgch
-        global imgop
-        global imgbr
-        global imgfa
-        global imgmse
-        global imgwf
-
-        # is_64bits = sys.maxsize > 2**32
-    
+   
         #Vivaldi
-        # if os.path.isfile("/usr/bin/vivaldi"):
-            # self.uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
-            # self.uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
-            # self.uninstvivaldi.set_size_request(87, 30)
-            # fixed.put(self.uninstvivaldi, 30, 130)
-            # self.uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
-        # else:
-            # self.instvivaldi = Gtk.Button.new_with_label("Install")
-            # self.instvivaldi.connect("clicked", self.on_instvivaldi)
-            # self.instvivaldi.set_size_request(87, 30)
-            # fixed.put(self.instvivaldi, 30, 130)
-            # self.instvivaldi.set_tooltip_text("Install Vivaldi")
-
         self.uninstvivaldi = Gtk.Button.new_with_label("Uninstall")      
         self.uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
         self.uninstvivaldi.set_size_request(87, 30)
@@ -129,19 +85,6 @@ class BrowserManager(Gtk.Window):
         self.instvivaldi.set_tooltip_text("Install Vivaldi")
 
         #Google Chrome
-        # if os.path.isfile("/usr/bin/chrome"):
-            # uninstchrome = Gtk.Button.new_with_label("Uninstall")
-            # uninstchrome.connect("clicked", self.on_uninstchrome)
-            # uninstchrome.set_size_request(87, 30)
-            # fixed.put(uninstchrome, 30, 130)
-            # uninstchrome.set_tooltip_text("Uninstall Chrome")
-        # else:
-            # instchrome = Gtk.Button.new_with_label("Install")
-            # instchrome.connect("clicked", self.on_instchrome)
-            # instchrome.set_size_request(87, 30)
-            # fixed.put(instchrome, 30, 130)
-            # instchrome.set_tooltip_text("Install Chrome")
-            
         self.uninstchrome = Gtk.Button.new_with_label("Uninstall")      
         self.uninstchrome.connect("clicked", self.on_uninstchrome)
         self.uninstchrome.set_size_request(87, 30)
@@ -154,21 +97,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.instchrome, 195, 130)
         self.instchrome.set_tooltip_text("Install Chrome")
 
-    
         #Chromium
-        # if os.path.isfile("/usr/bin/chromium"):
-            # uninstchromium = Gtk.Button.new_with_label("Uninstall")
-            # uninstchromium.connect("clicked", self.on_uninstchromium)
-            # uninstchromium.set_size_request(87, 30)
-            # fixed.put(uninstchromium, 30, 130)
-            # uninstchromium.set_tooltip_text("Uninstall Chromium")
-        # else:
-            # instchromium = Gtk.Button.new_with_label("Install")
-            # instchromium.connect("clicked", self.on_instchromium)
-            # instchromium.set_size_request(87, 30)
-            # fixed.put(instchromium, 30, 130)
-            # instchromium.set_tooltip_text("Install Chromium")
-            
         self.uninstchromium = Gtk.Button.new_with_label("Uninstall")      
         self.uninstchromium.connect("clicked", self.on_uninstchromium)
         self.uninstchromium.set_size_request(87, 30)
@@ -182,19 +111,6 @@ class BrowserManager(Gtk.Window):
         self.instchromium.set_tooltip_text("Install Chromium")
         
         #Microsoft Edge
-        # if os.path.isfile("/usr/bin/msedge"):
-            # uninstmsedge = Gtk.Button.new_with_label("Uninstall")
-            # uninstmsedge.connect("clicked", self.on_uninstmsedge)
-            # uninstmsedge.set_size_request(87, 30)
-            # fixed.put(uninstmsedge, 30, 130)
-            # uninstmsedge.set_tooltip_text("Uninstall MS Edge")
-        # else:
-            # instmsedge = Gtk.Button.new_with_label("Install")
-            # instmsedge.connect("clicked", self.on_instmsedge)
-            # instmsedge.set_size_request(87, 30)
-            # fixed.put(instmsedge, 30, 130)
-            # instmsedge.set_tooltip_text("Install MS Edge")
-            
         self.uninstmsedge = Gtk.Button.new_with_label("Uninstall")      
         self.uninstmsedge.connect("clicked", self.on_uninstmsedge)
         self.uninstmsedge.set_size_request(87, 30)
@@ -208,19 +124,6 @@ class BrowserManager(Gtk.Window):
         self.instmsedge.set_tooltip_text("Install Microsoft Edge")
 
         #Mozilla Firefox
-        # if os.path.isfile("/usr/bin/firefox"):
-            # uninstfirefox = Gtk.Button.new_with_label("Uninstall")
-            # uninstfirefox.connect("clicked", self.on_uninstfirefox)
-            # uninstfirefox.set_size_request(87, 30)
-            # fixed.put(uninstfirefox, 30, 130)
-            # uninstfirefox.set_tooltip_text("Uninstall Firefox")
-        # else:
-            # instfirefox = Gtk.Button.new_with_label("Install")
-            # instfirefox.connect("clicked", self.on_instfirefox)
-            # instfirefox.set_size_request(87, 30)
-            # fixed.put(instfirefox, 30, 130)
-            # instfirefox.set_tooltip_text("Install Firefox")
-            
         self.uninstfirefox = Gtk.Button.new_with_label("Uninstall")      
         self.uninstfirefox.connect("clicked", self.on_uninstfirefox)
         self.uninstfirefox.set_size_request(87, 30)
@@ -234,19 +137,6 @@ class BrowserManager(Gtk.Window):
         self.instfirefox.set_tooltip_text("Install Firefox")
         
         #Brave
-        # if os.path.isfile("/usr/bin/brave"):
-            # uninstbrave = Gtk.Button.new_with_label("Uninstall")
-            # uninstbrave.connect("clicked", self.on_uninstbrave)
-            # uninstbrave.set_size_request(87, 30)
-            # fixed.put(uninstbrave, 30, 130)
-            # uninstbrave.set_tooltip_text("Uninstall Brave")
-        # else:
-            # instbrave = Gtk.Button.new_with_label("Install")
-            # instbrave.connect("clicked", self.on_instbrave)
-            # instbrave.set_size_request(87, 30)
-            # fixed.put(instbrave, 30, 130)
-            # instbrave.set_tooltip_text("Install Brave")
-            
         self.uninstbrave = Gtk.Button.new_with_label("Uninstall")      
         self.uninstbrave.connect("clicked", self.on_uninstbrave)
         self.uninstbrave.set_size_request(87, 30)
@@ -260,19 +150,6 @@ class BrowserManager(Gtk.Window):
         self.instbrave.set_tooltip_text("Install Brave")
 
         #Opera
-        # if os.path.isfile("/usr/bin/opera"):
-            # uninstopera = Gtk.Button.new_with_label("Uninstall")
-            # uninstopera.connect("clicked", self.on_uninstopera)
-            # uninstvivaldi.set_size_request(87, 30)
-            # fixed.put(uninstvivaldi, 30, 130)
-            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
-        # else:
-            # instvivaldi = Gtk.Button.new_with_label("Install")
-            # instvivaldi.connect("clicked", self.on_instvivaldi)
-            # instvivaldi.set_size_request(87, 30)
-            # fixed.put(instvivaldi, 30, 130)
-            # instvivaldi.set_tooltip_text("Install Firefox")
-            
         self.uninstopera = Gtk.Button.new_with_label("Uninstall")      
         self.uninstopera.connect("clicked", self.on_uninstopera)
         self.uninstopera.set_size_request(87, 30)
@@ -286,19 +163,6 @@ class BrowserManager(Gtk.Window):
         self.instopera.set_tooltip_text("Install Opera")
 
         #Waterfox
-        # if os.path.isfile("/usr/bin/vivaldi"):
-            # uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
-            # uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
-            # uninstvivaldi.set_size_request(87, 30)
-            # fixed.put(uninstvivaldi, 30, 130)
-            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
-        # else:
-            # instvivaldi = Gtk.Button.new_with_label("Install")
-            # instvivaldi.connect("clicked", self.on_instvivaldi)
-            # instvivaldi.set_size_request(87, 30)
-            # fixed.put(instvivaldi, 30, 130)
-            # instvivaldi.set_tooltip_text("Install Firefox")
-            
         self.uninstwaterfox = Gtk.Button.new_with_label("Uninstall")      
         self.uninstwaterfox.connect("clicked", self.on_uninstwaterfox)
         self.uninstwaterfox.set_size_request(87, 30)
@@ -312,19 +176,6 @@ class BrowserManager(Gtk.Window):
         self.instwaterfox.set_tooltip_text("Install Waterfox")
 
         #Falkon
-        # if os.path.isfile("/usr/bin/vivaldi"):
-            # uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
-            # uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
-            # uninstvivaldi.set_size_request(87, 30)
-            # fixed.put(uninstvivaldi, 30, 130)
-            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
-        # else:
-            # instvivaldi = Gtk.Button.new_with_label("Install")
-            # instvivaldi.connect("clicked", self.on_instvivaldi)
-            # instvivaldi.set_size_request(87, 30)
-            # fixed.put(instvivaldi, 30, 130)
-            # instvivaldi.set_tooltip_text("Install Firefox")
-            
         self.uninstfalkon = Gtk.Button.new_with_label("Uninstall")      
         self.uninstfalkon.connect("clicked", self.on_uninstfalkon)
         self.uninstfalkon.set_size_request(87, 30)
@@ -338,19 +189,6 @@ class BrowserManager(Gtk.Window):
         self.instfalkon.set_tooltip_text("Install Falkon")
 
         #GNOME Web
-        # if os.path.isfile("/usr/bin/vivaldi"):
-            # uninstvivaldi = Gtk.Button.new_with_label("Uninstall")
-            # uninstvivaldi.connect("clicked", self.on_uninstvivaldi)
-            # uninstvivaldi.set_size_request(87, 30)
-            # fixed.put(uninstvivaldi, 30, 130)
-            # uninstvivaldi.set_tooltip_text("Uninstall Vivaldi")
-        # else:
-            # instvivaldi = Gtk.Button.new_with_label("Install")
-            # instvivaldi.connect("clicked", self.on_instvivaldi)
-            # instvivaldi.set_size_request(87, 30)
-            # fixed.put(instvivaldi, 30, 130)
-            # instvivaldi.set_tooltip_text("Install Firefox")
-            
         self.uninstweb = Gtk.Button.new_with_label("Uninstall")      
         self.uninstweb.connect("clicked", self.on_uninstweb)
         self.uninstweb.set_size_request(87, 30)
@@ -376,6 +214,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.aboutbtn, 10, 400)
         self.aboutbtn.set_tooltip_text("About Browser Manager")
        
+        #Progress Bar
         self.progressbar1 = Gtk.ProgressBar()
         self.progressbar1.set_size_request(85, 28)
         self.progressbar1.set_fraction(0)
@@ -386,7 +225,8 @@ class BrowserManager(Gtk.Window):
 ############################
 # Adding the program titles#
 ############################
-       
+        
+        #Create label variables
         firefoxlabel = Gtk.Label()
         chromelabel = Gtk.Label()
         weblabel = Gtk.Label()
@@ -401,136 +241,91 @@ class BrowserManager(Gtk.Window):
         #Set the text and font for the labels
         firefoxlabel.set_markup("<b>Mozilla Firefox</b>")
         chromelabel.set_markup("<b>Google Chrome</b>")
-        weblabel.set_markup("<b>GNOME Web</b>")        
-        vivaldilabel.set_markup("<b>Vivaldi</b>")        
-        chromiumlabel.set_markup("<b>Chromium</b>")        
-        operalabel.set_markup("<b>Opera</b>")        
-        bravelabel.set_markup("<b>Brave</b>")        
-        msedgelabel.set_markup("<b>Microsoft Edge</b>")        
-        waterfoxlabel.set_markup("<b>Waterfox</b>")        
+        weblabel.set_markup("<b>GNOME Web</b>")
+        vivaldilabel.set_markup("<b>Vivaldi</b>")
+        chromiumlabel.set_markup("<b>Chromium</b>")
+        operalabel.set_markup("<b>Opera</b>")
+        bravelabel.set_markup("<b>Brave</b>")
+        msedgelabel.set_markup("<b>Microsoft Edge</b>")
+        waterfoxlabel.set_markup("<b>Waterfox</b>")
         falkonlabel.set_markup("<b>Falkon</b>")
         
-        grid = Gtk.Grid()
+        #Set label location
+        label_width, label_height = vivaldilabel.get_layout().get_pixel_size()
+        label_vi = 35 + 37.5 - (0.5 * label_width)
+        vivaldilabel.set_size_request(label_width, label_height)
+        fixed.put(vivaldilabel, label_vi, 10)
+        vivaldilabel.set_halign(0.5)
+        vivaldilabel.set_valign(0.5)
         
-        labelwidth = firefoxlabel.get_layout().get_pixel_size()[0]
-        firefoxlabel.set_halign(Gtk.Align.END)
-        firefoxlabel.set_valign(Gtk.Align.END)
-        firefoxlabel.set_size_request(labelwidth, -1)
-        grid.attach(firefoxlabel, 0, 0, 1, 1)
-        
-        labelwidth = chromelabel.get_layout().get_pixel_size()[0]
-        chromelabel.set_halign(Gtk.Align.END)
-        chromelabel.set_valign(Gtk.Align.END)
-        chromelabel.set_size_request(labelwidth, -1)
-        grid.attach(chromelabel, 1, 0, 1, 1)
+        label_width, label_height = chromelabel.get_layout().get_pixel_size()
+        label_cr = 200 + 37.5 - (0.5 * label_width)
+        chromelabel.set_size_request(label_width, label_height)
+        fixed.put(chromelabel, label_cr, 10)
+        chromelabel.set_halign(0.5)
+        chromelabel.set_valign(0.5)
 
-        labelwidth = weblabel.get_layout().get_pixel_size()[0]
-        weblabel.set_halign(Gtk.Align.END)
-        weblabel.set_valign(Gtk.Align.END)
-        weblabel.set_size_request(labelwidth, -1)
-        grid.attach(weblabel, 2, 0, 1, 1)
+        label_width, label_height = chromiumlabel.get_layout().get_pixel_size()
+        label_cm = 365 + 37.5 - (0.5 * label_width)
+        chromiumlabel.set_size_request(label_width, label_height)
+        fixed.put(chromiumlabel, label_cm, 10)
+        chromiumlabel.set_halign(0.5)
+        chromiumlabel.set_valign(0.5)
 
-        labelwidth = vivaldilabel.get_layout().get_pixel_size()[0]
-        vivaldilabel.set_halign(Gtk.Align.END)
-        vivaldilabel.set_valign(Gtk.Align.END)
-        vivaldilabel.set_size_request(labelwidth, -1)
-        grid.attach(vivaldilabel, 3, 0, 1, 1)
+        label_width, label_height = msedgelabel.get_layout().get_pixel_size()
+        label_ms = 530 + 37.5 - (0.5 * label_width)
+        msedgelabel.set_size_request(label_width, label_height)
+        fixed.put(msedgelabel, label_ms, 10)
+        msedgelabel.set_halign(0.5)
+        msedgelabel.set_valign(0.5)
 
-        labelwidth = chromiumlabel.get_layout().get_pixel_size()[0]
-        chromiumlabel.set_halign(Gtk.Align.END)
-        chromiumlabel.set_valign(Gtk.Align.END)
-        chromiumlabel.set_size_request(labelwidth, -1)
-        grid.attach(chromiumlabel, 4, 0, 1, 1)
+        label_width, label_height = firefoxlabel.get_layout().get_pixel_size()
+        label_fx = 695 + 37.5 - (0.5 * label_width)
+        firefoxlabel.set_size_request(label_width, label_height)
+        fixed.put(firefoxlabel, label_fx, 10)
+        firefoxlabel.set_halign(0.5)
+        firefoxlabel.set_valign(0.5)
 
-        labelwidth = operalabel.get_layout().get_pixel_size()[0]
-        operalabel.set_halign(Gtk.Align.END)
-        operalabel.set_valign(Gtk.Align.END)
-        operalabel.set_size_request(labelwidth, -1)
-        grid.attach(operalabel, 5, 0, 1, 1)
+        label_width, label_height = bravelabel.get_layout().get_pixel_size()
+        label_br = 35 + 37.5 - (0.5 * label_width)
+        bravelabel.set_size_request(label_width, label_height)
+        fixed.put(bravelabel, label_br, 190)
+        bravelabel.set_halign(0.5)
+        bravelabel.set_valign(0.5)
 
-        labelwidth = bravelabel.get_layout().get_pixel_size()[0]
-        bravelabel.set_halign(Gtk.Align.END)
-        bravelabel.set_valign(Gtk.Align.END)
-        bravelabel.set_size_request(labelwidth, -1)
-        grid.attach(bravelabel, 1, 0, 1, 1)
+        label_width, label_height = operalabel.get_layout().get_pixel_size()
+        label_op = 200 + 37.5 - (0.5 * label_width)
+        operalabel.set_size_request(label_width, label_height)
+        fixed.put(operalabel, label_op, 190)
+        operalabel.set_halign(0.5)
+        operalabel.set_valign(0.5)
 
-        labelwidth = msedgelabel.get_layout().get_pixel_size()[0]
-        msedgelabel.set_halign(Gtk.Align.END)
-        msedgelabel.set_valign(Gtk.Align.END)
-        msedgelabel.set_size_request(labelwidth, -1)
-        grid.attach(msedgelabel, 1, 1, 1, 1)
+        label_width, label_height = waterfoxlabel.get_layout().get_pixel_size()
+        label_wa = 365 + 37.5 - (0.5 * label_width)
+        waterfoxlabel.set_size_request(label_width, label_height)
+        fixed.put(waterfoxlabel, label_wa, 190)
+        waterfoxlabel.set_halign(0.5)
+        waterfoxlabel.set_valign(0.5)
 
-        labelwidth = waterfoxlabel.get_layout().get_pixel_size()[0]
-        waterfoxlabel.set_halign(Gtk.Align.END)
-        waterfoxlabel.set_valign(Gtk.Align.END)
-        waterfoxlabel.set_size_request(labelwidth, -1)
-        grid.attach(waterfoxlabel, 1, 2, 1, 1)
-
-        labelwidth = falkonlabel.get_layout().get_pixel_size()[0]
-        falkonlabel.set_halign(Gtk.Align.END)
-        falkonlabel.set_valign(Gtk.Align.END)
-        falkonlabel.set_size_request(labelwidth, -1)
-        grid.attach(falkonlabel, 1, 3, 1, 1)
+        label_width, label_height = falkonlabel.get_layout().get_pixel_size()
+        label_fa = 530 + 37.5 - (0.5 * label_width)
+        falkonlabel.set_size_request(label_width, label_height)
+        fixed.put(falkonlabel, label_fa, 190)
+        falkonlabel.set_halign(0.5)
+        falkonlabel.set_valign(0.5)
         
-        grid.set_column_spacing(10)
-        grid.set_row_spacing(10)
+        label_width, label_height = weblabel.get_layout().get_pixel_size()
+        label_we = 695 + 37.5 - (0.5 * label_width)
+        weblabel.set_size_request(label_width, label_height)
+        fixed.put(weblabel, label_we, 190)
+        weblabel.set_halign(0.5)
+        weblabel.set_valign(0.5)
         
-        self.add(grid)
-                      
-        # # labelwidth = vivaldilabel.fontMetrics().boundingRect(vivaldilabel.text()).width()
-        # # vivaldilabel.move(int(35 + 37.5 - (0.5 * labelwidth)), int(10))
-        # # vivaldilabel.setFixedWidth(labelwidth)
-        # # vivaldilabel.setAlignment(Qt.AlignCenter)
-        
-        # labelwidth = chromelabel.fontMetrics().boundingRect(chromelabel.text()).width()
-        # chromelabel.move(int(200 + 37.5 - (0.5 * labelwidth)), int(10))
-        # chromelabel.setFixedWidth(labelwidth)
-        # chromelabel.setAlignment(Qt.AlignCenter)
-        
-        # labelwidth = chromiumlabel.fontMetrics().boundingRect(chromiumlabel.text()).width()
-        # chromiumlabel.move(int(365 + 37.5 - (0.5 * labelwidth)), int(10))
-        # chromiumlabel.setFixedWidth(labelwidth)
-        # chromiumlabel.setAlignment(Qt.AlignCenter)
-        
-        # labelwidth = msedgelabel.fontMetrics().boundingRect(msedgelabel.text()).width()
-        # msedgelabel.move(int(530 + 37.5 - (0.5 * labelwidth)), int(10))
-        # msedgelabel.setFixedWidth(labelwidth)
-        # msedgelabel.setAlignment(Qt.AlignCenter)
-
-        # labelwidth = firefoxlabel.fontMetrics().boundingRect(firefoxlabel.text()).width()
-        # firefoxlabel.move(int(695 + 37.5 - (0.5 * labelwidth)), int(10))
-        # firefoxlabel.setFixedWidth(labelwidth)
-        # firefoxlabel.setAlignment(Qt.AlignCenter)
-        
-        # labelwidth = bravelabel.fontMetrics().boundingRect(bravelabel.text()).width()
-        # bravelabel.move(int(35 + 37.5 - (0.5 * labelwidth)), int(190))
-        # bravelabel.setFixedWidth(labelwidth)
-        # bravelabel.setAlignment(Qt.AlignCenter)
-        
-        # labelwidth = operalabel.fontMetrics().boundingRect(operalabel.text()).width()
-        # operalabel.move(int(200 + 37.5 - (0.5 * labelwidth)), int(190))
-        # operalabel.setFixedWidth(labelwidth)
-        # operalabel.setAlignment(Qt.AlignCenter)
-        
-        # labelwidth = waterfoxlabel.fontMetrics().boundingRect(waterfoxlabel.text()).width()
-        # waterfoxlabel.move(int(365 + 37.5 - (0.5 * labelwidth)), int(190))
-        # waterfoxlabel.setFixedWidth(labelwidth)
-        # waterfoxlabel.setAlignment(Qt.AlignCenter)
-        
-        # labelwidth = falkonlabel.fontMetrics().boundingRect(falkonlabel.text()).width()
-        # falkonlabel.move(int(530 + 37.5 - (0.5 * labelwidth)), int(190))
-        # falkonlabel.setFixedWidth(labelwidth)
-        # falkonlabel.setAlignment(Qt.AlignCenter)
-        
-        # labelwidth = weblabel.fontMetrics().boundingRect(weblabel.text()).width()
-        # weblabel.move(int(695 + 37.5 - (0.5 * labelwidth)), int(190))
-        # weblabel.setFixedWidth(labelwidth)
-        # weblabel.setAlignment(Qt.AlignCenter)
 
 ###################
 # Adding the logos#
 ###################
-        
+
         if os.path.exists('/tmp/firefox-logo.png'):
             imgfx = '/tmp/firefox-logo.png'
         else:
@@ -574,10 +369,46 @@ class BrowserManager(Gtk.Window):
             imgwf = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
 
         if os.path.exists('/tmp/microsoft-edge-logo.png'):
-            imgmse = '/tmp/microsoft-edge-logo.png'
+            imgms = '/tmp/microsoft-edge-logo.png'
         else:
-            imgmse = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
-            
+            imgms = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
+        
+        #Create pixbufs
+        # p-imgfx = GdkPixbuf.Pixbuf.new_from_file(imgfx)
+        # p-imgcr = GdkPixbuf.Pixbuf.new_from_file(imgcr)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file(imgvi)
+        # p-imgch = GdkPixbuf.Pixbuf.new_from_file(imgch)
+        # p-imgop = GdkPixbuf.Pixbuf.new_from_file(imgop)
+        # p-imgbr = GdkPixbuf.Pixbuf.new_from_file(imgbr)
+        # p-imgfa = GdkPixbuf.Pixbuf.new_from_file(imgfa)
+        # p-imgms = GdkPixbuf.Pixbuf.new_from_file(imgms)
+        # p-imgwf = GdkPixbuf.Pixbuf.new_from_file(imgwf)
+        # p-imgwe = GdkPixbuf.Pixbuf.new_from_file(imgwe)
+        
+        #Resize pixbufs
+        # p-imgfx = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        # p-imgcr = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        pixbuf = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        # p-imgch = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        # p-imgop = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        # p-imgbr = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        # p-imgfa = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        # p-imgms = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        # p-imgwf = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+        # p-imgwe = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
+                    
+        #Reasign image variables with pixbuf
+        # imgfx = Gtk.Image.new_from_pixbuf(p-imgfx)
+        # imgcr = Gtk.Image.new_from_pixbuf(p-imgcr)
+        imgvi = Gtk.Image.new_from_pixbuf(pixbuf)
+        # imgch = Gtk.Image.new_from_pixbuf(p-imgch)
+        # imgop = Gtk.Image.new_from_pixbuf(p-imgop)
+        # imgbr = Gtk.Image.new_from_pixbuf(p-imgbr)
+        # imgfa = Gtk.Image.new_from_pixbuf(p-imgfa)
+        # imgms = Gtk.Image.new_from_pixbuf(p-imgms)
+        # imgwf = Gtk.Image.new_from_pixbuf(p-imgwf)
+        # imgwe = Gtk.Image.new_from_pixbuf(p-imgwe)
+                
         #Create About Button    
         self.aboutvivaldi = Gtk.Button()
         self.aboutchrome = Gtk.Button()
@@ -590,42 +421,6 @@ class BrowserManager(Gtk.Window):
         self.aboutfalkon = Gtk.Button()
         self.aboutweb = Gtk.Button()
         
-        #Set the button icons
-        self.aboutvivaldi.set_image(Gtk.Image.new_from_file(imgvi))
-        self.aboutchrome.set_image(Gtk.Image.new_from_file(imgcr))
-        self.aboutchromium.set_image(Gtk.Image.new_from_file(imgch))
-        self.aboutmsedge.set_image(Gtk.Image.new_from_file(imgmse))
-        self.aboutfirefox.set_image(Gtk.Image.new_from_file(imgfx))
-        self.aboutbrave.set_image(Gtk.Image.new_from_file(imgbr))
-        self.aboutopera.set_image(Gtk.Image.new_from_file(imgop))
-        self.aboutwaterfox.set_image(Gtk.Image.new_from_file(imgwf))
-        self.aboutfalkon.set_image(Gtk.Image.new_from_file(imgfa))
-        self.aboutweb.set_image(Gtk.Image.new_from_file(imgwe))
-        
-        #Set Icon Size for Each About Button
-        self.aboutvivaldi.set_size_request(65, 65)
-        self.aboutchrome.set_size_request(65, 65)
-        self.aboutchromium.set_size_request(65, 65)
-        self.aboutmsedge.set_size_request(65, 65)
-        self.aboutfirefox.set_size_request(65, 65)
-        self.aboutbrave.set_size_request(65, 65)
-        self.aboutopera.set_size_request(65, 65)
-        self.aboutwaterfox.set_size_request(65, 65)
-        self.aboutfalkon.set_size_request(65, 65)
-        self.aboutweb.set_size_request(65, 65)
-        
-        #Connect clicked signal to callback function
-        self.aboutvivaldi.connect("clicked", self.on_aboutvivaldi)
-        self.aboutchrome.connect("clicked", self.on_aboutchrome)
-        self.aboutchromium.connect("clicked", self.on_aboutchromium)
-        self.aboutmsedge.connect("clicked", self.on_aboutmsedge)
-        self.aboutfirefox.connect("clicked", self.on_aboutfirefox)
-        self.aboutbrave.connect("clicked", self.on_aboutbrave)
-        self.aboutopera.connect("clicked", self.on_aboutopera)
-        self.aboutwaterfox.connect("clicked", self.on_aboutwaterfox)
-        self.aboutfalkon.connect("clicked", self.on_aboutfalkon)
-        self.aboutweb.connect("clicked", self.on_aboutweb)
-       
         #Set fixed size of the buttons
         self.aboutvivaldi.set_size_request(75, 75)
         self.aboutchrome.set_size_request(75, 75)
@@ -637,37 +432,17 @@ class BrowserManager(Gtk.Window):
         self.aboutwaterfox.set_size_request(75, 75)
         self.aboutfalkon.set_size_request(75, 75)
         self.aboutweb.set_size_request(75, 75)
-               
+        
         #Set Button Positions
-        #self.aboutvivaldi.set_margin_left(35)
-        #self.aboutvivaldi.set_margin_top(35)
         fixed.put(self.aboutvivaldi, 35, 35)
-        # self.aboutchrome.set_margin_left(200)
-        # self.aboutchrome.set_margin_top(35)
         fixed.put(self.aboutchrome, 200, 35)
-        # self.aboutchromium.set_margin_left(365)
-        # self.aboutchromium.set_margin_top(35)
         fixed.put(self.aboutchromium, 365, 35)
-        # self.aboutmsedge.set_margin_left(530)
-        # self.aboutmsedge.set_margin_top(35)
         fixed.put(self.aboutmsedge, 530, 35)
-        # self.aboutfirefox.set_margin_left(695)
-        # self.aboutfirefox.set_margin_top(35)
         fixed.put(self.aboutfirefox, 695, 35)
-        # self.aboutbrave.set_margin_left(35)
-        # self.aboutbrave.set_margin_top(220)
         fixed.put(self.aboutbrave, 35, 220)
-        # self.aboutopera.set_margin_left(200)
-        # self.aboutopera.set_margin_top(220)
         fixed.put(self.aboutopera, 200, 220)
-        # self.aboutwaterfox.set_margin_left(365)
-        # self.aboutwaterfox.set_margin_top(220)
         fixed.put(self.aboutwaterfox, 365, 220)
-        # self.aboutfalkon.set_margin_left(530)
-        # self.aboutfalkon.set_margin_top(220)
         fixed.put(self.aboutfalkon, 530, 220)
-        # self.aboutweb.set_margin_left(695)
-        # self.aboutweb.set_margin_top(220)
         fixed.put(self.aboutweb, 695, 220)
         
         #Set about tooltip
@@ -681,107 +456,44 @@ class BrowserManager(Gtk.Window):
         self.aboutwaterfox.set_tooltip_text("About Waterfox")
         self.aboutfalkon.set_tooltip_text("About Falkon")
         self.aboutweb.set_tooltip_text("About Epiphany")
-
-        # self.aboutvivaldi = QPushButton('', self)
-        # self.aboutvivaldi.setIcon(QtGui.QIcon(imgvi))
-        # self.aboutvivaldi.setIconSize(QtCore.QSize(65,65))
-        # self.aboutvivaldi.clicked.connect(self.on_aboutvivaldi)
-        # self.aboutvivaldi.setFixedSize(75, 75)
-
-        # self.aboutvivaldi.move(int(35), int(35))
-
-        # self.aboutvivaldi.setToolTip("About Vivaldi")
-
-        # self.aboutchrome = QPushButton('', self)
-        # self.aboutchrome.setIcon(QtGui.QIcon(imgcr))
-        # self.aboutchrome.setIconSize(QtCore.QSize(65,65))
-        # self.aboutchrome.clicked.connect(self.on_aboutchrome)
-        # self.aboutchrome.setFixedSize(75, 75)
-
-        # self.aboutchrome.move(int(200), int(35))
-
-        # self.aboutchrome.setToolTip("About Google Chrome")
-
-        # self.aboutchromium = QPushButton('', self)
-        # self.aboutchromium.setIcon(QtGui.QIcon(imgch))
-        # self.aboutchromium.setIconSize(QtCore.QSize(65,65))
-        # self.aboutchromium.clicked.connect(self.on_aboutchromium)
-        # self.aboutchromium.setFixedSize(75, 75)
-
-        # self.aboutchromium.move(int(365), int(35))
-
-        # self.aboutchromium.setToolTip("About Chromium")
-
-        # self.aboutmsedge = QPushButton('', self)
-        # self.aboutmsedge.setIcon(QtGui.QIcon(imgmse))
-        # self.aboutmsedge.setIconSize(QtCore.QSize(65,65))
-        # self.aboutmsedge.clicked.connect(self.on_aboutmsedge)
-        # self.aboutmsedge.setFixedSize(75, 75)
-
-        # self.aboutmsedge.move(int(530), int(35))
-
-        # self.aboutmsedge.setToolTip("About Microsoft Edge")
-
-        # self.aboutfirefox = QPushButton('', self)
-        # self.aboutfirefox.clicked.connect(self.on_aboutfirefox)
-        # self.aboutfirefox.setIcon(QtGui.QIcon(imgfx))
-        # self.aboutfirefox.setIconSize(QtCore.QSize(65, 65))
-        # self.aboutfirefox.setFixedSize(75, 75)
-
-        # self.aboutfirefox.move(int(695), int(35))
-
-        # self.aboutfirefox.setToolTip("About Firefox")
-
-        # self.aboutbrave = QPushButton('', self)
-        # self.aboutbrave.setIcon(QtGui.QIcon(imgbr))
-        # self.aboutbrave.setIconSize(QtCore.QSize(65,65))
-        # self.aboutbrave.clicked.connect(self.on_aboutbrave)
-        # self.aboutbrave.setFixedSize(75, 75)
-
-        # self.aboutbrave.move(int(35), int(220))
-
-        # self.aboutbrave.setToolTip("About Brave")
-
-        # self.aboutopera = QPushButton('', self)
-        # self.aboutopera.setIcon(QtGui.QIcon(imgop))
-        # self.aboutopera.setIconSize(QtCore.QSize(65,65))
-        # self.aboutopera.clicked.connect(self.on_aboutopera)
-        # self.aboutopera.setFixedSize(75, 75)
-
-        # self.aboutopera.move(int(200), int(220))
-
-        # self.aboutopera.setToolTip("About Opera")
-
-        # self.aboutwaterfox = QPushButton('', self)
-        # self.aboutwaterfox.setIcon(QtGui.QIcon(imgwf))
-        # self.aboutwaterfox.setIconSize(QtCore.QSize(65,65))
-        # self.aboutwaterfox.clicked.connect(self.on_aboutwaterfox)
-        # self.aboutwaterfox.setFixedSize(75, 75)
-
-        # self.aboutwaterfox.move(int(365), int(220))
-
-        # self.aboutwaterfox.setToolTip("About Waterfox")
-
-        # self.aboutfalkon = QPushButton('', self)
-        # self.aboutfalkon.setIcon(QtGui.QIcon(imgfa))
-        # self.aboutfalkon.setIconSize(QtCore.QSize(65,65))
-        # self.aboutfalkon.clicked.connect(self.on_aboutfalkon)
-        # self.aboutfalkon.setFixedSize(75, 75)
-
-        # self.aboutfalkon.move(int(530), int(220))
-
-        # self.aboutfalkon.setToolTip("About Falkon")
         
-        # self.aboutweb = QPushButton('', self)
-        # self.aboutweb.setIcon(QtGui.QIcon(imgwe))
-        # self.aboutweb.setIconSize(QtCore.QSize(65,65))
-        # self.aboutweb.clicked.connect(self.on_aboutweb)
-        # self.aboutweb.setFixedSize(75, 75)
-
-        # self.aboutweb.move(int(695), int(220))
-
-        # self.aboutweb.setToolTip("About Web")
-
+        #Connect clicked signal to callback function
+        self.aboutvivaldi.connect("clicked", self.on_aboutvivaldi)
+        self.aboutchrome.connect("clicked", self.on_aboutchrome)
+        self.aboutchromium.connect("clicked", self.on_aboutchromium)
+        self.aboutmsedge.connect("clicked", self.on_aboutmsedge)
+        self.aboutfirefox.connect("clicked", self.on_aboutfirefox)
+        self.aboutbrave.connect("clicked", self.on_aboutbrave)
+        self.aboutopera.connect("clicked", self.on_aboutopera)
+        self.aboutwaterfox.connect("clicked", self.on_aboutwaterfox)
+        self.aboutfalkon.connect("clicked", self.on_aboutfalkon)
+        self.aboutweb.connect("clicked", self.on_aboutweb)
+        
+        #Set the button icons
+        self.aboutvivaldi.set_image(imgvi)
+        # self.aboutvivaldi.get_image().set_size_request(65, 65)
+        # self.aboutvivaldi.set_image(Gtk.Image.new_from_file(imgvi))
+        # self.aboutchrome.set_image(Gtk.Image.new_from_file(imgcr))
+        # self.aboutchromium.set_image(Gtk.Image.new_from_file(imgch))
+        # self.aboutmsedge.set_image(Gtk.Image.new_from_file(imgms))
+        # self.aboutfirefox.set_image(Gtk.Image.new_from_file(imgfx))
+        # self.aboutbrave.set_image(Gtk.Image.new_from_file(imgbr))
+        # self.aboutopera.set_image(Gtk.Image.new_from_file(imgop))
+        # self.aboutwaterfox.set_image(Gtk.Image.new_from_file(imgwf))
+        # self.aboutfalkon.set_image(Gtk.Image.new_from_file(imgfa))
+        # self.aboutweb.set_image(Gtk.Image.new_from_file(imgwe))
+        
+        #Set Icon Size for Each About Button
+        # self.aboutchrome.set_size_request(65, 65)
+        # self.aboutchromium.set_size_request(65, 65)
+        # self.aboutmsedge.set_size_request(65, 65)
+        # self.aboutfirefox.set_size_request(65, 65)
+        # self.aboutbrave.set_size_request(65, 65)
+        # self.aboutopera.set_size_request(65, 65)
+        # self.aboutwaterfox.set_size_request(65, 65)
+        # self.aboutfalkon.set_size_request(65, 65)
+        # self.aboutweb.set_size_request(65, 65)
+        
         self.on_refresh()
         self.show_all()
 
@@ -1136,50 +848,62 @@ class BrowserManager(Gtk.Window):
         t.start()
 
     def on_aboutvivaldi(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Vivaldi is the defacto web browser in Feren OS, being developed by Vivaldi Technologies - a company founded by former Opera Software cofounder and CEO Jon Stephenson von Tetzchner. It is a browser that is simple by default but powerful when needed, with easily accessible features to greatly improve your browser workflow right out of the box. It also provides an optional advertisement and tracking blocker.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Vivaldi's Official Package Repository")
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Vivaldi is the defacto web browser in Feren OS, being developed by Vivaldi Technologies - a company founded by former Opera Software cofounder and CEO Jon Stephenson von Tetzchner. It is a browser that is simple by default but powerful when needed, with easily accessible features to greatly improve your browser workflow right out of the box. It also provides an optional advertisement and tracking blocker.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Vivaldi's Official Package Repository")
             dialog.run()
             dialog.destroy()
 
     def on_aboutchrome(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Google Chrome is an web browser project backed by Google that aims to build a safer, faster, and more stable way for all internet users to experience the web.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Google Chrome's (Stable) Package Repository")
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Google Chrome is an web browser project backed by Google that aims to build a safer, faster, and more stable way for all internet users to experience the web.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Google Chrome's (Stable) Package Repository")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutchromium(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Chromium is the open source father of Google Chrome, also being mainly made by Google. It shares a lot of the GUI that Google Chrome has, but with an alternative logo and some other features missing such as codecs being pre-installed, and so on.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Linux Mint (only required Chromium packages)")
-            pass
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Chromium is the open source father of Google Chrome, also being mainly made by Google. It shares a lot of the GUI that Google Chrome has, but with an alternative logo and some other features missing such as codecs being pre-installed, and so on.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Linux Mint (only required Chromium packages)")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutmsedge(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Microsoft Edge is Microsoft's all-new release of the Microsoft Edge browser that was used in the latest version of their flagship Operating System. It shares a lot of similarities with the original Microsoft Edge. It also comes pre-bunded with the Bing search engine and a Start Page with Microsoft News integration.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Microsoft Edge's Package Repository")
-            pass
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Microsoft Edge is Microsoft's all-new release of the Microsoft Edge browser that was used in the latest version of their flagship Operating System. It shares a lot of similarities with the original Microsoft Edge. It also comes pre-bunded with the Bing search engine and a Start Page with Microsoft News integration.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Microsoft Edge's Package Repository")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutfirefox(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Firefox delivers safe and easy web browsing with a familiar user interface, thousands of plugins, and integrated search that lets you get the most out of the web.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Flathub (Flatpak)")
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Firefox delivers safe and easy web browsing with a familiar user interface, thousands of plugins, and integrated search that lets you get the most out of the web.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Flathub (Flatpak)")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutbrave(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Brave is yet another freeware browser based on the Chromium codebase, and Blink Engine. Brave is open-source, and is designed to block Ads and Website Trackers by default, with a Donate to Support Your Favourite Websites mindset.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Brave Browser's Package Repository")
-            pass
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Brave is yet another freeware browser based on the Chromium codebase, and Blink Engine. Brave is open-source, and is designed to block Ads and Website Trackers by default, with a Donate to Support Your Favourite Websites mindset.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Brave Browser's Package Repository")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutopera(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Opera is another freeware browser, being developed by Opera. The browser is built on the Blink Engine, and is designed to be feature rich, having built-in features such as an Ad Blocker, VPN, Battery Saver, and so on, all included with the browser.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Opera Browser's Package Repository")
-            pass
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Opera is another freeware browser, being developed by Opera. The browser is built on the Blink Engine, and is designed to be feature rich, having built-in features such as an Ad Blocker, VPN, Battery Saver, and so on, all included with the browser.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Opera Browser's Package Repository")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutwaterfox(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Waterfox is a freeware browser based on Mozilla Firefox. This browser is built with a mix of privacy and customisability in mind. This browser has a big focus on stability and limiting data collection while staying true to the browser's base.\n\nBased on: Mozilla Firefox\nMobile Version available: No\nExtra Repositories Added: Unofficial Waterfox Package Repository")
-            pass
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Waterfox is a freeware browser based on Mozilla Firefox. This browser is built with a mix of privacy and customisability in mind. This browser has a big focus on stability and limiting data collection while staying true to the browser's base.\n\nBased on: Mozilla Firefox\nMobile Version available: No\nExtra Repositories Added: Unofficial Waterfox Package Repository")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutfalkon(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Falkon is KDE's browser, which has a lot of Firefox's old design traits, a familiar look and feel, pre-built-in AdBlocker, and everything else you'd expect to see from a browser in the modern age. It's still a solid choice of browser, young as it may be.\n\nBased on: QtWebEngine\nMobile Version available: No\nExtra Repositories Added: None")
-            pass
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Falkon is KDE's browser, which has a lot of Firefox's old design traits, a familiar look and feel, pre-built-in AdBlocker, and everything else you'd expect to see from a browser in the modern age. It's still a solid choice of browser, young as it may be.\n\nBased on: QtWebEngine\nMobile Version available: No\nExtra Repositories Added: None")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutweb(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "Web is the WebKit based web browser for GNOME. It offers a simple, clean, beautiful view of the Web. Its principles are simplicity and standards compliance.\n\nBased on: WebKitGTK\nMobile Version available: No*\nExtra Repositories Added: None\n\n* This web browser converts itself into a phone-friendly web browser on compatible phones")
-            pass
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Web is the WebKit based web browser for GNOME. It offers a simple, clean, beautiful view of the Web. Its principles are simplicity and standards compliance.\n\nBased on: WebKitGTK\nMobile Version available: No*\nExtra Repositories Added: None\n\n* This web browser converts itself into a phone-friendly web browser on compatible phones")
+            dialog.run()
+            dialog.destroy()
 
     def on_aboutbm(self, widget):
-            dialog = Gtk.MessageDialog.information(self, 0, GtkMessageType.INFO, Gtk.ButtonsType.OK, "About Web Browser Manager", "Web Browser Manager is a utility for managing the web browsers that you have installed on your system. Choose from a variety of browsers with just a few clicks and find the browser that is right for you in no time.\n\nCopyright (GPLv3):\n- Feren OS Developer (2015-2020)\n- AZorin (2010-2015)\n- ZorinK (2010)\n\n\nWeb Browser Manager is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See Version 3 of the GNU General Public License for more details.")
-            pass
+            dialog = Gtk.MessageDialog(self, 0, GtkM.essageType.INFO, Gtk.ButtonsType.OK, "About Web Browser Manager", "Web Browser Manager is a utility for managing the web browsers that you have installed on your system. Choose from a variety of browsers with just a few clicks and find the browser that is right for you in no time.\n\nCopyright (GPLv3):\n- Feren OS Developer (2015-2020)\n- AZorin (2010-2015)\n- ZorinK (2010)\n\n\nWeb Browser Manager is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See Version 3 of the GNU General Public License for more details.")
+            dialog.run()
+            dialog.destroy()
 
-    def on_close(self, event):
-        self.close()
+    # def on_close(self, event):
+        # self.close()
 
 #app = QApplication(sys.argv)
 ex = BrowserManager()
