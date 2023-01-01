@@ -19,7 +19,7 @@
 #(c) AZorin 2010-2015 <azorin@zoringroup.com>
 #(c) Zorink 2010 <zorink@zoringroup.com>
 #
-# Easily install and uninstall web browsers in Feren OS.
+# Easily install and uninstall web browsers on a GTK based system.
 # This is free software made available under the GNU public license.
 
 import gi
@@ -37,6 +37,14 @@ os.chdir('/tmp/')
 applogo = "/usr/share/pixmaps/browser-manager.svg"
 
 fixed = Gtk.Fixed()
+
+class BrowserManagerManager():
+    def __init__(self, browsername, option, bmself):
+        try:
+            os.system("/usr/share/browser-manager/"+browsername+"/"+option)
+        except:
+            Gtk.MessageDialog(BrowserManager, 0, Gtk.MessageType.CRITICAL, Gtk.ButtonType.OK, "Web Browser Manger", "An error occured while initiating the package management process.")
+        BrowserManager.finish_process(bmself)
 
 class BrowserManager(Gtk.Window):
     
@@ -201,7 +209,7 @@ class BrowserManager(Gtk.Window):
         fixed.put(self.instweb, 690, 315)
         self.instweb.set_tooltip_text("Install Epiphany")
 
-		#General Window buttons
+        #General Window buttons
         self.closebtn = Gtk.Button.new_with_label("Close")  
         self.closebtn.connect("clicked", self.on_close)
         self.closebtn.set_size_request(85, 30)
@@ -411,140 +419,6 @@ class BrowserManager(Gtk.Window):
         self.aboutfalkon = about_button(imgfa, (530, 220), self.on_aboutfalkon, "About Falkon")
         self.aboutweb = about_button(imgwe, (695, 220), self.on_aboutweb, "About Epiphany")
         
-        #Set Button Positions
-        # fixed.put(self.aboutvivaldi, 35, 35)
-        # fixed.put(self.aboutchrome, 200, 35)
-        # fixed.put(self.aboutchromium, 365, 35)
-        # fixed.put(self.aboutmsedge, 530, 35)
-        # fixed.put(self.aboutfirefox, 695, 35)
-        # fixed.put(self.aboutbrave, 35, 220)
-        # fixed.put(self.aboutopera, 200, 220)
-        # fixed.put(self.aboutwaterfox, 365, 220)
-        # fixed.put(self.aboutfalkon, 530, 220)
-        # fixed.put(self.aboutweb, 695, 220)
-
-        
-        #Create pixbufs
-        # p-imgfx = GdkPixbuf.Pixbuf.new_from_file(imgfx)
-        # p-imgcr = GdkPixbuf.Pixbuf.new_from_file(imgcr)
-        # pixbuf = GdkPixbuf.Pixbuf.new_from_file(imgvi)
-        # p-imgch = GdkPixbuf.Pixbuf.new_from_file(imgch)
-        # p-imgop = GdkPixbuf.Pixbuf.new_from_file(imgop)
-        # p-imgbr = GdkPixbuf.Pixbuf.new_from_file(imgbr)
-        # p-imgfa = GdkPixbuf.Pixbuf.new_from_file(imgfa)
-        # p-imgms = GdkPixbuf.Pixbuf.new_from_file(imgms)
-        # p-imgwf = GdkPixbuf.Pixbuf.new_from_file(imgwf)
-        # p-imgwe = GdkPixbuf.Pixbuf.new_from_file(imgwe)
-        
-        #Resize pixbufs
-        # p-imgfx = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        # p-imgcr = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        # pixbuf = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        # p-imgch = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        # p-imgop = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        # p-imgbr = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        # p-imgfa = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        # p-imgms = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        # p-imgwf = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-        # p-imgwe = pixbuf.scale_simple(65, 65, GdkPixbuf.InterpType.BILINEAR)
-                    
-        #Reasign image variables with pixbuf
-        # imgfx = Gtk.Image.new_from_pixbuf(p-imgfx)
-        # imgcr = Gtk.Image.new_from_pixbuf(p-imgcr)
-        # imgvi = Gtk.Image.new_from_pixbuf(pixbuf)
-        # imgch = Gtk.Image.new_from_pixbuf(p-imgch)
-        # imgop = Gtk.Image.new_from_pixbuf(p-imgop)
-        # imgbr = Gtk.Image.new_from_pixbuf(p-imgbr)
-        # imgfa = Gtk.Image.new_from_pixbuf(p-imgfa)
-        # imgms = Gtk.Image.new_from_pixbuf(p-imgms)
-        # imgwf = Gtk.Image.new_from_pixbuf(p-imgwf)
-        # imgwe = Gtk.Image.new_from_pixbuf(p-imgwe)
-                
-        #Create About Button    
-        # self.aboutvivaldi = Gtk.Button()
-        # self.aboutchrome = Gtk.Button()
-        # self.aboutchromium = Gtk.Button()
-        # self.aboutmsedge = Gtk.Button()
-        # self.aboutfirefox = Gtk.Button()
-        # self.aboutbrave = Gtk.Button()
-        # self.aboutopera = Gtk.Button()
-        # self.aboutwaterfox = Gtk.Button()
-        # self.aboutfalkon = Gtk.Button()
-        # self.aboutweb = Gtk.Button()
-        
-        #Set fixed size of the buttons
-        # self.aboutvivaldi.set_size_request(75, 75)
-        # self.aboutchrome.set_size_request(75, 75)
-        # self.aboutchromium.set_size_request(75, 75)
-        # self.aboutmsedge.set_size_request(75, 75)
-        # self.aboutfirefox.set_size_request(75, 75)
-        # self.aboutbrave.set_size_request(75, 75)
-        # self.aboutopera.set_size_request(75, 75)
-        # self.aboutwaterfox.set_size_request(75, 75)
-        # self.aboutfalkon.set_size_request(75, 75)
-        # self.aboutweb.set_size_request(75, 75)
-        
-        #Set Button Positions
-        # fixed.put(self.aboutvivaldi, 35, 35)
-        # fixed.put(self.aboutchrome, 200, 35)
-        # fixed.put(self.aboutchromium, 365, 35)
-        # fixed.put(self.aboutmsedge, 530, 35)
-        # fixed.put(self.aboutfirefox, 695, 35)
-        # fixed.put(self.aboutbrave, 35, 220)
-        # fixed.put(self.aboutopera, 200, 220)
-        # fixed.put(self.aboutwaterfox, 365, 220)
-        # fixed.put(self.aboutfalkon, 530, 220)
-        # fixed.put(self.aboutweb, 695, 220)
-        
-        #Set about tooltip
-        # self.aboutvivaldi.set_tooltip_text("About Vivaldi")
-        # self.aboutchrome.set_tooltip_text("About Chrome")
-        # self.aboutchromium.set_tooltip_text("About Chromium")
-        # self.aboutmsedge.set_tooltip_text("About Microsoft Edge")
-        # self.aboutfirefox.set_tooltip_text("About Firefox")
-        # self.aboutbrave.set_tooltip_text("About Brave")
-        # self.aboutopera.set_tooltip_text("About Opera")
-        # self.aboutwaterfox.set_tooltip_text("About Waterfox")
-        # self.aboutfalkon.set_tooltip_text("About Falkon")
-        # self.aboutweb.set_tooltip_text("About Epiphany")
-        
-        #Connect clicked signal to callback function
-        # self.aboutvivaldi.connect("clicked", self.on_aboutvivaldi)
-        # self.aboutchrome.connect("clicked", self.on_aboutchrome)
-        # self.aboutchromium.connect("clicked", self.on_aboutchromium)
-        # self.aboutmsedge.connect("clicked", self.on_aboutmsedge)
-        # self.aboutfirefox.connect("clicked", self.on_aboutfirefox)
-        # self.aboutbrave.connect("clicked", self.on_aboutbrave)
-        # self.aboutopera.connect("clicked", self.on_aboutopera)
-        # self.aboutwaterfox.connect("clicked", self.on_aboutwaterfox)
-        # self.aboutfalkon.connect("clicked", self.on_aboutfalkon)
-        # self.aboutweb.connect("clicked", self.on_aboutweb)
-        
-        #Set the button icons
-        # self.aboutvivaldi.set_image(imgvi)
-        # self.aboutvivaldi.set_image(Gtk.Image.new_from_file(imgvi))
-        # self.aboutchrome.set_image(Gtk.Image.new_from_file(imgcr))
-        # self.aboutchromium.set_image(Gtk.Image.new_from_file(imgch))
-        # self.aboutmsedge.set_image(Gtk.Image.new_from_file(imgms))
-        # self.aboutfirefox.set_image(Gtk.Image.new_from_file(imgfx))
-        # self.aboutbrave.set_image(Gtk.Image.new_from_file(imgbr))
-        # self.aboutopera.set_image(Gtk.Image.new_from_file(imgop))
-        # self.aboutwaterfox.set_image(Gtk.Image.new_from_file(imgwf))
-        # self.aboutfalkon.set_image(Gtk.Image.new_from_file(imgfa))
-        # self.aboutweb.set_image(Gtk.Image.new_from_file(imgwe))
-        
-        #Set Icon Size for Each About Button
-        # self.aboutvivaldi.set_size_request(65, 65)
-        # self.aboutchrome.set_size_request(65, 65)
-        # self.aboutchromium.set_size_request(65, 65)
-        # self.aboutmsedge.set_size_request(65, 65)
-        # self.aboutfirefox.set_size_request(65, 65)
-        # self.aboutbrave.set_size_request(65, 65)
-        # self.aboutopera.set_size_request(65, 65)
-        # self.aboutwaterfox.set_size_request(65, 65)
-        # self.aboutfalkon.set_size_request(65, 65)
-        # self.aboutweb.set_size_request(65, 65)
-        
         self.on_refresh()
         self.show_all()
 
@@ -578,8 +452,7 @@ class BrowserManager(Gtk.Window):
         self.browserwork = False
         self.on_refresh()
         self.progressbar1.set_visible(False)
-        self.progressbar1.set_margin_left(10)
-        self.progressbar1.set_margin_top(405)
+        fixed.put(self.progressbar1, 10, 405)
         
         # self.closebtn.setVisible(True)
         # self.browserwork = False
@@ -700,9 +573,8 @@ class BrowserManager(Gtk.Window):
 
     def on_instvivaldi(self, widget):                                 
         self.begin_process()
-        self.progressbar1.set_margin_left(11)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 11, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("vivaldi", "install", self)
         )
@@ -710,9 +582,8 @@ class BrowserManager(Gtk.Window):
 
     def on_instchrome(self, widget): 
         self.begin_process()
-        self.progressbar1.set_margin_left(176)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 176, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("chrome", "install", self)
         )
@@ -720,9 +591,8 @@ class BrowserManager(Gtk.Window):
 
     def on_instchromium(self, widget):                               
         self.begin_process()
-        self.progressbar1.set_margin_left(341)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 341, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("chromium", "install", self)
         )
@@ -730,9 +600,8 @@ class BrowserManager(Gtk.Window):
 
     def on_instmsedge(self, widget):                                 
         self.begin_process()
-        self.progressbar1.set_margin_left(506)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 506, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("msedge", "install", self)
         )
@@ -740,9 +609,8 @@ class BrowserManager(Gtk.Window):
 
     def on_instfirefox(self, widget):
         self.begin_process()
-        self.progressbar1.set_margin_left(671)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 671, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("firefox", "install", self)
         )
@@ -750,9 +618,8 @@ class BrowserManager(Gtk.Window):
 
     def on_instbrave(self, widget):                              
         self.begin_process()
-        self.progressbar1.set_margin_left(11)
-        self.progressbar1.set_margin_top(316)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 11, 316)
+        t = Thread(
             target=BrowserManagerManager,
             args=("brave", "install", self)
         )
@@ -760,9 +627,8 @@ class BrowserManager(Gtk.Window):
 
     def on_instopera(self, widget): 
         self.begin_process()
-        self.progressbar1.set_margin_left(176)
-        self.progressbar1.set_margin_top(316)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 176, 316)
+        t = Thread(
             target=BrowserManagerManager,
             args=("opera", "install", self)
         )
@@ -770,9 +636,8 @@ class BrowserManager(Gtk.Window):
 
     def on_instwaterfox(self, widget):                                 
         self.begin_process()
-        self.progressbar1.set_margin_left(341)
-        self.progressbar1.set_margin_top(316)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 341, 316)
+        t = Thread(
             target=BrowserManagerManager,
             args=("waterfox", "install", self)
         )
@@ -780,9 +645,8 @@ class BrowserManager(Gtk.Window):
 
     def on_instfalkon(self, widget):                                 
         self.begin_process()
-        self.progressbar1.set_margin_left(506)
-        self.progressbar1.set_margin_top(316)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 506, 316)
+        t = Thread(
             target=BrowserManagerManager,
             args=("falkon", "install", self)
         )
@@ -790,9 +654,8 @@ class BrowserManager(Gtk.Window):
     
     def on_instweb(self, widget):                                    
         self.begin_process()
-        self.progressbar1.set_margin_left(671)
-        self.progressbar1.set_margin_top(316)
-        t = threding.Thread(
+        fixed.put(self.progressbar1, 671, 316)
+        t = Thread(
             target=BrowserManagerManager,
             args=("web", "install", self)
         )
@@ -800,9 +663,8 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstvivaldi(self, widget):                               
         self.begin_process()
-        self.progressbar1.set_margin_left(11)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 11, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("vivaldi", "uninstall", self)
         )
@@ -810,9 +672,8 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstchrome(self, widget):                                   
         self.begin_process()
-        self.progressbar1.set_margin_left(176)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 176, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("chrome", "uninstall", self)
         )
@@ -820,9 +681,8 @@ class BrowserManager(Gtk.Window):
     
     def on_uninstchromium(self, widget):                                 
         self.begin_process()
-        self.progressbar1.set_margin_left(341)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 341, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("chromium", "uninstall", self)
         )
@@ -830,9 +690,8 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstmsedge(self, widget):                               
         self.begin_process()
-        self.progressbar1.set_margin_left(506)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 506, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("msedge", "uninstall", self)
         )
@@ -840,9 +699,8 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstfirefox(self, widget):                              
         self.begin_process()
-        self.progressbar1.set_margin_left(671)
-        self.progressbar1.set_margin_top(131)
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 671, 131)
+        t = Thread(
             target=BrowserManagerManager,
             args=("firefox", "uninstall", self)
         )
@@ -850,9 +708,8 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstbrave(self, widget):                                
         self.begin_process()
-        fixed.put(progressbar1, 11 , 316)
-        #self.progressbar1.move(int(11), int(316))
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 11 , 316)
+        t = Thread(
             target=BrowserManagerManager,
             args=("brave", "uninstall", self)
         )
@@ -860,9 +717,8 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstopera(self, widget):                                
         self.begin_process()
-        fixed.put(progressbar1, 176, 316) 
-        #self.progressbar1.move(int(176), int(316))
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 176, 316) 
+        t = Thread(
             target=BrowserManagerManager,
             args=("opera", "uninstall", self)
         )
@@ -870,9 +726,8 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstwaterfox(self, widget):                               
         self.begin_process()
-        fixed.put(progressbar1, 341, 316)
-        #self.progressbar1.move(int(341), int(316))
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 341, 316)
+        t = Thread(
             target=BrowserManagerManager,
             args=("waterfox", "uninstall", self)
         )
@@ -880,9 +735,8 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstfalkon(self, widget):                               
         self.begin_process()
-        fixed.put(progressbar1, 506, 316)
-        #self.progressbar1.move(int(506), int(316))
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 506, 316)
+        t = Thread(
             target=BrowserManagerManager,
             args=("falkon", "uninstall", self)
         )
@@ -890,16 +744,15 @@ class BrowserManager(Gtk.Window):
     
     def on_uninstweb(self, widget):                                  
         self.begin_process()
-        fixed.put(progressbar1, 671, 316)
-        #self.progressbar1.move(int(671), int(316))
-        t = threading.Thread(
+        fixed.put(self.progressbar1, 671, 316)
+        t = Thread(
             target=BrowserManagerManager,
             args=("web", "uninstall", self)
         )
         t.start()
 
     def on_aboutvivaldi(self, widget):
-            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Vivaldi is the defacto web browser in Feren OS, being developed by Vivaldi Technologies - a company founded by former Opera Software cofounder and CEO Jon Stephenson von Tetzchner. It is a browser that is simple by default but powerful when needed, with easily accessible features to greatly improve your browser workflow right out of the box. It also provides an optional advertisement and tracking blocker.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Vivaldi's Official Package Repository")
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Vivaldi is an web browser, being developed by Vivaldi Technologies - a company founded by former Opera Software cofounder and CEO Jon Stephenson von Tetzchner. It is a browser that is simple by default but powerful when needed, with easily accessible features to greatly improve your browser workflow right out of the box. It also provides an optional advertisement and tracking blocker.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Vivaldi's Official Package Repository")
             dialog.run()
             dialog.destroy()
 
@@ -953,8 +806,8 @@ class BrowserManager(Gtk.Window):
             dialog.run()
             dialog.destroy()
 
-    # def on_close(self, event):
-        # self.close()
+    def on_close(self, widget, event):
+        self.close()
 
 #app = QApplication(sys.argv)
 ex = BrowserManager()
