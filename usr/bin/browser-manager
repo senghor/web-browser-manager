@@ -262,7 +262,7 @@ class BrowserManager(Gtk.Window):
         #Set label location
         label_width, label_height = vivaldilabel.get_layout().get_pixel_size()
         label_vi = 35 + 37.5 - (0.5 * label_width)
-        vivaldilabel.set_size_request(label_width, label_height)
+        vivaldilabel.set_size_request(label_width, label_height) 
         fixed.put(vivaldilabel, label_vi, 10)
         vivaldilabel.set_halign(0.5)
         vivaldilabel.set_valign(0.5)
@@ -330,57 +330,20 @@ class BrowserManager(Gtk.Window):
         weblabel.set_halign(0.5)
         weblabel.set_valign(0.5)
         
-
 ###################
 # Adding the logos#
 ###################
 
-        if os.path.exists('/tmp/firefox-logo.png'):
-            imgfx = '/tmp/firefox-logo.png'
-        else:
-            imgfx = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
-
-        if os.path.exists('/tmp/google-chrome-logo.png'):
-            imgcr = '/tmp/google-chrome-logo.png'
-        else:
-            imgcr = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
-
-        imgwe = "/usr/share/browser-manager/web/icon.png"
-
-        if os.path.exists('/tmp/vivaldi-logo.png'):
-            imgvi = '/tmp/vivaldi-logo.png'
-        else:
-            imgvi = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
-
-        if os.path.exists('/tmp/chromium-logo.png'):
-            imgch = '/tmp/chromium-logo.png'
-        else:
-            imgch = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
-
-        if os.path.exists('/tmp/opera-logo.png'):
-            imgop = '/tmp/opera-logo.png'
-        else:
-            imgop = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
-
-        if os.path.exists('/tmp/brave-logo.png'):
-            imgbr = '/tmp/brave-logo.png'
-        else:
-            imgbr = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
-
-        if os.path.exists('/tmp/falkon-logo.png'):
-            imgfa = '/tmp/falkon-logo.png'
-        else:
-            imgfa = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
-
-        if os.path.exists('/tmp/waterfox-logo.png'):
-            imgwf = '/tmp/waterfox-logo.png'
-        else:
-            imgwf = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
-
-        if os.path.exists('/tmp/microsoft-edge-logo.png'):
-            imgms = '/tmp/microsoft-edge-logo.png'
-        else:
-            imgms = '/usr/share/icons/Inspire/96/apps/internet-web-browser.png'
+        imgfx = '/usr/share/browser-manager/firefox/Firefox_logo.png'
+        imgcr = '/usr/share/browser-manager/chrome/Chrome_logo.png'
+        imgvi = '/usr/share/browser-manager/vivaldi/Vivaldi_logo.png'
+        imgch = '/usr/share/browser-manager/chromium/Chromium_logo.png'
+        imgop = '/usr/share/browser-manager/opera/Opera_logo.png'
+        imgbr = '/usr/share/browser-manager/brave/Brave_logo.png'
+        imgwf = '/usr/share/browser-manager/waterfox/Waterfox_logo.png'
+        imgwe = '/usr/share/browser-manager/web/Epiphany_logo.png'
+        imgms = '/usr/share/browser-manager/msedge/Edge_logo.png'
+        imgfa = '/usr/share/browser-manager/falkon/Falkon_logo.png'
         
         #Create basic button
         def about_button(icon_file, position, callback, tooltip):
