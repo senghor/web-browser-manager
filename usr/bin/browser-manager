@@ -57,15 +57,15 @@ class BrowserManager(Gtk.Window):
         self.height = 440
         self.browserwork = False
                  
-        self.connect("delete-event", self.on_close)
+        self.connect("destroy", self.on_destroy)
         
         self.set_default_size(self.width, self.height)
         self.set_resizable(False)
         
         self.initUI()
         
-    def on_close(self, widget, event):
-        Gtk.main_quit()
+    # def on_close(self, widget, event):
+        # Gtk.main_quit()
         # if self.browserwork:
             # return True
         # else:
@@ -73,7 +73,8 @@ class BrowserManager(Gtk.Window):
              
     def initUI(self):
         self.set_title(self.title)
-        self.move(10, 10)
+        self.set_position(Gtk.WindowPosition.CENTER)
+        # self.move(10, 10)
         self.set_size_request(self.width, self.height)
 
 #####################
@@ -233,6 +234,9 @@ class BrowserManager(Gtk.Window):
 # Defining the button actions#
 ##############################
 
+    def on_destroy(self,widget):
+        Gtk.main_quit()
+    
     def finish_process(self):
         #self.instfirefox.setEnabled(True)
         #self.instchrome.setEnabled(True)
