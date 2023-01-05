@@ -2,7 +2,7 @@
 Name=Web Browser Manager
 Comment=Easily install and uninstall web browsers in feren OS (Originated from Zorin OS).
 GenericName=Browser Manager
-Exec=browser-manager-pre
+Exec=browser-manager
 Icon=browser-manager
 StartupNotify=false
 Terminal=false
