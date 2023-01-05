@@ -235,101 +235,29 @@ class BrowserManager(Gtk.Window):
 # Adding the program titles#
 ############################
         
-        #Create label variables
-        firefoxlabel = Gtk.Label()
-        chromelabel = Gtk.Label()
-        weblabel = Gtk.Label()
-        vivaldilabel = Gtk.Label()   
-        chromiumlabel = Gtk.Label() 
-        operalabel = Gtk.Label() 
-        bravelabel = Gtk.Label() 
-        msedgelabel = Gtk.Label()
-        waterfoxlabel = Gtk.Label()
-        falkonlabel = Gtk.Label()
-        
-        #Set the text and font for the labels
-        firefoxlabel.set_markup("<b>Mozilla Firefox</b>")
-        chromelabel.set_markup("<b>Google Chrome</b>")
-        weblabel.set_markup("<b>GNOME Web</b>")
-        vivaldilabel.set_markup("<b>Vivaldi</b>")
-        chromiumlabel.set_markup("<b>Chromium</b>")
-        operalabel.set_markup("<b>Opera</b>")
-        bravelabel.set_markup("<b>Brave</b>")
-        msedgelabel.set_markup("<b>Microsoft Edge</b>")
-        waterfoxlabel.set_markup("<b>Waterfox</b>")
-        falkonlabel.set_markup("<b>Falkon</b>")
-        
-        #Set label location
-        label_width, label_height = vivaldilabel.get_layout().get_pixel_size()
-        label_vi = 35 + 37.5 - (0.5 * label_width)
-        vivaldilabel.set_size_request(label_width, label_height) 
-        fixed.put(vivaldilabel, label_vi, 10)
-        vivaldilabel.set_halign(0.5)
-        vivaldilabel.set_valign(0.5)
-        
-        label_width, label_height = chromelabel.get_layout().get_pixel_size()
-        label_cr = 200 + 37.5 - (0.5 * label_width)
-        chromelabel.set_size_request(label_width, label_height)
-        fixed.put(chromelabel, label_cr, 10)
-        chromelabel.set_halign(0.5)
-        chromelabel.set_valign(0.5)
-
-        label_width, label_height = chromiumlabel.get_layout().get_pixel_size()
-        label_cm = 365 + 37.5 - (0.5 * label_width)
-        chromiumlabel.set_size_request(label_width, label_height)
-        fixed.put(chromiumlabel, label_cm, 10)
-        chromiumlabel.set_halign(0.5)
-        chromiumlabel.set_valign(0.5)
-
-        label_width, label_height = msedgelabel.get_layout().get_pixel_size()
-        label_ms = 530 + 37.5 - (0.5 * label_width)
-        msedgelabel.set_size_request(label_width, label_height)
-        fixed.put(msedgelabel, label_ms, 10)
-        msedgelabel.set_halign(0.5)
-        msedgelabel.set_valign(0.5)
-
-        label_width, label_height = firefoxlabel.get_layout().get_pixel_size()
-        label_fx = 695 + 37.5 - (0.5 * label_width)
-        firefoxlabel.set_size_request(label_width, label_height)
-        fixed.put(firefoxlabel, label_fx, 10)
-        firefoxlabel.set_halign(0.5)
-        firefoxlabel.set_valign(0.5)
-
-        label_width, label_height = bravelabel.get_layout().get_pixel_size()
-        label_br = 35 + 37.5 - (0.5 * label_width)
-        bravelabel.set_size_request(label_width, label_height)
-        fixed.put(bravelabel, label_br, 190)
-        bravelabel.set_halign(0.5)
-        bravelabel.set_valign(0.5)
-
-        label_width, label_height = operalabel.get_layout().get_pixel_size()
-        label_op = 200 + 37.5 - (0.5 * label_width)
-        operalabel.set_size_request(label_width, label_height)
-        fixed.put(operalabel, label_op, 190)
-        operalabel.set_halign(0.5)
-        operalabel.set_valign(0.5)
-
-        label_width, label_height = waterfoxlabel.get_layout().get_pixel_size()
-        label_wa = 365 + 37.5 - (0.5 * label_width)
-        waterfoxlabel.set_size_request(label_width, label_height)
-        fixed.put(waterfoxlabel, label_wa, 190)
-        waterfoxlabel.set_halign(0.5)
-        waterfoxlabel.set_valign(0.5)
-
-        label_width, label_height = falkonlabel.get_layout().get_pixel_size()
-        label_fa = 530 + 37.5 - (0.5 * label_width)
-        falkonlabel.set_size_request(label_width, label_height)
-        fixed.put(falkonlabel, label_fa, 190)
-        falkonlabel.set_halign(0.5)
-        falkonlabel.set_valign(0.5)
-        
-        label_width, label_height = weblabel.get_layout().get_pixel_size()
-        label_we = 695 + 37.5 - (0.5 * label_width)
-        weblabel.set_size_request(label_width, label_height)
-        fixed.put(weblabel, label_we, 190)
-        weblabel.set_halign(0.5)
-        weblabel.set_valign(0.5)
-        
+        def create_label(label_text, label_x, label_y):
+            label = Gtk.Label()
+            label.set_markup("<b>%s</b>" % label_text)
+            label_width, label_height = label.get_layout().get_pixel_size()
+            label_h = label_x + 37.5 - (0.5 * label_width)
+            label.set_size_request(label_width, label_height)
+            fixed.put(label, label_h, label_y)
+            label.set_halign(0.5)
+            label.set_valign(0.5)
+            
+            return label
+            
+        vivaldilabel = create_label("Vivaldi", 35, 10)
+        chromelabel = create_label("Google Chrome", 200, 10)
+        chromiumlabel = create_label("Chromium", 365, 10)
+        msedgelabel = create_label("Microsoft Edge", 530, 10)
+        firefoxlabel = create_label("Mozilla Firefox", 695, 10)
+        bravelabel = create_label("Brave", 35, 190)
+        operalabel = create_label("Opera", 200, 190)
+        waterfoxlabel = create_label("Waterfox", 365, 190)
+        falkonlabel = create_label("Falkon", 530, 190)
+        weblabel = create_label("GNOME Web", 695, 190)
+            
 ###################
 # Adding the logos#
 ###################
