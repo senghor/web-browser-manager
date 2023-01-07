@@ -24,7 +24,7 @@
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GdkPixbuf
+from gi.repository import Gtk, GdkPixbuf, GLib
 import requests
 import os
 from os import path
@@ -74,12 +74,11 @@ class BrowserManager(Gtk.Window):
     def initUI(self):
         self.set_title(self.title)
         self.set_position(Gtk.WindowPosition.CENTER)
-        # self.move(10, 10)
         self.set_size_request(self.width, self.height)
 
-#####################
-# Adding the buttons#
-#####################
+######################
+# Adding the buttons #
+######################
         
         #Interface Main Buttons
         def int_button(label, position, callback, browser_name):
@@ -135,17 +134,24 @@ class BrowserManager(Gtk.Window):
         self.closebtn = int_button("Close", (720, 400), self.on_close, "Window")
         self.aboutbtn = int_button("About", (10, 400), self.on_aboutbm, "Browser Manager")
        
+################
+# Progress Bar #
+################
+        
         #Progress Bar
         self.progressbar1 = Gtk.ProgressBar()
-        self.progressbar1.set_size_request(85, 28)
-        self.progressbar1.set_fraction(0)
         self.progressbar1.set_visible(False)
+                        
+        def update_progress():
+            self.progressbar1.pulse()
+            GLib.timeout_add(60, update_progress)
+        
+        update_progress()
         
         
-        
-############################
-# Adding the program titles#
-############################
+#############################
+# Adding the program titles #
+#############################
         
         def create_label(label_text, label_x, label_y):
             #Create the label
@@ -173,9 +179,9 @@ class BrowserManager(Gtk.Window):
         falkonlabel = create_label("Falkon", 530, 190)
         weblabel = create_label("GNOME Web", 695, 190)
             
-###################
-# Adding the logos#
-###################
+####################
+# Adding the logos #
+####################
 
         imgfx = '/usr/share/browser-manager/firefox/Firefox_logo.png'
         imgcr = '/usr/share/browser-manager/chrome/Chrome_logo.png'
@@ -230,54 +236,20 @@ class BrowserManager(Gtk.Window):
         self.show_all()
         self.on_refresh()
 
-##############################        
-# Defining the button actions#
-##############################
+###############################
+# Defining the button actions #
+###############################
 
     def on_destroy(self,widget):
         Gtk.main_quit()
     
     def finish_process(self):
-        #self.instfirefox.setEnabled(True)
-        #self.instchrome.setEnabled(True)
-        #self.instweb.setEnabled(True)
-        #self.instvivaldi.setEnabled(True)
-        #self.instchromium.setEnabled(True)
-        #self.instopera.setEnabled(True)
-        #self.instbrave.setEnabled(True)
-        #self.instfalkon.setEnabled(True)
-        #self.instmsedge.setEnabled(True)
-        #self.instwaterfox.setEnabled(True)
-        #self.uninstfirefox.setEnabled(True)
-        #self.uninstchrome.setEnabled(True)
-        #self.uninstweb.setEnabled(True)
-        #self.uninstvivaldi.setEnabled(True)
-        #self.uninstchromium.setEnabled(True)
-        #self.uninstopera.setEnabled(True)
-        #self.uninstbrave.setEnabled(True)
-        #self.uninstfalkon.setEnabled(True)
-        #self.uninstmsedge.setEnabled(True)
-        #self.uninstwaterfox.setEnabled(True)
-        
-        self.closebtn.set_sensitive(True)
+        self.closebtn.set_visible(True)
         self.browserwork = False
-        self.on_refresh()
         self.progressbar1.set_visible(False)
-        fixed.put(self.progressbar1, 10, 405)
-        
-        # self.closebtn.setVisible(True)
-        # self.browserwork = False
-        # self.on_refresh()
-        # self.progressbar1.setVisible(False)
-        # self.progressbar1.move(int(10), int(405))
-        
-        #is_64bits = sys.maxsize > 2**32
-        #if is_64bits == False:
-            #self.instbrave.setEnabled(False)
-            #self.instopera.setEnabled(False)
-            #self.instchrome.setEnabled(False)
-            #self.instwaterfox.setEnabled(False)
-        
+        fixed.put(self.progressbar1, 10, 485)
+        self.on_refresh()
+                
     def begin_process(self):
         self.instfirefox.set_visible(False)
         self.instchrome.set_visible(False)
@@ -381,7 +353,9 @@ class BrowserManager(Gtk.Window):
         else:
             self.uninstwaterfox.set_visible(False)
             self.instwaterfox.set_visible(True)
-
+    
+    
+    
     def on_instvivaldi(self, widget):                                 
         self.begin_process()
         fixed.put(self.progressbar1, 11, 131)
@@ -462,6 +436,7 @@ class BrowserManager(Gtk.Window):
             args=("falkon", "install", self)
         )
         t.start()
+
     
     def on_instweb(self, widget):                                    
         self.begin_process()
@@ -619,8 +594,6 @@ class BrowserManager(Gtk.Window):
 
     def on_close(self, widget):
         Gtk.main_quit()
-        # self.close()
 
-#app = QApplication(sys.argv)
 ex = BrowserManager()
 Gtk.main()
