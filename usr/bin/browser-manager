@@ -87,9 +87,9 @@ class BrowserManager(Gtk.Window):
             button.set_size_request(87, 30)
             fixed.put(button, *position)
             button.set_tooltip_text("%s %s" % (label, browser_name))
-            
+                
             return button
-            
+                
         #Vivaldi
         self.uninstvivaldi = int_button("Uninstall", (30, 130), self.on_uninstvivaldi, "Vivaldi")
         self.instvivaldi = int_button("Install", (30, 130), self.on_instvivaldi, "Vivaldi")
@@ -139,20 +139,31 @@ class BrowserManager(Gtk.Window):
 ################
         
         #Progress Bar
-        self.progressbar1 = Gtk.ProgressBar()
-        self.progressbar1.set_visible(False)
-                        
-        def update_progress():
-            self.progressbar1.pulse()
-            GLib.timeout_add(60, update_progress)
-        
-        update_progress()
-        
+        def progressbar(position):
+            pgb = Gtk.ProgressBar()
+            fixed.put(pgb, *position)
+            def update_progress():
+                pgb.pulse()
+                GLib.timeout_add(60, update_progress)
+            update_progress()
+            
+            return pgb
+            
+        self.vi_pgb = progressbar((11, 131))
+        self.cr_pgb = progressbar((176, 131))
+        self.ch_pgb = progressbar((341, 131))
+        self.ms_pgb = progressbar((506, 131))
+        self.fx_pgb = progressbar((671, 131))
+        self.br_pgb = progressbar((11, 316))
+        self.op_pgb = progressbar((176, 316))
+        self.wf_pgb = progressbar((341, 316))
+        self.fa_pgb = progressbar((506, 316))
+        self.we_pgb = progressbar((671, 316))
         
 #############################
 # Adding the program titles #
 #############################
-        
+            
         def create_label(label_text, label_x, label_y):
             #Create the label
             label = Gtk.Label()
@@ -246,8 +257,8 @@ class BrowserManager(Gtk.Window):
     def finish_process(self):
         self.closebtn.set_visible(True)
         self.browserwork = False
-        self.progressbar1.set_visible(False)
-        fixed.put(self.progressbar1, 10, 485)
+        # self.progressbar1.set_visible(False)
+        # fixed.put(self.progressbar1, 10, 485)
         self.on_refresh()
                 
     def begin_process(self):
@@ -274,9 +285,20 @@ class BrowserManager(Gtk.Window):
         self.uninstwaterfox.set_visible(False)
         self.closebtn.set_visible(False)
         self.browserwork = True
-        self.progressbar1.set_visible(True)
   
     def on_refresh(self):
+        self.vi_pgb.set_visible(False)
+        self.cr_pgb.set_visible(False)
+        self.ch_pgb.set_visible(False)
+        self.ms_pgb.set_visible(False)
+        self.fx_pgb.set_visible(False)
+        self.br_pgb.set_visible(False)
+        self.op_pgb.set_visible(False)
+        self.wf_pgb.set_visible(False)
+        self.fa_pgb.set_visible(False)
+        self.we_pgb.set_visible(False)
+
+
         if os.path.isdir("/var/lib/flatpak/app/org.mozilla.firefox") or os.path.isfile("/usr/bin/firefox"):
             self.instfirefox.set_visible(False)
             self.uninstfirefox.set_visible(True)
@@ -353,12 +375,12 @@ class BrowserManager(Gtk.Window):
         else:
             self.uninstwaterfox.set_visible(False)
             self.instwaterfox.set_visible(True)
-    
-    
-    
+      
+        
+        
     def on_instvivaldi(self, widget):                                 
         self.begin_process()
-        fixed.put(self.progressbar1, 11, 131)
+        self.vi_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("vivaldi", "install", self)
@@ -367,7 +389,7 @@ class BrowserManager(Gtk.Window):
 
     def on_instchrome(self, widget): 
         self.begin_process()
-        fixed.put(self.progressbar1, 176, 131)
+        self.cr_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("chrome", "install", self)
@@ -376,7 +398,7 @@ class BrowserManager(Gtk.Window):
 
     def on_instchromium(self, widget):                               
         self.begin_process()
-        fixed.put(self.progressbar1, 341, 131)
+        self.ch_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("chromium", "install", self)
@@ -385,7 +407,7 @@ class BrowserManager(Gtk.Window):
 
     def on_instmsedge(self, widget):                                 
         self.begin_process()
-        fixed.put(self.progressbar1, 506, 131)
+        self.ms_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("msedge", "install", self)
@@ -394,7 +416,7 @@ class BrowserManager(Gtk.Window):
 
     def on_instfirefox(self, widget):
         self.begin_process()
-        fixed.put(self.progressbar1, 671, 131)
+        self.fx_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("firefox", "install", self)
@@ -403,7 +425,7 @@ class BrowserManager(Gtk.Window):
 
     def on_instbrave(self, widget):                              
         self.begin_process()
-        fixed.put(self.progressbar1, 11, 316)
+        self.br_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("brave", "install", self)
@@ -412,7 +434,7 @@ class BrowserManager(Gtk.Window):
 
     def on_instopera(self, widget): 
         self.begin_process()
-        fixed.put(self.progressbar1, 176, 316)
+        self.op_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("opera", "install", self)
@@ -421,7 +443,7 @@ class BrowserManager(Gtk.Window):
 
     def on_instwaterfox(self, widget):                                 
         self.begin_process()
-        fixed.put(self.progressbar1, 341, 316)
+        self.wf_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("waterfox", "install", self)
@@ -430,7 +452,7 @@ class BrowserManager(Gtk.Window):
 
     def on_instfalkon(self, widget):                                 
         self.begin_process()
-        fixed.put(self.progressbar1, 506, 316)
+        self.fa_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("falkon", "install", self)
@@ -440,7 +462,7 @@ class BrowserManager(Gtk.Window):
     
     def on_instweb(self, widget):                                    
         self.begin_process()
-        fixed.put(self.progressbar1, 671, 316)
+        self.we_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("web", "install", self)
@@ -449,7 +471,7 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstvivaldi(self, widget):                               
         self.begin_process()
-        fixed.put(self.progressbar1, 11, 131)
+        self.vi_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("vivaldi", "uninstall", self)
@@ -458,7 +480,7 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstchrome(self, widget):                                   
         self.begin_process()
-        fixed.put(self.progressbar1, 176, 131)
+        self.cr_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("chrome", "uninstall", self)
@@ -467,7 +489,7 @@ class BrowserManager(Gtk.Window):
     
     def on_uninstchromium(self, widget):                                 
         self.begin_process()
-        fixed.put(self.progressbar1, 341, 131)
+        self.ch_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("chromium", "uninstall", self)
@@ -476,7 +498,7 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstmsedge(self, widget):                               
         self.begin_process()
-        fixed.put(self.progressbar1, 506, 131)
+        self.ms_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("msedge", "uninstall", self)
@@ -485,7 +507,7 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstfirefox(self, widget):                              
         self.begin_process()
-        fixed.put(self.progressbar1, 671, 131)
+        self.fx_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("firefox", "uninstall", self)
@@ -494,7 +516,7 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstbrave(self, widget):                                
         self.begin_process()
-        fixed.put(self.progressbar1, 11 , 316)
+        self.br_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("brave", "uninstall", self)
@@ -503,7 +525,7 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstopera(self, widget):                                
         self.begin_process()
-        fixed.put(self.progressbar1, 176, 316) 
+        self.op_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("opera", "uninstall", self)
@@ -512,7 +534,7 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstwaterfox(self, widget):                               
         self.begin_process()
-        fixed.put(self.progressbar1, 341, 316)
+        self.wf_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("waterfox", "uninstall", self)
@@ -521,7 +543,7 @@ class BrowserManager(Gtk.Window):
 
     def on_uninstfalkon(self, widget):                               
         self.begin_process()
-        fixed.put(self.progressbar1, 506, 316)
+        self.fa_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("falkon", "uninstall", self)
@@ -530,7 +552,7 @@ class BrowserManager(Gtk.Window):
     
     def on_uninstweb(self, widget):                                  
         self.begin_process()
-        fixed.put(self.progressbar1, 671, 316)
+        self.we_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
             args=("web", "uninstall", self)
