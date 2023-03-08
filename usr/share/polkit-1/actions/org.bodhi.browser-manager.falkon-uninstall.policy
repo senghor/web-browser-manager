@@ -4,9 +4,9 @@
 <policyconfig>
 
     <vendor>Feren Team</vendor>
-    <vendor_url>https://ferenos.weebly.com/</vendor_url>
+    <vendor_url>https://www.bodhilinux.com/</vendor_url>
     <icon_name>browser-manager</icon_name>
-    <action id="org.feren.browser-manager.falkon-uninstall">
+    <action id="org.bodhi.browser-manager.falkon-uninstall">
 
         <description gettext-domain="gparted">Web Browser Manager</description>
         <message gettext-domain="gparted">Authentication is required to manage installed browsers</message>
