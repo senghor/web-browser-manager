@@ -86,10 +86,9 @@ class BrowserManager(Gtk.Window):
         
         # self.add(flowbox)
         
-        
-###################
-# Object Creation #
-###################
+#############################
+# Object Creation Functions #
+#############################
 
         #Program Labels    
         def create_label(label_text, label_x, label_y):
@@ -138,9 +137,9 @@ class BrowserManager(Gtk.Window):
             
             return pgb
         
-#####################
-# Browser Variables #
-#####################
+############################
+# Browser Object Variables #
+############################
         
         #Vivaldi
         vivaldilabel = create_label("Vivaldi", 35, 10)
@@ -269,6 +268,52 @@ class BrowserManager(Gtk.Window):
         self.stateopera.set_visible(True)
     
     #Install and Uninstall functions
+    
+    
+    
+    def browser_thread(browser_name: str, action: str):
+        def decorator(func):
+            def wrapper(self, widget):
+                
+                prgbars = {"vivaldi": self.vi_pgb, "chrome": self.cr_pgb, "chromium": self.ch_pgb, "msedge": self.ms_pgb, "firefox": self.fx_pgb, "brave": self.br_pgb, "opera": self.op_pgb, "waterfox": self.wf_pgb, "falkon": self.fa_pgb, "web": self.we_pgb}
+                
+                states = {"vivaldi": self.statevivaldi, "chrome": self.statechrome, "chromium": self.statechromium, "msedge": self.statemsedge, "firefox": self.statefirefox, "brave": self.statebrave, "opera": self.stateopera, "waterfox": self.statewaterfox, "falkon": self.statefalkon, "web": self.stateweb}
+                                
+                prgbar = prgbars[browser_name]
+                state = states[browser_name]
+                fui = f'self.on_{("un" if action == "install" else "")}install{browser_name}'
+                
+                self.begin_process()
+                prgbar.set_visible(True)
+                state.set_label("Uninstall" if action == "install" else "Install")
+                state.disconnect_by_func(fui)
+                state.connect("clicked", fui)
+                t = Thread(target=func, args=(browser_name, action, self))
+                t.start()
+            return wrapper
+        return decorator
+
+    # prgbars = {"vivaldi": self.vi_pgb, "chrome": self.cr_pgb, "chromium": self.ch_pgb, "msedge": self.ms_pgb, "firefox": self.fx_pgb, "brave": self.br_pgb, "opera": self.op_pgb, "waterfox": self.wf_pgb, "falkon": self.fa_pgb, "web": self.we_pgb}
+    # states = {"vivaldi": "self.statevivaldi", "chrome": self.statechrome, "chromium": self.statechromium, "msedge": self.statemsedge, "firefox": self.statefirefox, "brave": self.statebrave, "opera": self.stateopera, "waterfox": self.statewaterfox, "falkon": self.statefalkon, "web": self.stateweb}
+    # browsers = ["vivaldi", "chrome", "chromium", "msedge", "firefox", "brave", "opera", "waterfox", "falkon", "web"]
+    # actions = ["install", "uninstall"]
+        
+    #@browser_thread("falkon", "install")
+    #def on_installfalkon(self, widget):
+        #pass
+        
+    #@browser_thread("falkon", "uninstall")
+    #def on_uninstallfalkon(self, widget):
+        #pass
+        
+        # for browser in browsers:
+            # for action in actions:
+                # @browser_thread(browser, action)
+                # def f(self, widget):
+                    # pass
+                # setattr(MyClass, f'on_{action}{browser}', f)
+    
+    
     def on_instvivaldi(self, widget):                                 
         self.begin_process()
         self.vi_pgb.set_visible(True)
