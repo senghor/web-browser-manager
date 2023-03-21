@@ -75,6 +75,9 @@ class BrowserManager(Gtk.Window):
         super().__init__()
         
         self.title = "Web Browser Manager"
+        
+        self.width = 833
+        self.height = 440
                 
         self.connect("destroy", self.on_destroy)
         
@@ -83,6 +86,7 @@ class BrowserManager(Gtk.Window):
     def initUI(self):
         self.set_title(self.title)
         self.set_position(Gtk.WindowPosition.CENTER)
+        self.set_size_request(self.width, self.height)
         
         # self.add(flowbox)
         
@@ -142,67 +146,67 @@ class BrowserManager(Gtk.Window):
 ############################
         
         #Vivaldi
-        vivaldilabel = create_label("Vivaldi", 35, 10)
-        self.aboutvivaldi = about_button(imgvi, (35, 35), self.on_aboutvivaldi, "About Vivaldi")
-        self.statevivaldi = int_button("Uninstall" if binvi else "Install", (30, 130), self.on_uninstvivaldi if binvi else self.on_instvivaldi, "Vivaldi")
+        vivaldilabel = create_label("Vivaldi", 48, 10)
+        self.aboutvivaldi = about_button(imgvi, (48, 35), self.on_aboutvivaldi, "About Vivaldi")
+        self.statevivaldi = int_button("Uninstall" if binvi else "Install", (43, 130), self.on_uninstvivaldi if binvi else self.on_instvivaldi, "Vivaldi")
         self.vi_pgb = progressbar((11, 131))
         
         #Google Chrome
-        chromelabel = create_label("Google Chrome", 200, 10)
-        self.aboutchrome = about_button(imgcr, (200, 35), self.on_aboutchrome, "About Chrome")
-        self.statechrome = int_button("Uninstall" if bincr else "Install", (195, 130), self.on_uninstchrome if bincr else self.on_instchrome, "Chrome")
+        chromelabel = create_label("Google Chrome", 213, 10)
+        self.aboutchrome = about_button(imgcr, (213, 35), self.on_aboutchrome, "About Chrome")
+        self.statechrome = int_button("Uninstall" if bincr else "Install", (208, 130), self.on_uninstchrome if bincr else self.on_instchrome, "Chrome")
         self.cr_pgb = progressbar((176, 131))
         
         #Chromium
-        chromiumlabel = create_label("Chromium", 365, 10)
-        self.aboutchromium = about_button(imgch, (365, 35), self.on_aboutchromium, "About Chromium")
-        self.statechromium = int_button("Uninstall" if binch else "Install", (360, 130), self.on_uninstchromium if binch else self.on_instchromium, "Chromium")
+        chromiumlabel = create_label("Chromium", 378, 10)
+        self.aboutchromium = about_button(imgch, (378, 35), self.on_aboutchromium, "About Chromium")
+        self.statechromium = int_button("Uninstall" if binch else "Install", (373, 130), self.on_uninstchromium if binch else self.on_instchromium, "Chromium")
         self.ch_pgb = progressbar((341, 131))
         
         #MS Edge
-        msedgelabel = create_label("Microsoft Edge", 530, 10)
-        self.aboutmsedge = about_button(imgms, (530, 35), self.on_aboutmsedge, "About Microsoft Edge")
-        self.statemsedge = int_button("Uninstall" if binms else "Install", (525, 130), self.on_uninstmsedge if binms else self.on_instmsedge, "Microsoft Edge")
+        msedgelabel = create_label("Microsoft Edge", 543, 10)
+        self.aboutmsedge = about_button(imgms, (543, 35), self.on_aboutmsedge, "About Microsoft Edge")
+        self.statemsedge = int_button("Uninstall" if binms else "Install", (538, 130), self.on_uninstmsedge if binms else self.on_instmsedge, "Microsoft Edge")
         self.ms_pgb = progressbar((506, 131))
         
         #Firefox
-        firefoxlabel = create_label("Mozilla Firefox", 695, 10)
-        self.aboutfirefox = about_button(imgfx, (695, 35), self.on_aboutfirefox, "About Firefox")
-        self.statefirefox = int_button("Uninstall" if binfx else "Install", (690, 130), self.on_uninstfirefox if binfx else self.on_instfirefox, "Firefox")
+        firefoxlabel = create_label("Mozilla Firefox", 708, 10)
+        self.aboutfirefox = about_button(imgfx, (708, 35), self.on_aboutfirefox, "About Firefox")
+        self.statefirefox = int_button("Uninstall" if binfx else "Install", (703, 130), self.on_uninstfirefox if binfx else self.on_instfirefox, "Firefox")
         self.fx_pgb = progressbar((671, 131))
         
         #Brave
-        bravelabel = create_label("Brave", 35, 190)
-        self.aboutbrave = about_button(imgbr, (35, 220), self.on_aboutbrave, "About Brave")
-        self.statebrave = int_button("Uninstall" if binbr else "Install", (30, 315), self.on_uninstbrave if binbr else self.on_instbrave, "Brave")
+        bravelabel = create_label("Brave", 48, 190)
+        self.aboutbrave = about_button(imgbr, (48, 220), self.on_aboutbrave, "About Brave")
+        self.statebrave = int_button("Uninstall" if binbr else "Install", (43, 315), self.on_uninstbrave if binbr else self.on_instbrave, "Brave")
         self.br_pgb = progressbar((11, 316))
         
         #Opera
-        operalabel = create_label("Opera", 200, 190)
-        self.aboutopera = about_button(imgop, (200, 220), self.on_aboutopera, "About Opera")
-        self.stateopera = int_button("Uninstall" if binop else "Install", (195, 315), self.on_uninstopera if binop else self.on_instopera, "Opera")
+        operalabel = create_label("Opera", 213, 190)
+        self.aboutopera = about_button(imgop, (213, 220), self.on_aboutopera, "About Opera")
+        self.stateopera = int_button("Uninstall" if binop else "Install", (208, 315), self.on_uninstopera if binop else self.on_instopera, "Opera")
         self.op_pgb = progressbar((176, 316))
        
         #Waterfox
-        waterfoxlabel = create_label("Waterfox", 365, 190)
-        self.aboutwaterfox = about_button(imgwf, (365, 220), self.on_aboutwaterfox, "About Waterfox")
-        self.statewaterfox = int_button("Uninstall" if binwf else "Install", (360, 315), self.on_uninstwaterfox if binwf else self.on_instwaterfox, "Waterfox")
+        waterfoxlabel = create_label("Waterfox", 378, 190)
+        self.aboutwaterfox = about_button(imgwf, (378, 220), self.on_aboutwaterfox, "About Waterfox")
+        self.statewaterfox = int_button("Uninstall" if binwf else "Install", (373, 315), self.on_uninstwaterfox if binwf else self.on_instwaterfox, "Waterfox")
         self.wf_pgb = progressbar((341, 316))
         
         #Falkon
-        falkonlabel = create_label("Falkon", 530, 190)
-        self.aboutfalkon = about_button(imgfa, (530, 220), self.on_aboutfalkon, "About Falkon")
-        self.statefalkon = int_button("Uninstall" if binfa else "Install", (525, 315), self.on_uninstfalkon if binfa else self.on_instfalkon, "Falkon")
+        falkonlabel = create_label("Falkon", 543, 190)
+        self.aboutfalkon = about_button(imgfa, (543, 220), self.on_aboutfalkon, "About Falkon")
+        self.statefalkon = int_button("Uninstall" if binfa else "Install", (538, 315), self.on_uninstfalkon if binfa else self.on_instfalkon, "Falkon")
         self.fa_pgb = progressbar((506, 316))
         
         #Epiphany
-        weblabel = create_label("GNOME Web", 695, 190)
-        self.aboutweb = about_button(imgwe, (695, 220), self.on_aboutweb, "About Epiphany")
-        self.stateweb = int_button("Uninstall" if binwe else "Install", (690, 315), self.on_uninstweb if binwe else self.on_instweb, "Epiphany")
+        weblabel = create_label("GNOME Web", 708, 190)
+        self.aboutweb = about_button(imgwe, (708, 220), self.on_aboutweb, "About Epiphany")
+        self.stateweb = int_button("Uninstall" if binwe else "Install", (703, 315), self.on_uninstweb if binwe else self.on_instweb, "Epiphany")
         self.we_pgb = progressbar((671, 316))
             
         #General Window buttons
-        self.closebtn = int_button("Close", (720, 400), self.on_destroy, "Window")
+        self.closebtn = int_button("Close", (736, 400), self.on_destroy, "Window")
         self.aboutbtn = int_button("About", (10, 400), self.on_aboutbm, "Browser Manager")
         
         
@@ -268,8 +272,6 @@ class BrowserManager(Gtk.Window):
         self.stateopera.set_visible(True)
     
     #Install and Uninstall functions
-    
-    
     
     def browser_thread(browser_name: str, action: str):
         def decorator(func):
