@@ -38,7 +38,7 @@ if [ ! $(whoami) = "root" ]; then
     #######
     #Error#
     #######
-    zenity  --error --text="Feren OS couldn't install Microsoft Edge successfully
+    zenity  --error --text="Web Browser Manager couldn't install Microsoft Edge successfully
 
 A log can be found at File System/tmp/msedge-install-log" --title="Error" --no-wrap &
     exit 0

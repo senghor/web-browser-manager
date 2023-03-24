@@ -41,7 +41,7 @@ if [ ! "$(whoami)" = "root" ]; then
             #######
             #Error#
             #######
-            zenity  --error --text="Feren OS couldn't remove Microsoft Edge successfully
+            zenity  --error --text="Web Browser Manager couldn't remove Microsoft Edge successfully
 
 A log can be found at File System/tmp/msedge-removal-log" --title="Error" --no-wrap &
             exit 0

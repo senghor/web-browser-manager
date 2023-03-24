@@ -609,7 +609,7 @@ class BrowserManager(Gtk.Window):
             dialog.destroy()
 
     def on_aboutbm(self, widget):
-            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Web Browser Manager is a utility for managing the web browsers that you have installed on your system. Choose from a variety of browsers with just a few clicks and find the browser that is right for you in no time.\n\nCopyright (GPLv3):\n- Feren OS Developer (2015-2020)\n- AZorin (2010-2015)\n- ZorinK (2010)\n\n\nWeb Browser Manager is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See Version 3 of the GNU General Public License for more details.")
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Web Browser Manager is a utility for managing the web browsers that you have installed on your system. Choose from a variety of browsers with just a few clicks and find the browser that is right for you in no time.\n\nCopyright (GPLv3):\n- Bodhi Linux Developer (2022-2023)\n- Feren OS Developer (2015-2020)\n- AZorin (2010-2015)\n- ZorinK (2010)\n\n\nWeb Browser Manager is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See Version 3 of the GNU General Public License for more details.")
             dialog.run()
             dialog.destroy()
 

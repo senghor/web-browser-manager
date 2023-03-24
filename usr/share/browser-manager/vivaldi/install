@@ -42,7 +42,7 @@ Vivaldi?" --no-wrap
     #######
     #Error#
     #######
-    zenity  --error --text="Feren OS couldn't install Vivaldi successfully
+    zenity  --error --text="Web Browser Manager couldn't install Vivaldi successfully
 
 A log can be found at File System/tmp/vivaldi-install-log" --title="Error" --no-wrap &
     exit 0

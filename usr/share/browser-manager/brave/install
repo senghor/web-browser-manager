@@ -39,7 +39,7 @@ are you sure you want to install Brave?" --no-wrap
     #######
     #Error#
     #######
-    zenity  --error --text="Feren OS couldn't install Brave successfully
+    zenity  --error --text="Web Browser Manager couldn't install Brave successfully
 
 A log can be found at File System/tmp/brave-install-log" --title="Error" --no-wrap &
     exit 0

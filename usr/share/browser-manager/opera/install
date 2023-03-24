@@ -42,7 +42,7 @@ you want to install Opera?" --no-wrap
     #######
     #Error#
     #######
-    zenity  --error --text="Feren OS couldn't install Opera successfully
+    zenity  --error --text="Web Browser Manager couldn't install Opera successfully
 
 A log can be found at File System/tmp/opera-install-log" --title="Error" --no-wrap &
     exit 0

@@ -38,7 +38,7 @@ if [ ! $(whoami) = "root" ]; then
     #######
     #Error#
     #######
-    zenity  --error --text="Feren OS couldn't install Chromium successfully
+    zenity  --error --text="Web Browser Manager couldn't install Chromium successfully
 
 A log can be found at File System/tmp/chromium-install-log" --title="Error" --no-wrap &
     exit 0

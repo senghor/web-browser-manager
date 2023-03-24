@@ -42,7 +42,7 @@ sure you want to install Waterfox?" --no-wrap
     #######
     #Error#
     #######
-    zenity  --error --text="Feren OS couldn't install Waterfox successfully
+    zenity  --error --text="Web Browser Manager couldn't install Waterfox successfully
 
 A log can be found at File System/tmp/waterfox-install-log" --title="Error" --no-wrap &
     exit 0

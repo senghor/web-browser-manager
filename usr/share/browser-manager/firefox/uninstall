@@ -38,7 +38,7 @@ if [ ! "$(whoami)" = "root" ]; then
             #Error#
             #######
     fi
-    zenity  --error --text="Feren OS couldn't remove Mozilla Firefox successfully
+    zenity  --error --text="Web Browser Manager couldn't remove Mozilla Firefox successfully
 
 A log can be found at File System/tmp/firefox-removal-log" --title="Error" --no-wrap &
     exit 0

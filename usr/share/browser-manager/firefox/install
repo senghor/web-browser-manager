@@ -43,7 +43,7 @@ are you sure you want to install Mozilla Firefox?" --no-wrap
     #######
     #Error#
     #######
-    zenity  --error --text="Feren OS couldn't install Mozilla Firefox successfully
+    zenity  --error --text="Web Browser Manager couldn't install Mozilla Firefox successfully
 
 A log can be found at File System/tmp/firefox-install-log" --title="Error" --no-wrap &
     exit 0
