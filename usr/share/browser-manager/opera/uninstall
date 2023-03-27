@@ -62,7 +62,8 @@ if [ $? -eq 0 ]; then
         #Log output
         exec 1>/tmp/opera-removal-log 2>&1
         
-                  apt-get -y remove opera-stable
+                  apt-get -y purge opera-stable
+                  rm -f /usr/share/keyrings/opera-archive-keyring.key
          fi
          exit
 fi

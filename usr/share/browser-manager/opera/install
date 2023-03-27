@@ -3,7 +3,7 @@
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l opera-stable |grep -q ^ii
+dpkg -l opera-stable | grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/opera" ]; then
@@ -51,7 +51,7 @@ fi
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l opera-stable |grep -q ^ii
+dpkg -l opera-stable | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/opera" ]; then
@@ -65,16 +65,16 @@ if [ ! $? -eq 0 ]; then
 		#Add PPA if it doesn't exist
 
 		if [ ! -f /etc/apt/sources.list.d/opera-stable.list ]; then
-			wget -qO- https://deb.opera.com/archive.key | apt-key add -
+			wget -qO - https://deb.opera.com/archive.key | sudo tee /usr/share/keyrings/opera-archive-keyring.key
             if [ ! $? -eq 0 ]; then
                 exit 1
             fi
-			echo "deb https://deb.opera.com/opera-stable/ stable non-free" > /etc/apt/sources.list.d/opera-stable.list
+			echo "deb [signed-by=/usr/share/keyrings/opera-archive-keyring.key] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera-stable.list
 		fi
                   sleep 1
                   apt-get update
                   echo "opera-stable opera-stable/add-deb-source boolean true" | debconf-set-selections
-                  apt-get install -y -q opera-stable
+                  apt-get -y install opera-stable
          fi
          exit
 fi

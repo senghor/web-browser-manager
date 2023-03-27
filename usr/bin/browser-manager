@@ -518,7 +518,7 @@ class BrowserManager(Gtk.Window):
             args=("opera", "uninstall", self)
         )
         t.start()
-        self.statefopera.set_label("Install")
+        self.stateopera.set_label("Install")
         self.stateopera.disconnect_by_func(self.on_uninstopera)
         self.stateopera.connect("clicked", self.on_instopera)
 

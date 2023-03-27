@@ -63,8 +63,8 @@ if [ $? -eq 0 ]; then
         exec 1>/tmp/brave-removal-log 2>&1
         
                   apt-get -y purge brave-browser brave-keyring
-		  rm -f /usr/share/keyrings/brave-browser-archive-keyring.gpg
-		  rm -f /etc/apt/sources.list.d/brave-browser-release.list
+                  rm -f /usr/share/keyrings/brave-browser-archive-keyring.gpg
+                  rm -f /etc/apt/sources.list.d/brave-browser-release.list
          fi
          exit
 fi
