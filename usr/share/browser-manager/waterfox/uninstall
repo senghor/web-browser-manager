@@ -3,10 +3,10 @@
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l waterfox-current-kpe | grep -q ^ii
+dpkg -l waterfox-g-kpe | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
-         if [ ! -e "/usr/bin/waterfox-current" ]; then
+         if [ ! -e "/usr/bin/waterfox-g" ]; then
                   zenity --info --title="Information" --text="Waterfox is not installed" --no-wrap &
                   exit 0
          fi
@@ -31,10 +31,10 @@ if [ ! "$(whoami)" = "root" ]; then
     ######################
     #Double Check Package#
     ######################
-    dpkg -l waterfox-current-kpe |grep -q ^ii
+    dpkg -l waterfox-g-kpe |grep -q ^ii
 
     if [ ! $? -eq 0 ]; then
-            if [ ! -e "/usr/bin/waterfox-current" ]; then
+            if [ ! -e "/usr/bin/waterfox-g" ]; then
                     zenity --info --title="Uninstalled Waterfox" --text="Waterfox was successfully removed" --no-wrap &
                     exit 0
             fi
@@ -51,10 +51,10 @@ fi
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l waterfox-current-kpe | grep -q ^ii
+dpkg -l waterfox-g-kpe | grep -q ^ii
 
 if [ $? -eq 0 ]; then
-         if [ -e "/usr/bin/waterfox-current" ]; then
+         if [ -e "/usr/bin/waterfox-g" ]; then
 
 ###################
 #Uninstall program#
@@ -62,7 +62,9 @@ if [ $? -eq 0 ]; then
         #Log output
         exec 1>/tmp/waterfox-removal-log 2>&1
         
-                  apt-get -y purge waterfox-current-kpe
+                  apt-get -y purge waterfox-g-kpe
+                  rm -f /usr/share/keyrings/waterfox-archive-keyring.gpg
+                  rm -f /etc/apt/sources.list.d/waterfox.list
          fi
          exit
 fi

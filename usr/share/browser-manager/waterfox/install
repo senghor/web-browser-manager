@@ -3,10 +3,10 @@
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l waterfox-current-kde | grep -q ^ii
+dpkg -l waterfox-g-kpe | grep -q ^ii
 
 if [ $? -eq 0 ]; then
-         if [ -e "/usr/bin/waterfox-current" ]; then
+         if [ -e "/usr/bin/waterfox-g" ]; then
                   zenity --info --title="Information" --text="Waterfox is already installed" --no-wrap &
                   exit 0
          fi
@@ -19,7 +19,7 @@ fi
 ################
 if [ ! $(whoami) = "root" ]; then
     zenity --question --title="Continue?" --text "The usage of Waterfox is governed by the Privacy Policy
-found on https://www.waterfox.net/privacy/, are you
+found on https://www.waterfox.net/docs/policies/privacy/, are you
 sure you want to install Waterfox?" --no-wrap
 
     if [ ! $? -eq 0 ]; then
@@ -35,7 +35,7 @@ sure you want to install Waterfox?" --no-wrap
     ######################
     #Double Check Package#
     ######################
-    if [ -e "/usr/bin/waterfox-current" ]; then
+    if [ -e "/usr/bin/waterfox-g" ]; then
             zenity --info --title="Installation Complete" --text="Waterfox was successfully installed" --no-wrap &
             exit 0
     fi
@@ -52,10 +52,10 @@ fi
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l waterfox-current-kde | grep -q ^ii
+dpkg -l waterfox-g-kpe | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
-         if [ ! -e "/usr/bin/waterfox-current" ]; then
+         if [ ! -e "/usr/bin/waterfox-g" ]; then
 
 #################
 #Install program#
@@ -64,15 +64,14 @@ if [ ! $? -eq 0 ]; then
         exec 1>/tmp/waterfox-install-log 2>&1
         
                 if [ ! -f /etc/apt/sources.list.d/waterfox.list ]; then
-                    wget -nv https://download.opensuse.org/repositories/home:hawkeye116477:waterfox/xUbuntu_18.04/Release.key -O "/tmp/home:hawkeye116477:waterfox.key"
-                    apt-key add - < "/tmp/home:hawkeye116477:waterfox.key"
+                    curl -fsSL https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /usr/share/keyrings/waterfox-archive-keyring.gpg
                     if [ ! $? -eq 0 ]; then
                         exit 1
                     fi
-                    echo -e "deb http://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_18.04/ /" > /etc/apt/sources.list.d/waterfox.list
+                    echo 'deb [signed-by=/usr/share/keyrings/waterfox-archive-keyring.gpg] https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/waterfox.list
                 fi
                 apt-get update
-                apt-get -y install waterfox-current-kde
+                apt-get -y install waterfox-g-kpe
          fi
          exit
 fi
