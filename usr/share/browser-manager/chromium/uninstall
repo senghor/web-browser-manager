@@ -3,7 +3,7 @@
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l chromium |grep -q ^ii
+dpkg -l bodhi-chromium | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/chromium" ]; then
@@ -31,7 +31,7 @@ if [ ! "$(whoami)" = "root" ]; then
     ######################
     #Double Check Package#
     ######################
-    dpkg -l chromium |grep -q ^ii
+    dpkg -l bodhi-chromium | grep -q ^ii
 
     if [ ! $? -eq 0 ]; then
             if [ ! -e "/usr/bin/chromium" ]; then
@@ -51,7 +51,7 @@ fi
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l chromium |grep -q ^ii
+dpkg -l bodhi-chromium | grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/chromium" ]; then
@@ -62,8 +62,7 @@ if [ $? -eq 0 ]; then
         #Log output
         exec 1>/tmp/chromium-removal-log 2>&1
         
-                  apt-get -y remove chromium linuxmint-keyring
-                  rm -f /etc/apt/preferences.d/lm-only-chromium.pref /etc/apt/sources.list.d/linux-mint.list
+                  apt-get -y purge bodhi-chromium 
          fi
          exit
 fi
