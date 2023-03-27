@@ -3,7 +3,7 @@
 ###################################
 #Check if program is not installed#
 ###################################
-flatpak list | grep org.mozilla.firefox
+dpkg -l firefox | grep -q ^ii
 
 if [ ! $? -eq 0 ] && [ ! -f /usr/bin/firefox ]; then
     zenity --info --title="Information" --text="Mozilla Firefox is not installed" --no-wrap &
@@ -29,7 +29,7 @@ if [ ! "$(whoami)" = "root" ]; then
     ######################
     #Double Check Package#
     ######################
-    flatpak list | grep org.mozilla.firefox
+    dpkg -l firefox | grep -q ^ii
 
     if [ ! $? -eq 0 ] && [ ! -f /usr/bin/firefox ]; then
         zenity --info --title="Uninstalled Mozilla Firefox" --text="Mozilla Firefox was successfully removed" --no-wrap &
@@ -47,7 +47,7 @@ fi
 ###############################
 #Check if program is installed#
 ###############################
-flatpak list | grep org.mozilla.firefox
+dpkg -l firefox | grep -q ^ii
 
 if [ $? -eq 0 ] || [ -f /usr/bin/firefox ]; then
 
@@ -57,8 +57,11 @@ if [ $? -eq 0 ] || [ -f /usr/bin/firefox ]; then
         #Log output
         exec 1>/tmp/firefox-removal-log 2>&1
         
-        flatpak remove org.mozilla.firefox -y
-        if [ -f "/usr/bin/firefox" ]; then apt purge firefox -y; fi #Legacy support
+            #Remove Firefox, PPA and keys
+            apt-get -y purge firefox
+            rm -f /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-jammy.list
+            rm -f /etc/apt/trusted.gpg.d/mozillateam-ubuntu-ppa*
+        fi
         exit
 fi
 

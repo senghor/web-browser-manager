@@ -3,7 +3,7 @@
 ###############################
 #Check if program is installed#
 ###############################
-flatpak list | grep org.mozilla.firefox
+dpkg -l firefox | grep -q ^ii
 
 if [ $? -eq 0 ]; then
     zenity --info --title="Information" --text="Mozilla Firefox is already installed" --no-wrap &
@@ -33,10 +33,7 @@ are you sure you want to install Mozilla Firefox?" --no-wrap
     ######################
     #Double Check Package#
     ######################
-    flatpak list | grep org.mozilla.firefox
-    if [ $? -eq 0 ]; then
-            /usr/bin/feren-flatpak-themelock-check &
-            /usr/bin/feren-flatpak-themelock org.mozilla.firefox
+    if [ -e "/usr/bin/firefox" ]; then
             zenity --info --title="Installation Complete" --text="Mozilla Firefox was successfully installed" --no-wrap &
             exit 0
     fi
@@ -52,9 +49,10 @@ fi
 ###################################
 #Check if program is not installed#
 ###################################
-flatpak list | grep org.mozilla.firefox
+dpkg -l firefox | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
+        if [ ! -e "/usr/bin/firefox" ]; then
 
 #################
 #Install program#
@@ -62,8 +60,20 @@ if [ ! $? -eq 0 ]; then
         #Log output
         exec 1>/tmp/firefox-install-log 2>&1
         
-        apt-get update
-        apt-get -y install flatpak feren-flatpak-management firefox-flatpak
+                #Add PPa if it doesn't exist
+                if [ ! -f /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-jammy.list ]; then
+                    apt-add-repository -y ppa:mozillateam/ppa
+                    if [ ! $? -eq 0 ]; then
+                        exit 1
+                    fi
+                    #Set install location preference
+                    echo -e "Package: firefox* \nPin: release o=LP-PPA-mozillateam \nPin-Priority: 501" | sudo tee /etc/apt/preferences.d/firefox.pref
+                fi
+            sleep 1
+            #Install Firefox
+            apt-get update
+            apt-get -y install firefox
+        fi
         exit
 fi
 
