@@ -3,7 +3,7 @@
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l google-chrome-stable |grep -q ^ii
+dpkg -l google-chrome-stable | grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/google-chrome" ]; then
@@ -16,14 +16,14 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    if [ ! -f /tmp/chrome-tos.txt ]; then
-        lynx --dump https://www.google.com/chrome/browser/privacy/eula_text.html | awk 'NR>1' > /tmp/chrome-tos.txt
+    	#lynx --dump https://www.google.com/chrome/browser/privacy/eula_text.html | awk 'NR>1' > /tmp/chrome-tos.txt
+	links -dump https://www.google.com/chrome/terms/ | awk 'NR==3, NR==45' > /tmp/chrome-tos.txt
         chmod 755 /tmp/chrome-tos.txt
-    fi
-    echo "The use of Google Chrome is governed by these terms and conditions, are you sure you want to install Chrome?
-    $(cat /tmp/chrome-tos.txt)" > /tmp/chrome-tos.txt
+	echo "The use of Google Chrome is governed by these terms and conditions, are you sure you want to install Chrome?
+	$(cat /tmp/chrome-tos.txt)" > /tmp/chrome-tos.txt
+    
     if [ -f /tmp/chrome-tos.txt ]; then
-        zenity --text-info --filename=/tmp/chrome-tos.txt --title="Continue?" --text  --checkbox="I read and accept the terms. I would like to install Google Chrome." --cancel-label="No" --ok-label="Yes" --icon-name="dialog-question"
+        zenity --text-info --width 635 --height 400 --title="Continue?" --filename=/tmp/chrome-tos.txt  --checkbox="I read and accept the terms. I would like to install Google Chrome." --cancel-label="No" --ok-label="Yes" --icon-name="dialog-question" 
     else
         ##########
         #Question#
@@ -60,7 +60,7 @@ fi
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l google-chrome-stable |grep -q ^ii
+dpkg -l google-chrome-stable | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/google-chrome" ]; then
@@ -72,11 +72,11 @@ if [ ! $? -eq 0 ]; then
         exec 1>/tmp/chrome-install-log 2>&1
         
                 if [ ! -f /etc/apt/sources.list.d/google-chrome.list ]; then
-                    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+                    wget -qO - https://dl.google.com/linux/linux_signing_key.pub | sudo tee /usr/share/keyrings/chrome-archive-keyring.pub
                     if [ ! $? -eq 0 ]; then
                         exit 1
                     fi
-                    echo -e "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+                    echo -e "deb [signed-by=/usr/share/keyrings/chrome-archive-keyring.pub, arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
                 fi
                 apt-get update
                 apt-get -y install google-chrome-stable

@@ -3,7 +3,7 @@
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l falkon | grep -q ^ii
+dpkg -l falkon |grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/falkon" ]; then
@@ -31,7 +31,7 @@ if [ ! "$(whoami)" = "root" ]; then
     ######################
     #Double Check Package#
     ######################
-    dpkg -l falkon | grep -q ^ii
+    dpkg -l falkon |grep -q ^ii
 
     if [ ! $? -eq 0 ]; then
             if [ ! -e "/usr/bin/falkon" ]; then
@@ -51,7 +51,7 @@ fi
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l falkon | grep -q ^ii
+dpkg -l falkon |grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/falkon" ]; then
@@ -62,7 +62,7 @@ if [ $? -eq 0 ]; then
         #Log output
         exec 1>/tmp/falkon-removal-log 2>&1
         
-                  apt-get -y purge falkon
+                  apt-get -y remove falkon
          fi
          exit
 fi

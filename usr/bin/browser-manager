@@ -48,6 +48,7 @@ imgbr = '/usr/share/browser-manager/brave/Brave_logo.png'
 imgwf = '/usr/share/browser-manager/waterfox/Waterfox_logo.png'
 imgwe = '/usr/share/browser-manager/web/Epiphany_logo.png'
 imgms = '/usr/share/browser-manager/msedge/Edge_logo.png'
+imgpm = '/usr/share/browser-manager/palemoon/Palemoon_logo.png'
 imgfa = '/usr/share/browser-manager/falkon/Falkon_logo.png'
 
 #Browser location
@@ -60,6 +61,7 @@ binbr = os.path.isfile("/usr/bin/brave-browser")
 binwf = os.path.isfile("/usr/bin/waterfox-current")
 binwe = os.path.isfile("/usr/bin/epiphany-browser")
 binms = os.path.isfile("/usr/bin/microsoft-edge")
+binpm = os.path.isfile("/usr/lib/palemoon/palemoon")
 binfa = os.path.isfile("/usr/bin/falkon")
 
 class BrowserManagerManager():

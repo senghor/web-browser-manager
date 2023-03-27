@@ -3,7 +3,7 @@
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l google-chrome-stable |grep -q ^ii
+dpkg -l google-chrome-stable | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/google-chrome" ]; then
@@ -31,7 +31,7 @@ if [ ! "$(whoami)" = "root" ]; then
     ######################
     #Double Check Package#
     ######################
-    dpkg --get-selections | grep -P -q "google-chrome-stable\t*install"
+    dpkg -l google-chrome-stable | grep -q ^ii
 
     if [ ! $? -eq 0 ]; then
             if [ ! -e "/usr/bin/google-chrome" ]; then
@@ -51,7 +51,7 @@ fi
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l google-chrome-stable |grep -q ^ii
+dpkg -l google-chrome-stable | grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/google-chrome" ]; then
@@ -62,7 +62,9 @@ if [ $? -eq 0 ]; then
         #Log output
         exec 1>/tmp/chrome-removal-log 2>&1
         
-                  apt-get -y remove google-chrome-stable
+                  apt-get -y purge google-chrome-stable
+		  rm -f /usr/share/keyrings/chrome-archive-keyring.pub
+		  rm -f /etc/apt/sources.list.d/google-chrome.list
          fi
          exit
 fi

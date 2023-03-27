@@ -3,7 +3,7 @@
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l epiphany-browser |grep -q ^ii
+dpkg -l epiphany-browser | grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/epiphany-browser" ]; then
@@ -49,7 +49,7 @@ fi
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l epiphany-browser |grep -q ^ii
+dpkg -l epiphany-browser | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/epiphany-browser" ]; then
@@ -61,7 +61,7 @@ if [ ! $? -eq 0 ]; then
         exec 1>/tmp/epiphany-install-log 2>&1
         
                   apt-get update
-                  apt-get -y install epiphany-browser epiphany-browser-data
+                  apt-get -y install --no-install-recommends epiphany-browser
          fi
          exit
 fi

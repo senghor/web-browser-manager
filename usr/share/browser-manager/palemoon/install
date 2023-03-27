@@ -3,7 +3,7 @@
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l falkon | grep -q ^ii
+dpkg -l falkon |grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/falkon" ]; then
@@ -49,7 +49,7 @@ fi
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l falkon | grep -q ^ii
+dpkg -l falkon |grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/falkon" ]; then
@@ -61,7 +61,7 @@ if [ ! $? -eq 0 ]; then
         exec 1>/tmp/falkon-install-log 2>&1
         
                   apt-get update
-                  apt-get -y install --no-install-recommends falkon
+                  apt-get -y install falkon
          fi
          exit
 fi
