@@ -3,7 +3,7 @@
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l waterfox-current-kde |grep -q ^ii
+dpkg -l waterfox-current-kde | grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/waterfox-current" ]; then
@@ -52,7 +52,7 @@ fi
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l waterfox-current-kde |grep -q ^ii
+dpkg -l waterfox-current-kde | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/waterfox-current" ]; then

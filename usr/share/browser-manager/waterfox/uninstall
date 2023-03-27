@@ -3,7 +3,7 @@
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l waterfox-current-kpe |grep -q ^ii
+dpkg -l waterfox-current-kpe | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/waterfox-current" ]; then
@@ -51,7 +51,7 @@ fi
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l waterfox-current-kpe |grep -q ^ii
+dpkg -l waterfox-current-kpe | grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/waterfox-current" ]; then
@@ -62,7 +62,7 @@ if [ $? -eq 0 ]; then
         #Log output
         exec 1>/tmp/waterfox-removal-log 2>&1
         
-                  apt-get -y remove waterfox-current-kpe
+                  apt-get -y purge waterfox-current-kpe
          fi
          exit
 fi
