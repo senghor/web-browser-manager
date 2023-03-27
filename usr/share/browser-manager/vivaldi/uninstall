@@ -3,7 +3,7 @@
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l vivaldi-stable |grep -q ^ii
+dpkg -l vivaldi-stable | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/vivaldi" ]; then
@@ -31,7 +31,7 @@ if [ ! "$(whoami)" = "root" ]; then
     ######################
     #Double Check Package#
     ######################
-    dpkg -l vivaldi-stable |grep -q ^ii
+    dpkg -l vivaldi-stable | grep -q ^ii
 
     if [ ! $? -eq 0 ]; then
             if [ ! -e "/usr/bin/vivaldi" ]; then
@@ -51,7 +51,7 @@ fi
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l vivaldi-stable |grep -q ^ii
+dpkg -l vivaldi-stable | grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/vivaldi" ]; then
@@ -62,7 +62,8 @@ if [ $? -eq 0 ]; then
         #Log output
         exec 1>/tmp/vivaldi-removal-log 2>&1
         
-                  apt-get -y remove vivaldi-stable
+                  apt-get -y purge vivaldi-stable
+                  rm -f /usr/share/keyrings/vivaldi-archive-keyring.pub
          fi
          exit
 fi

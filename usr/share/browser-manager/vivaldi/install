@@ -3,7 +3,7 @@
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l vivaldi-stable |grep -q ^ii
+dpkg -l vivaldi-stable | grep -q ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/vivaldi" ]; then
@@ -52,7 +52,7 @@ fi
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l vivaldi-stable |grep -q ^ii
+dpkg -l vivaldi-stable | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/vivaldi" ]; then
@@ -64,14 +64,14 @@ if [ ! $? -eq 0 ]; then
         exec 1>/tmp/vivaldi-install-log 2>&1
         
                 if [ ! -f /etc/apt/sources.list.d/vivaldi.list ]; then
-                    wget -q -O - http://repo.vivaldi.com/stable/linux_signing_key.pub | apt-key add -
+                    wget -qO - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo tee /usr/share/keyrings/vivaldi-archive-keyring.pub
                     if [ ! $? -eq 0 ]; then
                         exit 1
                     fi
-                    echo -e "deb http://repo.vivaldi.com/stable/deb/ stable main" > /etc/apt/sources.list.d/vivaldi.list
+                    echo "deb [signed-by=/usr/share/keyrings/vivaldi-archive-keyring.pub, arch=amd64] http://repo.vivaldi.com/stable/deb/ stable main" | sudo tee /etc/apt/sources.list.d/vivaldi.list
                 fi
                 apt-get update
-                apt-get -y install vivaldi-stable feren-vivaldi-theme
+                apt-get -y install vivaldi-stable
          fi
          exit
 fi
