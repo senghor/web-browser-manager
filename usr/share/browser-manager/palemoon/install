@@ -3,11 +3,11 @@
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l falkon |grep -q ^ii
+dpkg -l palemoon | grep -q ^ii
 
 if [ $? -eq 0 ]; then
-         if [ -e "/usr/bin/falkon" ]; then
-                  zenity --info --title="Information" --text="Falkon is already installed" --no-wrap &
+         if [ -e "/usr/bin/palemoon" ]; then
+                  zenity --info --title="Information" --text="Palemoon is already installed" --no-wrap &
                   exit 0
          fi
 fi
@@ -18,7 +18,7 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    zenity --question --title="Continue?" --text "Are you sure you want to install Falkon?" --no-wrap
+    zenity --question --title="Continue?" --text "Are you sure you want to install Palemoon?" --no-wrap
 
     if [ ! $? -eq 0 ]; then
            exit
@@ -33,35 +33,35 @@ if [ ! $(whoami) = "root" ]; then
     ######################
     #Double Check Package#
     ######################
-    if [ -e "/usr/bin/falkon" ]; then
-            zenity --info --title="Installation Complete" --text="Falkon was successfully installed" --no-wrap &
+    if [ -e "/usr/bin/palemoon" ]; then
+            zenity --info --title="Installation Complete" --text="Palemoon was successfully installed" --no-wrap &
             exit 0
     fi
     #######
     #Error#
     #######
-    zenity  --error --text="Web Browser Manager couldn't install Falkon successfully
+    zenity  --error --text="Web Browser Manager couldn't install Palemoon successfully
 
-A log can be found at File System/tmp/falkon-install-log" --title="Error" --no-wrap &
+A log can be found at File System/tmp/palemoon-install-log" --title="Error" --no-wrap &
     exit 0
 fi
 
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l falkon |grep -q ^ii
+dpkg -l palemoon | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
-         if [ ! -e "/usr/bin/falkon" ]; then
+         if [ ! -e "/usr/bin/palemoon" ]; then
 
 #################
 #Install program#
 #################
         #Log output
-        exec 1>/tmp/falkon-install-log 2>&1
+        exec 1>/tmp/palemoon-install-log 2>&1
         
                   apt-get update
-                  apt-get -y install falkon
+                  apt-get -y install palemoon
          fi
          exit
 fi
@@ -69,5 +69,5 @@ fi
 #######
 #Error#
 #######
-zenity  --error --text="An error occured while initiating the Falkon installation process" --title="Error" --no-wrap &
+zenity  --error --text="An error occured while initiating the Palemoon installation process" --title="Error" --no-wrap &
 exit 0
