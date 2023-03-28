@@ -18,9 +18,7 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    zenity --question --title="Continue?" --text "The use of Opera is governed by the Terms found on https://www.opera.com/terms
-and the Privacy Statement found on https://www.opera.com/privacy, are you sure
-you want to install Opera?" --no-wrap
+    zenity --question --title="Continue?" --text "The use of Opera is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.opera.com/terms'>https://www.opera.com/terms</a>\n    <a href='https://www.opera.com/privacy'>https://www.opera.com/privacy</a>\n\nAre you sure you want to install Opera?"
 
     if [ ! $? -eq 0 ]; then
            exit

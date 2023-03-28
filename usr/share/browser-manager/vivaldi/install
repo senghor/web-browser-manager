@@ -18,9 +18,7 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    zenity --question --title="Continue?" --text "The usage of Vivaldi is governed by the Vivaldi EULA and Privacy Policy
-found on https://vivaldi.com/privacy/, are you sure you want to install
-Vivaldi?" --no-wrap
+    zenity --question --title="Continue?" --text "The usage of Vivaldi is governed by the Vivaldi EULA and Privacy Policy found at:\n\n    <a href='https://vivaldi.com/privacy/vivaldi-end-user-license-agreement/'>https://vivaldi.com/privacy/vivaldi-end-user-license-agreement/</a>\n    <a href='https://vivaldi.com/privacy/browser/'>https://vivaldi.com/privacy/browser/</a>\n\nAre you sure you want to install Vivaldi?"
 
     if [ ! $? -eq 0 ]; then
            exit

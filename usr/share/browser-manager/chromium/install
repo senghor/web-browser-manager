@@ -16,7 +16,7 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    zenity --question --title="Continue?" --text "Are you sure you want to install Chromium?" --no-wrap
+    zenity --question --title="Continue?" --text "The use of Chromium is governed by the Terms of Use and Privacy Policy found at: \n\n    <a href='https://creativecommons.org/licenses/by/2.5/'>https://creativecommons.org/licenses/by/2.5/</a>\n    <a href='https://developers.google.com/terms/site-policies'>https://developers.google.com/terms/site-policies</a>\n    <a href='https://www.chromium.org/Home/chromium-privacy/'>https://www.chromium.org/Home/chromium-privacy/</a>\n\nAre you sure you want to install Chromium?"
 
     if [ ! $? -eq 0 ]; then
             exit

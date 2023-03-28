@@ -16,9 +16,7 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    zenity --question --title="Continue?" --text "The use of Mozilla Firefox is governed by the Terms found at
-https://www.mozilla.org/en-US/about/legal/terms/firefox/,
-are you sure you want to install Mozilla Firefox?" --no-wrap
+    zenity --question --title="Continue?" --text "The use of Mozilla Firefox is governed by the Terms found at:\n\n    <a href='https://www.mozilla.org/en-US/about/legal/terms/firefox/'>https://www.mozilla.org/en-US/about/legal/terms/firefox/</a>\n\nAre you sure you want to install Mozilla Firefox?"
 
     if [ ! $? -eq 0 ]; then
            exit

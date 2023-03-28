@@ -18,7 +18,7 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    zenity --question --title="Continue?" --text "Are you sure you want to install GNOME Web?" --no-wrap
+    zenity --question --title="Continue?" --text "The use of GNOME Web is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.gnu.org/philosophy/philosophy.html'>https://www.gnu.org/philosophy/philosophy.html</a>\n    <a href='https://wiki.gnome.org/Apps/Web/PrivacyPolicy'>https://wiki.gnome.org/Apps/Web/PrivacyPolicy</a>\n\nAre you sure you want to install GNOME Web?" --no-wrap
     
     if [ ! $? -eq 0 ]; then
            exit

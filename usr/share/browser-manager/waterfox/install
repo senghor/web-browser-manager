@@ -18,9 +18,7 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    zenity --question --title="Continue?" --text "The usage of Waterfox is governed by the Privacy Policy
-found on https://www.waterfox.net/docs/policies/privacy/, are you
-sure you want to install Waterfox?" --no-wrap
+    zenity --question --title="Continue?" --text "The use of Waterfox is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.waterfox.net/docs/policies/terms'>https://www.waterfox.net/docs/policies/terms</a>\n    <a href='https://www.waterfox.net/docs/policies/privacy'>https://www.waterfox.net/docs/policies/privacy</a>\n\nAre you sure you want to install Waterfox?"
 
     if [ ! $? -eq 0 ]; then
            exit

@@ -18,7 +18,7 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    zenity --question --title="Continue?" --text "Are you sure you want to install Falkon?" --no-wrap
+    zenity --question --title="Continue?" --text "The use of Falkon is governed by the Terms of Use and Privacy Policy found at: \n\n    <a href='https://community.kde.org/Policies/Licensing_Policy'>https://community.kde.org/Policies/Licensing_Policy</a>\n    <a href='https://kde.org/privacypolicy-apps/'>https://kde.org/privacypolicy-apps/</a>\n\nAre you sure you want to install Falkon?"
 
     if [ ! $? -eq 0 ]; then
            exit

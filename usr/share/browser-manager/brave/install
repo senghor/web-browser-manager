@@ -16,8 +16,7 @@ fi
 #Check for root#
 ################
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="Continue?" --text "The use of Brave is governed by the Terms of Use found at https://brave.com/terms-of-use/,
-are you sure you want to install Brave?" --no-wrap
+    zenity --question --title="Continue?" --text "The use of Brave is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://brave.com/terms-of-use/'>https://brave.com/terms-of-use/</a>\n    <a href='https://brave.com/privacy/browser/'>https://brave.com/privacy/browser/</a>\n\nAre you sure you want to install Brave?"
 
     if [ ! $? -eq 0 ]; then
             exit

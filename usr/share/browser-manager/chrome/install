@@ -16,21 +16,8 @@ fi
 #Check for root#
 ################
 if [ ! $(whoami) = "root" ]; then
-    	#lynx --dump https://www.google.com/chrome/browser/privacy/eula_text.html | awk 'NR>1' > /tmp/chrome-tos.txt
-	links -dump https://www.google.com/chrome/terms/ | awk 'NR==3, NR==45' > /tmp/chrome-tos.txt
-        chmod 755 /tmp/chrome-tos.txt
-	echo "The use of Google Chrome is governed by these terms and conditions, are you sure you want to install Chrome?
-	$(cat /tmp/chrome-tos.txt)" > /tmp/chrome-tos.txt
+    zenity --question --title="Continue?" --title="Continue?" --text "The use of Chrome is goverened by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.google.com/chrome/terms/'>https://www.google.com/chrome/terms/</a>\n    <a href='https://www.google.com/chrome/privacy/'>https://www.google.com/chrome/privacy/</a>\n\nAre you sure you want to install Chrome?"
     
-    if [ -f /tmp/chrome-tos.txt ]; then
-        zenity --text-info --width 635 --height 400 --title="Continue?" --filename=/tmp/chrome-tos.txt  --checkbox="I read and accept the terms. I would like to install Google Chrome." --cancel-label="No" --ok-label="Yes" --icon-name="dialog-question" 
-    else
-        ##########
-        #Question#
-        ##########
-        zenity --question --title="Continue?" --text "Are you sure you want to install Google Chrome?" --no-wrap
-    fi
-
     if [ ! $? -eq 0 ]; then
         exit
     fi
