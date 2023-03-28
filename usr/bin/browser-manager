@@ -47,7 +47,7 @@ imgop = '/usr/share/browser-manager/opera/Opera_logo.png'
 imgbr = '/usr/share/browser-manager/brave/Brave_logo.png'
 imgwf = '/usr/share/browser-manager/waterfox/Waterfox_logo.png'
 imgwe = '/usr/share/browser-manager/web/Epiphany_logo.png'
-imgms = '/usr/share/browser-manager/msedge/Edge_logo.png'
+#imgms = '/usr/share/browser-manager/msedge/Edge_logo.png'
 imgpm = '/usr/share/browser-manager/palemoon/Palemoon_logo.png'
 imgfa = '/usr/share/browser-manager/falkon/Falkon_logo.png'
 
@@ -60,7 +60,7 @@ binop = os.path.isfile("/usr/bin/opera")
 binbr = os.path.isfile("/usr/bin/brave-browser")
 binwf = os.path.isfile("/usr/bin/waterfox-g")
 binwe = os.path.isfile("/usr/bin/epiphany-browser")
-binms = os.path.isfile("/usr/bin/microsoft-edge")
+#binms = os.path.isfile("/usr/bin/microsoft-edge")
 binpm = os.path.isfile("/usr/lib/palemoon/palemoon")
 binfa = os.path.isfile("/usr/bin/falkon")
 
@@ -166,10 +166,16 @@ class BrowserManager(Gtk.Window):
         self.ch_pgb = progressbar((341, 131))
         
         #MS Edge
-        msedgelabel = create_label("Microsoft Edge", 543, 10)
-        self.aboutmsedge = about_button(imgms, (543, 35), self.on_aboutmsedge, "About Microsoft Edge")
-        self.statemsedge = int_button("Uninstall" if binms else "Install", (538, 130), self.on_uninstmsedge if binms else self.on_instmsedge, "Microsoft Edge")
-        self.ms_pgb = progressbar((506, 131))
+        # msedgelabel = create_label("Microsoft Edge", 543, 10)
+        # self.aboutmsedge = about_button(imgms, (543, 35), self.on_aboutmsedge, "About Microsoft Edge")
+        # self.statemsedge = int_button("Uninstall" if binms else "Install", (538, 130), self.on_uninstmsedge if binms else self.on_instmsedge, "Microsoft Edge")
+        # self.ms_pgb = progressbar((506, 131))
+        
+        #Palemoon
+        palemoonlabel = create_label("Palemoon", 543, 10)
+        self.aboutpalemoon = about_button(imgpm, (543, 35), self.on_aboutpalemoon, "About Palemoon")
+        self.statepalemoon = int_button("Uninstall" if binpm else "Install", (538, 130), self.on_uninstpalemoon if binpm else self.on_instpalemoon, "Palemoon")
+        self.pm_pgb = progressbar((506, 131))
         
         #Firefox
         firefoxlabel = create_label("Mozilla Firefox", 708, 10)
@@ -238,11 +244,11 @@ class BrowserManager(Gtk.Window):
         self.stateopera.set_visible(False)
         self.statebrave.set_visible(False)
         self.statefalkon.set_visible(False)
-        self.statemsedge.set_visible(False)
-        self.statemsedge.set_visible(False)
+        #self.statemsedge.set_visible(False)
+        self.statepalemoon.set_visible(False)
         self.statewaterfox.set_visible(False)
         self.closebtn.set_visible(False)
-    
+        
     #Reset the window to starting state
     def on_refresh(self):
         
@@ -250,7 +256,8 @@ class BrowserManager(Gtk.Window):
         self.vi_pgb.set_visible(False)
         self.cr_pgb.set_visible(False)
         self.ch_pgb.set_visible(False)
-        self.ms_pgb.set_visible(False)
+        #self.ms_pgb.set_visible(False)
+        self.pm_pgb.set_visible(False)
         self.fx_pgb.set_visible(False)
         self.br_pgb.set_visible(False)
         self.op_pgb.set_visible(False)
@@ -267,7 +274,8 @@ class BrowserManager(Gtk.Window):
         self.statechrome.set_visible(True)
         self.statefirefox.set_visible(True)
         self.statechromium.set_visible(True)
-        self.statemsedge.set_visible(True)
+        #self.statemsedge.set_visible(True)
+        self.statepalemoon.set_visible(True)
         self.stateweb.set_visible(True)
         self.statebrave.set_visible(True)
         self.statewaterfox.set_visible(True)
@@ -275,27 +283,27 @@ class BrowserManager(Gtk.Window):
     
     #Install and Uninstall functions
     
-    def browser_thread(browser_name: str, action: str):
-        def decorator(func):
-            def wrapper(self, widget):
+    # def browser_thread(browser_name: str, action: str):
+        # def decorator(func):
+            # def wrapper(self, widget):
                 
-                prgbars = {"vivaldi": self.vi_pgb, "chrome": self.cr_pgb, "chromium": self.ch_pgb, "msedge": self.ms_pgb, "firefox": self.fx_pgb, "brave": self.br_pgb, "opera": self.op_pgb, "waterfox": self.wf_pgb, "falkon": self.fa_pgb, "web": self.we_pgb}
+                # prgbars = {"vivaldi": self.vi_pgb, "chrome": self.cr_pgb, "chromium": self.ch_pgb, "msedge": self.ms_pgb, "firefox": self.fx_pgb, "brave": self.br_pgb, "opera": self.op_pgb, "waterfox": self.wf_pgb, "falkon": self.fa_pgb, "web": self.we_pgb}
                 
-                states = {"vivaldi": self.statevivaldi, "chrome": self.statechrome, "chromium": self.statechromium, "msedge": self.statemsedge, "firefox": self.statefirefox, "brave": self.statebrave, "opera": self.stateopera, "waterfox": self.statewaterfox, "falkon": self.statefalkon, "web": self.stateweb}
+                # states = {"vivaldi": self.statevivaldi, "chrome": self.statechrome, "chromium": self.statechromium, "msedge": self.statemsedge, "firefox": self.statefirefox, "brave": self.statebrave, "opera": self.stateopera, "waterfox": self.statewaterfox, "falkon": self.statefalkon, "web": self.stateweb}
                                 
-                prgbar = prgbars[browser_name]
-                state = states[browser_name]
-                fui = f'self.on_{("un" if action == "install" else "")}install{browser_name}'
+                # prgbar = prgbars[browser_name]
+                # state = states[browser_name]
+                # fui = f'self.on_{("un" if action == "install" else "")}install{browser_name}'
                 
-                self.begin_process()
-                prgbar.set_visible(True)
-                state.set_label("Uninstall" if action == "install" else "Install")
-                state.disconnect_by_func(fui)
-                state.connect("clicked", fui)
-                t = Thread(target=func, args=(browser_name, action, self))
-                t.start()
-            return wrapper
-        return decorator
+                # self.begin_process()
+                # prgbar.set_visible(True)
+                # state.set_label("Uninstall" if action == "install" else "Install")
+                # state.disconnect_by_func(fui)
+                # state.connect("clicked", fui)
+                # t = Thread(target=func, args=(browser_name, action, self))
+                # t.start()
+            # return wrapper
+        # return decorator
 
     # prgbars = {"vivaldi": self.vi_pgb, "chrome": self.cr_pgb, "chromium": self.ch_pgb, "msedge": self.ms_pgb, "firefox": self.fx_pgb, "brave": self.br_pgb, "opera": self.op_pgb, "waterfox": self.wf_pgb, "falkon": self.fa_pgb, "web": self.we_pgb}
     # states = {"vivaldi": "self.statevivaldi", "chrome": self.statechrome, "chromium": self.statechromium, "msedge": self.statemsedge, "firefox": self.statefirefox, "brave": self.statebrave, "opera": self.stateopera, "waterfox": self.statewaterfox, "falkon": self.statefalkon, "web": self.stateweb}
@@ -354,17 +362,29 @@ class BrowserManager(Gtk.Window):
         self.statechromium.disconnect_by_func(self.on_instchromium)
         self.statechromium.connect("clicked", self.on_uninstchromium)
 
-    def on_instmsedge(self, widget):                                 
+    # def on_instmsedge(self, widget):                                 
+        # self.begin_process()
+        # self.ms_pgb.set_visible(True)
+        # t = Thread(
+            # target=BrowserManagerManager,
+            # args=("msedge", "install", self)
+        # )
+        # t.start()
+        # self.statemsedge.set_label("Uninstall")
+        # self.statemsedge.disconnect_by_func(self.on_instmsedge)
+        # self.statemsedge.connect("clicked", self.on_uninstmsedge)
+        
+    def on_instpalemoon(self, widget):                                 
         self.begin_process()
-        self.ms_pgb.set_visible(True)
+        self.pm_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
-            args=("msedge", "install", self)
+            args=("palemoon", "install", self)
         )
         t.start()
-        self.statemsedge.set_label("Uninstall")
-        self.statemsedge.disconnect_by_func(self.on_instmsedge)
-        self.statemsedge.connect("clicked", self.on_uninstmsedge)
+        self.statepalemoon.set_label("Uninstall")
+        self.statepalemoon.disconnect_by_func(self.on_instpalemoon)
+        self.statepalemoon.connect("clicked", self.on_uninstpalemoon)
 
     def on_instfirefox(self, widget):
         self.begin_process()
@@ -474,17 +494,30 @@ class BrowserManager(Gtk.Window):
         self.statechromium.disconnect_by_func(self.on_uninstchromium)
         self.statechromium.connect("clicked", self.on_instchromium)
 
-    def on_uninstmsedge(self, widget):                               
+    # def on_uninstmsedge(self, widget):                               
+        # self.begin_process()
+        # self.ms_pgb.set_visible(True)
+        # t = Thread(
+            # target=BrowserManagerManager,
+            # args=("msedge", "uninstall", self)
+        # )
+        # t.start()
+        # self.statemsedge.set_label("Install")
+        # self.statemsedge.disconnect_by_func(self.on_uninstmsedge)
+        # self.statemsedge.connect("clicked", self.on_instmsedge)
+        
+    def on_uninstpalemoon(self, widget):                               
         self.begin_process()
-        self.ms_pgb.set_visible(True)
+        self.pm_pgb.set_visible(True)
         t = Thread(
             target=BrowserManagerManager,
-            args=("msedge", "uninstall", self)
+            args=("palemoon", "uninstall", self)
         )
         t.start()
-        self.statemsedge.set_label("Install")
-        self.statemsedge.disconnect_by_func(self.on_uninstmsedge)
-        self.statemsedge.connect("clicked", self.on_instmsedge)
+        self.statepalemoon.set_label("Install")
+        self.statepalemoon.disconnect_by_func(self.on_uninstpalemoon)
+        self.statepalemoon.connect("clicked", self.on_instpalemoon)
+
 
     def on_uninstfirefox(self, widget):                              
         self.begin_process()
@@ -575,10 +608,16 @@ class BrowserManager(Gtk.Window):
             dialog.run()
             dialog.destroy()
 
-    def on_aboutmsedge(self, widget):
-            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Microsoft Edge is Microsoft's all-new release of the Microsoft Edge browser that was used in the latest version of their flagship Operating System. It shares a lot of similarities with the original Microsoft Edge. It also comes pre-bunded with the Bing search engine and a Start Page with Microsoft News integration.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Microsoft Edge's Package Repository")
+    # def on_aboutmsedge(self, widget):
+            # dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Microsoft Edge is Microsoft's all-new release of the Microsoft Edge browser that was used in the latest version of their flagship Operating System. It shares a lot of similarities with the original Microsoft Edge. It also comes pre-bunded with the Bing search engine and a Start Page with Microsoft News integration.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Microsoft Edge's Package Repository")
+            # dialog.run()
+            # dialog.destroy()
+            
+    def on_aboutpalemoon(self, widget):
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "The Pale Moon project is a community-driven project owned and led by Mr. M.C. Straver BASc, using contributed Open Source code to create a full-featured, optimized browser forked from the code behind the popular Firefox browser (Mozilla).  Pale Moon aims to provide a browser with a large degree of freedom in how people want to browse the web, which tools or extensions they wish to use, and which feedback they want to see ('Your browser, Your way'™); efficiency, after all, should not stop at the engine of a browser, but extend to all parts of it, including the user interface by sticking to standard user interface conventions and ergonomics, as well as proper visual integration with the operating system.")
             dialog.run()
             dialog.destroy()
+
 
     def on_aboutfirefox(self, widget):
             dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Firefox delivers safe and easy web browsing with a familiar user interface, thousands of plugins, and integrated search that lets you get the most out of the web.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Flathub (Flatpak)")

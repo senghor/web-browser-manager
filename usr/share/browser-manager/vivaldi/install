@@ -3,7 +3,7 @@
 ###############################
 #Check if program is installed#
 ###############################
-dpkg -l vivaldi-stable | grep -q ^ii
+dpkg -l vivaldi-stable | grep -qs ^ii
 
 if [ $? -eq 0 ]; then
          if [ -e "/usr/bin/vivaldi" ]; then
@@ -52,7 +52,7 @@ fi
 ###################################
 #Check if program is not installed#
 ###################################
-dpkg -l vivaldi-stable | grep -q ^ii
+dpkg -l vivaldi-stable | grep -qs ^ii
 
 if [ ! $? -eq 0 ]; then
          if [ ! -e "/usr/bin/vivaldi" ]; then
