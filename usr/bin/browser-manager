@@ -90,8 +90,6 @@ class BrowserManager(Gtk.Window):
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_size_request(self.width, self.height)
         
-        # self.add(flowbox)
-        
 #############################
 # Object Creation Functions #
 #############################
@@ -280,52 +278,8 @@ class BrowserManager(Gtk.Window):
         self.statebrave.set_visible(True)
         self.statewaterfox.set_visible(True)
         self.stateopera.set_visible(True)
-    
+        
     #Install and Uninstall functions
-    
-    # def browser_thread(browser_name: str, action: str):
-        # def decorator(func):
-            # def wrapper(self, widget):
-                
-                # prgbars = {"vivaldi": self.vi_pgb, "chrome": self.cr_pgb, "chromium": self.ch_pgb, "msedge": self.ms_pgb, "firefox": self.fx_pgb, "brave": self.br_pgb, "opera": self.op_pgb, "waterfox": self.wf_pgb, "falkon": self.fa_pgb, "web": self.we_pgb}
-                
-                # states = {"vivaldi": self.statevivaldi, "chrome": self.statechrome, "chromium": self.statechromium, "msedge": self.statemsedge, "firefox": self.statefirefox, "brave": self.statebrave, "opera": self.stateopera, "waterfox": self.statewaterfox, "falkon": self.statefalkon, "web": self.stateweb}
-                                
-                # prgbar = prgbars[browser_name]
-                # state = states[browser_name]
-                # fui = f'self.on_{("un" if action == "install" else "")}install{browser_name}'
-                
-                # self.begin_process()
-                # prgbar.set_visible(True)
-                # state.set_label("Uninstall" if action == "install" else "Install")
-                # state.disconnect_by_func(fui)
-                # state.connect("clicked", fui)
-                # t = Thread(target=func, args=(browser_name, action, self))
-                # t.start()
-            # return wrapper
-        # return decorator
-
-    # prgbars = {"vivaldi": self.vi_pgb, "chrome": self.cr_pgb, "chromium": self.ch_pgb, "msedge": self.ms_pgb, "firefox": self.fx_pgb, "brave": self.br_pgb, "opera": self.op_pgb, "waterfox": self.wf_pgb, "falkon": self.fa_pgb, "web": self.we_pgb}
-    # states = {"vivaldi": "self.statevivaldi", "chrome": self.statechrome, "chromium": self.statechromium, "msedge": self.statemsedge, "firefox": self.statefirefox, "brave": self.statebrave, "opera": self.stateopera, "waterfox": self.statewaterfox, "falkon": self.statefalkon, "web": self.stateweb}
-    # browsers = ["vivaldi", "chrome", "chromium", "msedge", "firefox", "brave", "opera", "waterfox", "falkon", "web"]
-    # actions = ["install", "uninstall"]
-        
-    #@browser_thread("falkon", "install")
-    #def on_installfalkon(self, widget):
-        #pass
-        
-    #@browser_thread("falkon", "uninstall")
-    #def on_uninstallfalkon(self, widget):
-        #pass
-        
-        # for browser in browsers:
-            # for action in actions:
-                # @browser_thread(browser, action)
-                # def f(self, widget):
-                    # pass
-                # setattr(MyClass, f'on_{action}{browser}', f)
-    
-    
     def on_instvivaldi(self, widget):                                 
         self.begin_process()
         self.vi_pgb.set_visible(True)
@@ -337,7 +291,7 @@ class BrowserManager(Gtk.Window):
         self.statevivaldi.set_label("Uninstall")
         self.statevivaldi.disconnect_by_func(self.on_instvivaldi)
         self.statevivaldi.connect("clicked", self.on_uninstvivaldi)
-
+        
     def on_instchrome(self, widget): 
         self.begin_process()
         self.cr_pgb.set_visible(True)
@@ -653,6 +607,6 @@ class BrowserManager(Gtk.Window):
             dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Web Browser Manager is a utility for managing the web browsers that you have installed on your system. Choose from a variety of browsers with just a few clicks and find the browser that is right for you in no time.\n\nCopyright (GPLv3):\n- Bodhi Linux Developer (2022-2023)\n- Feren OS Developer (2015-2020)\n- AZorin (2010-2015)\n- ZorinK (2010)\n\n\nWeb Browser Manager is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See Version 3 of the GNU General Public License for more details.")
             dialog.run()
             dialog.destroy()
-
+            
 ex = BrowserManager()
 Gtk.main()
