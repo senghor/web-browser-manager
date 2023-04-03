@@ -61,6 +61,7 @@ if [ $? -eq 0 ] || [ -f /usr/bin/firefox ]; then
             apt-get -y purge firefox
             rm -f /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-jammy.list
             rm -f /etc/apt/trusted.gpg.d/mozillateam-ubuntu-ppa*
+            rm -f /etc/apt/preferences.d/firefox.pref
         fi
         exit
 fi
