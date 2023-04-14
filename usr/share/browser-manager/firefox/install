@@ -65,7 +65,7 @@ if [ ! $? -eq 0 ]; then
                         exit 1
                     fi
                     #Set install location preference
-                    echo -e "Package: firefox* \nPin: release o=LP-PPA-mozillateam \nPin-Priority: 501" | sudo tee /etc/apt/preferences.d/firefox.pref
+                    echo -e "Package: * \nPin: release o=LP-PPA-mozillateam \nPin-Priority: 1001" | sudo tee /etc/apt/preferences.d/mozillateam-ppa
                 fi
             sleep 1
             #Install Firefox
