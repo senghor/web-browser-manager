@@ -1,0 +1,23 @@
+{
+  "brave": "Brave is yet another freeware browser based on the Chromium codebase, and Blink Engine. Brave is open-source, and is designed to block Ads and Website Trackers by default, with a Donate to Support Your Favourite Websites mindset.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Brave Browser's Package Repository",
+
+  "chrome": "Google Chrome is an web browser project backed by Google that aims to build a safer, faster, and more stable way for all internet users to experience the web.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Google Chrome's (Stable) Package Repository",
+
+  "chromium": "Chromium is the open source father of Google Chrome, also being mainly made by Google. It shares a lot of the GUI that Google Chrome has, but with an alternative logo and some other features missing such as codecs being pre-installed, and so on.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Linux Mint (only required Chromium packages)",
+
+  "falkon": "Falkon is KDE's browser, which has a lot of Firefox's old design traits, a familiar look and feel, pre-built-in AdBlocker, and everything else you'd expect to see from a browser in the modern age. It's still a solid choice of browser, young as it may be.\n\nBased on: QtWebEngine\nMobile Version available: No\nExtra Repositories Added: None",
+
+  "firefox": "Firefox delivers safe and easy web browsing with a familiar user interface, thousands of plugins, and integrated search that lets you get the most out of the web.\n\nBased on: N/A\nMobile Version available: Yes\nExtra Repositories Added: Flathub (Flatpak)",
+
+  "opera": "Opera is another freeware browser, being developed by Opera. The browser is built on the Blink Engine, and is designed to be feature rich, having built-in features such as an Ad Blocker, VPN, Battery Saver, and so on, all included with the browser.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Opera Browser's Package Repository",
+
+  "palemoon": "The Pale Moon project is a community-driven project owned and led by Mr. M.C. Straver BASc, using contributed Open Source code to create a full-featured, optimized browser forked from the code behind the popular Firefox browser (Mozilla).  Pale Moon aims to provide a browser with a large degree of freedom in how people want to browse the web, which tools or extensions they wish to use, and which feedback they want to see ('Your browser, Your way'™); efficiency, after all, should not stop at the engine of a browser, but extend to all parts of it, including the user interface by sticking to standard user interface conventions and ergonomics, as well as proper visual integration with the operating system.",
+
+  "vivaldi": "Vivaldi is an web browser, being developed by Vivaldi Technologies - a company founded by former Opera Software cofounder and CEO Jon Stephenson von Tetzchner. It is a browser that is simple by default but powerful when needed, with easily accessible features to greatly improve your browser workflow right out of the box. It also provides an optional advertisement and tracking blocker.\n\nBased on: Chromium\nMobile Version available: Yes\nExtra Repositories Added: Vivaldi's Official Package Repository",
+
+  "waterfox": "Waterfox is a freeware browser based on Mozilla Firefox. This browser is built with a mix of privacy and customisability in mind. This browser has a big focus on stability and limiting data collection while staying true to the browser's base.\n\nBased on: Mozilla Firefox\nMobile Version available: No\nExtra Repositories Added: Unofficial Waterfox Package Repository",
+
+   "wbm": "Web Browser Manager is a utility for managing the web browsers that you have installed on your system. Choose from a variety of browsers with just a few clicks and find the browser that is right for you in no time.\n\nCopyright (GPLv3):\n- Bodhi Linux Developer (2022-2023)\n- Feren OS Developer (2015-2020)\n- AZorin (2010-2015)\n- ZorinK (2010)\n\n\nWeb Browser Manager is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See Version 3 of the GNU General Public License for more details.",
+
+  "web": "Web is the WebKit based web browser for GNOME. It offers a simple, clean, beautiful view of the Web. Its principles are simplicity and standards compliance.\n\nBased on: WebKitGTK\nMobile Version available: No*\nExtra Repositories Added: None\n\n* This web browser converts itself into a phone-friendly web browser on compatible phones"
+}
