@@ -40,18 +40,18 @@ from gi.repository import Gtk, GdkPixbuf, GLib  # pylint: disable=C0413
 # globals
 applogo = "/usr/share/pixmaps/browser-manager.svg"
 fixed = Gtk.Fixed()
-browser_data = '/usr/share/browser-manager/browser-data.json'
+browser_data = '/usr/lib/browser-manager/browser-data.json'
 #    Icons
-imgfx = '/usr/share/browser-manager/firefox/Firefox_logo.png'
-imgcr = '/usr/share/browser-manager/chrome/Chrome_logo.png'
-imgvi = '/usr/share/browser-manager/vivaldi/Vivaldi_logo.png'
-imgch = '/usr/share/browser-manager/chromium/Chromium_logo.png'
-imgop = '/usr/share/browser-manager/opera/Opera_logo.png'
-imgbr = '/usr/share/browser-manager/brave/Brave_logo.png'
-imgwf = '/usr/share/browser-manager/waterfox/Waterfox_logo.png'
-imgwe = '/usr/share/browser-manager/web/Epiphany_logo.png'
-imgpm = '/usr/share/browser-manager/palemoon/Palemoon_logo.png'
-imgfa = '/usr/share/browser-manager/falkon/Falkon_logo.png'
+imgfx = '/usr/share/browser-manager/Firefox.png'
+imgcr = '/usr/share/browser-manager/Chrome.png'
+imgvi = '/usr/share/browser-manager/Vivaldi.png'
+imgch = '/usr/share/browser-manager/Chromium.png'
+imgop = '/usr/share/browser-manager/Opera.png'
+imgbr = '/usr/share/browser-manager/Brave.png'
+imgwf = '/usr/share/browser-manager//Waterfox.png'
+imgwe = '/usr/share/browser-manager/Epiphany.png'
+imgpm = '/usr/share/browser-manager/Palemoon.png'
+imgfa = '/usr/share/browser-manager/Falkon.png'
 #    Booleans
 binfx = os.path.isfile("/usr/bin/firefox")
 bincr = os.path.isfile("/usr/bin/google-chrome")
@@ -70,7 +70,7 @@ class BrowserManagerManager():
     """ Execute the Install or uninstall shell script."""
 
     def __init__(self, browsername, option, bmself):
-        script = "/usr/share/browser-manager/" + browsername + "/" + option
+        script = "/usr/lib/browser-manager/" + browsername + "/" + option
         try:
             subprocess.run(script, capture_output=False, check=True)
         except subprocess.CalledProcessError:
