@@ -64,6 +64,7 @@ binwe = os.path.isfile("/usr/bin/epiphany-browser")
 binpm = os.path.isfile("/usr/lib/palemoon/palemoon")
 binfa = os.path.isfile("/usr/bin/falkon")
 
+
 # pylint: disable=too-few-public-methods
 class BrowserManagerManager():
     """ Execute the Install or uninstall shell script."""
@@ -71,7 +72,7 @@ class BrowserManagerManager():
     def __init__(self, browsername, option, bmself):
         script = "/usr/share/browser-manager/" + browsername + "/" + option
         try:
-            run = subprocess.run(script, capture_output=False, check=True)
+            subprocess.run(script, capture_output=False, check=True)
         except subprocess.CalledProcessError:
             pass
         BrowserManager.on_refresh(bmself)
@@ -202,7 +203,8 @@ class BrowserManager(Gtk.Window):
 
         # Firefox
         create_label("Mozilla Firefox", 708, 10)
-        self.aboutfirefox = about_button(imgfx, (708, 35), self.on_aboutfirefox,
+        self.aboutfirefox = about_button(imgfx, (708, 35),
+                                         self.on_aboutfirefox,
                                          "About Firefox")
         self.statefirefox = int_button(
             "Uninstall" if binfx else "Install", (703, 130),
