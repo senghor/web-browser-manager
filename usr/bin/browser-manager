@@ -22,18 +22,14 @@
 # Easily install and uninstall web browsers on a GTK based system.
 # This is free software made available under the GNU public license.
 
-import gi
-
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GdkPixbuf, GLib
-
 import os
-from os import path
 from threading import Thread
 
-import time
-import sys
-import requests
+import gi
+
+gi.require_version('Gtk', '3.0')  # noqa: E402
+from gi.repository import Gtk, GdkPixbuf, GLib  # pylint: disable=C0413
+
 
 applogo = "/usr/share/pixmaps/browser-manager.svg"
 
