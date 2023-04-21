@@ -74,6 +74,7 @@ class BrowserManagerManager():
         try:
             subprocess.run(script, capture_output=False, check=True)
         except subprocess.CalledProcessError:
+            # Not using may remove exception block
             pass
         BrowserManager.on_refresh(bmself)
 
@@ -295,6 +296,153 @@ class BrowserManager(Gtk.Window):
         self.statewaterfox.set_visible(False)
         self.closebtn.set_visible(False)
 
+    def on_refresh_state(self):
+        """ Ugly hack to address mislabeled state buttons"""
+        global binfx, bincr, binvi, binch, binop
+        global binbr, binwf, binwe, binpm, binfa
+
+        #    Booleans
+        binfx = os.path.isfile("/usr/bin/firefox")
+        bincr = os.path.isfile("/usr/bin/google-chrome")
+        binvi = os.path.isfile("/usr/bin/vivaldi")
+        binch = os.path.isfile("/usr/bin/chromium")
+        binop = os.path.isfile("/usr/bin/opera")
+        binbr = os.path.isfile("/usr/bin/brave-browser")
+        binwf = os.path.isfile("/usr/bin/waterfox-g")
+        binwe = os.path.isfile("/usr/bin/epiphany-browser")
+        binpm = os.path.isfile("/usr/lib/palemoon/palemoon")
+        binfa = os.path.isfile("/usr/bin/falkon")
+
+        # Vivaldi
+        lb = self.statevivaldi.get_label()
+        if binvi:
+            if lb == "Install":
+                self.statevivaldi.set_label("Uninstall")
+                self.statevivaldi.disconnect_by_func(self.on_instvivaldi)
+                self.statevivaldi.connect("clicked", self.on_uninstvivaldi)
+        else:
+            if lb == "Uninstall":
+                self.statevivaldi.set_label("Install")
+                self.statevivaldi.disconnect_by_func(self.on_uninstvivaldi)
+                self.statevivaldi.connect("clicked", self.on_instvivaldi)
+
+        # Google Chrome
+        lb = self.statechrome.get_label()
+        if bincr:
+            if lb == "Install":
+                self.statechrome.set_label("Uninstall")
+                self.statechrome.disconnect_by_func(self.on_instchrome)
+                self.statechrome.connect("clicked", self.on_uninstchrome)
+        else:
+            if lb == "Uninstall":
+                self.statechrome.set_label("Install")
+                self.statechrome.disconnect_by_func(self.on_uninstchrome)
+                self.statechrome.connect("clicked", self.on_instchrome)
+
+        # Chromium
+        lb = self.statechromium.get_label()
+        if binch:
+            if lb == "Install":
+                self.statechromium.set_label("Uninstall")
+                self.statechromium.disconnect_by_func(self.on_instchromium)
+                self.statechromium.connect("clicked", self.on_uninstchromium)
+        else:
+            if lb == "Uninstall":
+                self.statechromium.set_label("Install")
+                self.statechromium.disconnect_by_func(self.on_uninstchromium)
+                self.statechromium.connect("clicked", self.on_instchromium)
+
+        # Palemoon
+        lb = self.statepalemoon.get_label()
+        if binpm:
+            if lb == "Install":
+                self.statepalemoon.set_label("Uninstall")
+                self.statepalemoon.disconnect_by_func(self.on_instpalemoon)
+                self.statepalemoon.connect("clicked", self.on_uninstpalemoon)
+        else:
+            if lb == "Uninstall":
+                self.statepalemoon.set_label("Install")
+                self.statepalemoon.disconnect_by_func(self.on_uninstpalemoon)
+                self.statepalemoon.connect("clicked", self.on_instpalemoon)
+
+        # Firefox
+        lb = self.statefirefox.get_label()
+        if binfx:
+            if lb == "Install":
+                self.statefirefox.set_label("Uninstall")
+                self.statefirefox.disconnect_by_func(self.on_instfirefox)
+                self.statefirefox.connect("clicked", self.on_uninstfirefox)
+        else:
+            if lb == "Uninstall":
+                self.statefirefox.set_label("Install")
+                self.statefirefox.disconnect_by_func(self.on_uninstfirefox)
+                self.statefirefox.connect("clicked", self.on_instfirefox)
+
+        # Brave
+        lb = self.statebrave.get_label()
+        if binbr:
+            if lb == "Install":
+                self.statebrave.set_label("Uninstall")
+                self.statebrave.disconnect_by_func(self.on_instbrave)
+                self.statebravei.connect("clicked", self.on_uninstbrave)
+        else:
+            if lb == "Uninstall":
+                self.statebrave.set_label("Install")
+                self.statebrave.disconnect_by_func(self.on_uninstbrave)
+                self.statebrave.connect("clicked", self.on_instbrave)
+
+        # Opera
+        lb = self.stateopera.get_label()
+        if binop:
+            if lb == "Install":
+                self.stateopera.set_label("Uninstall")
+                self.stateopera.disconnect_by_func(self.on_instopera)
+                self.stateopera.connect("clicked", self.on_uninstopera)
+        else:
+            if lb == "Uninstall":
+                self.stateopera.set_label("Install")
+                self.stateopera.disconnect_by_func(self.on_uninstopera)
+                self.stateopera.connect("clicked", self.on_instopera)
+
+        # Waterfox
+        lb = self.statewaterfox.get_label()
+        if binwf:
+            if lb == "Install":
+                self.statewaterfox.set_label("Uninstall")
+                self.statewaterfox.disconnect_by_func(self.on_instwaterfox)
+                self.statewaterfox.connect("clicked", self.on_uninstwaterfox)
+        else:
+            if lb == "Uninstall":
+                self.statewaterfox.set_label("Install")
+                self.statewaterfox.disconnect_by_func(self.on_uninstwaterfox)
+                self.statewaterfox.connect("clicked", self.on_instwaterfox)
+
+        # Falkon
+        lb = self.statefalkon.get_label()
+        if binfa:
+            if lb == "Install":
+                self.statefalkon.set_label("Uninstall")
+                self.statefalkon.disconnect_by_func(self.on_instfalkon)
+                self.statefalkon.connect("clicked", self.on_uninstfalkon)
+        else:
+            if lb == "Uninstall":
+                self.statefalkon.set_label("Install")
+                self.statefalkon.disconnect_by_func(self.on_uninstfalkon)
+                self.statefalkon.connect("clicked", self.on_instfalkon)
+
+        # Epiphany
+        lb = self.stateweb.get_label()
+        if binwe:
+            if lb == "Install":
+                self.stateweb.set_label("Uninstall")
+                self.stateweb.disconnect_by_func(self.on_instweb)
+                self.stateweb.connect("clicked", self.on_uninstweb)
+        else:
+            if lb == "Uninstall":
+                self.stateweb.set_label("Install")
+                self.stateweb.disconnect_by_func(self.on_uninstweb)
+                self.stateweb.connect("clicked", self.on_instweb)
+
     def on_refresh(self):
         """ Reset the window to the starting state"""
         # Hide all the progress bars
@@ -312,6 +460,8 @@ class BrowserManager(Gtk.Window):
         # Show the close button
         self.closebtn.set_visible(True)
 
+        # Refresh Browser state"
+        self.on_refresh_state()
         # Set browser state buttons visible
         self.statefalkon.set_visible(True)
         self.statevivaldi.set_visible(True)
