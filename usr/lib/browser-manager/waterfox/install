@@ -1,81 +1,75 @@
 #!/bin/bash
 
-###############################
-#Check if program is installed#
-###############################
+# This file is part of the Bodhi Linux Web Browser Manager.
+#
+# License: GPL-3.0 or later
+#
+# (c) Bodhi Linux Team (2022-2023)
+# (c) Feren Team (2015-2020) <ferenosdev@outlook.com>
+# (c) AZorin 2010-(2015) <azorin@zoringroup.com>
+# (c) Zorink (2010) <zorink@zoringroup.com>
+
+# shellcheck disable=SC2181
+
+# Check if program is installed
 dpkg -l waterfox-g-kpe | grep -q ^ii
 
 if [ $? -eq 0 ]; then
-         if [ -e "/usr/bin/waterfox-g" ]; then
-                  zenity --info --title="Information" --text="Waterfox is already installed" --no-wrap &
-                  exit 0
-         fi
+    if [ -e "/usr/bin/waterfox-g" ]; then
+        zenity --info --title="Information" --text="Waterfox is already installed" --no-wrap &
+        exit 0
+    fi
 fi
 
-
-
-################
-#Check for root#
-################
-if [ ! $(whoami) = "root" ]; then
+# Check for root
+if [ ! "$(whoami)" = "root" ]; then
     zenity --question --title="Continue?" --text "The use of Waterfox is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.waterfox.net/docs/policies/terms'>https://www.waterfox.net/docs/policies/terms</a>\n    <a href='https://www.waterfox.net/docs/policies/privacy'>https://www.waterfox.net/docs/policies/privacy</a>\n\nAre you sure you want to install Waterfox?"
 
     if [ ! $? -eq 0 ]; then
-           exit
+        exit 0
     fi
 
     pkexec "$0"
-    
+
     if [ $? -eq 127 ]; then
         exit 0
     fi
-    
-    ######################
-    #Double Check Package#
-    ######################
+
+    # Double Check Package
     if [ -e "/usr/bin/waterfox-g" ]; then
-            zenity --info --title="Installation Complete" --text="Waterfox was successfully installed" --no-wrap &
-            exit 0
+        zenity --info --title="Installation Complete" --text="Waterfox was successfully installed" --no-wrap &
+        exit 0
     fi
-    #######
-    #Error#
-    #######
+    # Error
     zenity  --error --text="Web Browser Manager couldn't install Waterfox successfully
 
 A log can be found at File System/tmp/waterfox-install-log" --title="Error" --no-wrap &
     exit 0
 fi
 
-
-###################################
-#Check if program is not installed#
-###################################
+# Check if program is installed
 dpkg -l waterfox-g-kpe | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
-         if [ ! -e "/usr/bin/waterfox-g" ]; then
-
-#################
-#Install program#
-#################
-        #Log output
+    if [ ! -e "/usr/bin/waterfox-g" ]; then
+        # Log output
         exec 1>/tmp/waterfox-install-log 2>&1
-        
-                if [ ! -f /etc/apt/sources.list.d/waterfox.list ]; then
-                    curl -fsSL https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /usr/share/keyrings/waterfox-archive-keyring.gpg
-                    if [ ! $? -eq 0 ]; then
-                        exit 1
-                    fi
-                    echo 'deb [signed-by=/usr/share/keyrings/waterfox-archive-keyring.gpg] https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/waterfox.list
-                fi
-                apt-get update
-                apt-get -y install waterfox-g-kpe
-         fi
-         exit
-fi
+        # Add PPA if it doesn't exist
+        if [ ! -f /etc/apt/sources.list.d/waterfox.list ]; then
+            curl -fsSL https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /usr/share/keyrings/waterfox-archive-keyring.gpg
+            if [ ! $? -eq 0 ]; then
+                exit 1
+            fi
+            echo 'deb [signed-by=/usr/share/keyrings/waterfox-archive-keyring.gpg] https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/waterfox.list
+        fi
+        # Install program
+        sleep 1
+        apt-get update
+        apt-get -y install waterfox-g-kpe
+    fi
+    exit O
+    fi
 
-#######
-#Error#
-#######
+# Error
 zenity  --error --text="An error occured while initiating the Waterfox installation process" --title="Error" --no-wrap &
 exit 0

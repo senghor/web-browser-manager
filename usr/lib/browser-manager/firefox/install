@@ -1,8 +1,17 @@
 #!/bin/bash
 
-###############################
-#Check if program is installed#
-###############################
+# This file is part of the Bodhi Linux Web Browser Manager.
+#
+# License: GPL-3.0 or later
+#
+# (c) Bodhi Linux Team (2022-2023)
+# (c) Feren Team (2015-2020) <ferenosdev@outlook.com>
+# (c) AZorin 2010-(2015) <azorin@zoringroup.com>
+# (c) Zorink (2010) <zorink@zoringroup.com>
+
+# shellcheck disable=SC2181
+
+# Check if program is installed
 dpkg -l firefox | grep -q ^ii
 
 if [ $? -eq 0 ]; then
@@ -10,73 +19,47 @@ if [ $? -eq 0 ]; then
     exit 0
 fi
 
-
-
-################
-#Check for root#
-################
-if [ ! $(whoami) = "root" ]; then
+# Check for root
+if [ ! "$(whoami)" = "root" ]; then
     zenity --question --title="Continue?" --text "The use of Mozilla Firefox is governed by the Terms found at:\n\n    <a href='https://www.mozilla.org/en-US/about/legal/terms/firefox/'>https://www.mozilla.org/en-US/about/legal/terms/firefox/</a>\n\nAre you sure you want to install Mozilla Firefox?"
 
     if [ ! $? -eq 0 ]; then
-           exit
+        exit 0
     fi
 
     pkexec "$0"
-    
+
     if [ $? -eq 127 ]; then
         exit 0
     fi
-    
-    ######################
-    #Double Check Package#
-    ######################
+
+    # Double Check Package
     if [ -e "/usr/bin/firefox" ]; then
-            zenity --info --title="Installation Complete" --text="Mozilla Firefox was successfully installed" --no-wrap &
-            exit 0
+        zenity --info --title="Installation Complete" --text="Mozilla Firefox was successfully installed" --no-wrap &
+        exit 0
     fi
-    #######
-    #Error#
-    #######
+    # Error
     zenity  --error --text="Web Browser Manager couldn't install Mozilla Firefox successfully
 
 A log can be found at File System/tmp/firefox-install-log" --title="Error" --no-wrap &
     exit 0
 fi
 
-###################################
-#Check if program is not installed#
-###################################
+
+# Check if program is installed
 dpkg -l firefox | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
-        if [ ! -e "/usr/bin/firefox" ]; then
-
-#################
-#Install program#
-#################
-        #Log output
+    if [ ! -e "/usr/bin/firefox" ]; then
+        # Log output
         exec 1>/tmp/firefox-install-log 2>&1
-        
-                #Add PPa if it doesn't exist
-                if [ ! -f /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-jammy.list ]; then
-                    apt-add-repository -y ppa:mozillateam/ppa
-                    if [ ! $? -eq 0 ]; then
-                        exit 1
-                    fi
-                    #Set install location preference
-                    echo -e "Package: * \nPin: release o=LP-PPA-mozillateam \nPin-Priority: 1001" | sudo tee /etc/apt/preferences.d/mozillateam-ppa
-                fi
-            sleep 1
-            #Install Firefox
-            apt-get update
-            apt-get -y install firefox
-        fi
-        exit
+        # Install program
+        apt-get update
+        apt-get -y install firefox
+    fi
+    exit 0
 fi
 
-#######
-#Error#
-#######
+# Error
 zenity  --error --text="An error occured while initiating the Mozilla Firefox installation process." --title="Error" --no-wrap &
 exit 0

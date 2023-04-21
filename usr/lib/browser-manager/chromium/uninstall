@@ -1,74 +1,70 @@
 #!/bin/bash
 
-###################################
-#Check if program is not installed#
-###################################
+# This file is part of the Bodhi Linux Web Browser Manager.
+#
+# License: GPL-3.0 or later
+#
+# (c) Bodhi Linux Team (2022-2023)
+# (c) Feren Team (2015-2020) <ferenosdev@outlook.com>
+# (c) AZorin 2010-(2015) <azorin@zoringroup.com>
+# (c) Zorink (2010) <zorink@zoringroup.com>
+
+# shellcheck disable=SC2181
+
+# Check if program is installed
 dpkg -l bodhi-chromium | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
-         if [ ! -e "/usr/bin/chromium" ]; then
-                  zenity --info --title="Information" --text="Chromium is not installed" --no-wrap &
-                  exit 0
-         fi
+    if [ ! -e "/usr/bin/chromium" ]; then
+        zenity --info --title="Information" --text="Chromium is not installed" --no-wrap &
+        exit 0
+    fi
 fi
 
-################
-#Check for root#
-################
+# Check for root
 if [ ! "$(whoami)" = "root" ]; then
     zenity --question --title="Continue?" --text "Are you sure you want to remove Chromium?" --no-wrap
 
     if [ ! $? -eq 0 ]; then
-            exit
+        exit 0
     fi
-    
+
     pkexec "$0" $@
-    
+
     if [ $? -eq 127 ]; then
         exit 0
     fi
-    
-    ######################
-    #Double Check Package#
-    ######################
+
+    # Double Check Package
     dpkg -l bodhi-chromium | grep -q ^ii
 
     if [ ! $? -eq 0 ]; then
-            if [ ! -e "/usr/bin/chromium" ]; then
-                    zenity --info --title="Uninstalled Chromium" --text="Chromium was successfully removed" --no-wrap &
-                    exit 0
-            fi
-            #######
-            #Error#
-            #######
-            zenity  --error --text="Web Browser Manager couldn't remove Chromium successfully
+        if [ ! -e "/usr/bin/chromium" ]; then
+            zenity --info --title="Uninstalled Chromium" --text="Chromium was successfully removed" --no-wrap &
+            exit 0
+        fi
+
+        # Error
+        zenity  --error --text="Web Browser Manager couldn't remove Chromium successfully
 
 A log can be found at File System/tmp/chromium-removal-log" --title="Error" --no-wrap &
-            exit 0
+        exit 0
     fi
 fi
 
-###############################
-#Check if program is installed#
-###############################
+# Check if program is installed
 dpkg -l bodhi-chromium | grep -q ^ii
 
 if [ $? -eq 0 ]; then
-         if [ -e "/usr/bin/chromium" ]; then
-
-###################
-#Uninstall program#
-###################
-        #Log output
+    if [ -e "/usr/bin/chromium" ]; then
+        # Log output
         exec 1>/tmp/chromium-removal-log 2>&1
-        
-                  apt-get -y purge bodhi-chromium 
-         fi
-         exit
+        # Uninstall program
+        apt-get -y purge bodhi-chromium
+    fi
+    exit 0
 fi
 
-#######
-#Error#
-#######
+# Error
 zenity  --error --text="An error occured while initiating the Chromium removal process" --title="Error" --no-wrap &
 exit 0
