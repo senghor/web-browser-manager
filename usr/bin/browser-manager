@@ -93,7 +93,7 @@ class BrowserManager(Gtk.Window):
 
         self.title = "Web Browser Manager"
 
-        self.width = 833
+        self.width = 796
         self.height = 440
 
         self.connect("destroy", self.on_destroy)
@@ -166,104 +166,104 @@ class BrowserManager(Gtk.Window):
         ############################
 
         # Brave
-        create_label("Brave", 48, 10)
-        self.aboutbrave = about_button(imgbr, (48, 35), self.on_aboutbrave,
+        create_label("Brave", 43, 10)
+        self.aboutbrave = about_button(imgbr, (43, 35), self.on_aboutbrave,
                                        "About Brave")
         self.statebrave = int_button(
-            "Uninstall" if binbr else "Install", (43, 130),
+            "Uninstall" if binbr else "Install", (40, 130),
             self.on_uninstbrave if binbr else self.on_instbrave, "Brave")
-        self.br_pgb = progressbar((11, 131))
+        self.br_pgb = progressbar((3, 131))
 
         # Google Chrome
-        create_label("Google Chrome", 213, 10)
-        self.aboutchrome = about_button(imgcr, (213, 35), self.on_aboutchrome,
+        create_label("Google Chrome", 204, 10)
+        self.aboutchrome = about_button(imgcr, (204, 35), self.on_aboutchrome,
                                         "About Chrome")
         self.statechrome = int_button(
-            "Uninstall" if bincr else "Install", (208, 130),
+            "Uninstall" if bincr else "Install", (201, 130),
             self.on_uninstchrome if bincr else self.on_instchrome, "Chrome")
-        self.cr_pgb = progressbar((176, 131))
+        self.cr_pgb = progressbar((165, 131))
 
         # Chromium
-        create_label("Chromium", 378, 10)
-        self.aboutchromium = about_button(imgch, (378, 35),
+        create_label("Chromium", 365, 10)
+        self.aboutchromium = about_button(imgch, (365, 35),
                                           self.on_aboutchromium,
                                           "About Chromium")
         self.statechromium = int_button(
-            "Uninstall" if binch else "Install", (373, 130),
+            "Uninstall" if binch else "Install", (360, 130),
             self.on_uninstchromium if binch else self.on_instchromium,
             "Chromium")
-        self.ch_pgb = progressbar((341, 131))
+        self.ch_pgb = progressbar((325, 131))
 
         # Falkon
-        create_label("Falkon", 543, 10)
-        self.aboutfalkon = about_button(imgfa, (543, 35), self.on_aboutfalkon,
+        create_label("Falkon", 526, 10)
+        self.aboutfalkon = about_button(imgfa, (526, 35), self.on_aboutfalkon,
                                         "About Falkon")
         self.statefalkon = int_button(
-            "Uninstall" if binfa else "Install", (538, 130),
+            "Uninstall" if binfa else "Install", (521, 130),
             self.on_uninstfalkon if binfa else self.on_instfalkon, "Falkon")
-        self.fa_pgb = progressbar((506, 131))
+        self.fa_pgb = progressbar((486, 131))
 
         # Firefox
-        create_label("Mozilla Firefox", 708, 10)
-        self.aboutfirefox = about_button(imgfx, (708, 35), self.on_aboutfirefox,
+        create_label("Mozilla Firefox", 687, 10)
+        self.aboutfirefox = about_button(imgfx, (687, 35), self.on_aboutfirefox,
                                          "About Firefox")
         self.statefirefox = int_button(
-            "Uninstall" if binfx else "Install", (703, 130),
+            "Uninstall" if binfx else "Install", (682, 130),
             self.on_uninstfirefox if binfx else self.on_instfirefox, "Firefox")
-        self.fx_pgb = progressbar((671, 131))
+        self.fx_pgb = progressbar((647, 131))
 
         # Opera
-        create_label("Opera", 48, 190)
-        self.aboutopera = about_button(imgop, (48, 220), self.on_aboutopera,
+        create_label("Opera", 46, 190)
+        self.aboutopera = about_button(imgop, (46, 220), self.on_aboutopera,
                                        "About Opera")
         self.stateopera = int_button(
-            "Uninstall" if binop else "Install", (43, 315),
+            "Uninstall" if binop else "Install", (41, 315),
             self.on_uninstopera if binop else self.on_instopera, "Opera")
-        self.op_pgb = progressbar((11, 316))
+        self.op_pgb = progressbar((6, 316))
 
         # Palemoon
-        create_label("Palemoon", 213, 190)
-        self.aboutpalemoon = about_button(imgpm, (213, 220),
+        create_label("Palemoon", 207, 190)
+        self.aboutpalemoon = about_button(imgpm, (207, 220),
                                           self.on_aboutpalemoon,
                                           "About Palemoon")
         self.statepalemoon = int_button(
-            "Uninstall" if binpm else "Install", (208, 315),
+            "Uninstall" if binpm else "Install", (202, 315),
             self.on_uninstpalemoon if binpm else self.on_instpalemoon,
             "Palemoon")
-        self.pm_pgb = progressbar((176, 316))
+        self.pm_pgb = progressbar((167, 316))
 
         # Slimjet
-        create_label("Slimjet", 378, 190)
-        self.aboutslimjet = about_button(imgsj, (378, 220),
+        create_label("Slimjet", 368, 190)
+        self.aboutslimjet = about_button(imgsj, (368, 220),
                                          self.on_aboutslimjet, "About Slimjet")
         self.stateslimjet = int_button(
-            "Uninstall" if binsj else "Install", (373, 315),
+            "Uninstall" if binsj else "Install", (363, 315),
             self.on_uninstslimjet if binsj else self.on_instslimjet, "Slimjet")
-        self.sj_pgb = progressbar((341, 316))
+        self.sj_pgb = progressbar((328, 316))
 
         # Vivaldi
-        create_label("Vivaldi", 543, 190)
-        self.aboutvivaldi = about_button(imgvi, (543, 220),
+        create_label("Vivaldi", 529, 190)
+        self.aboutvivaldi = about_button(imgvi, (529, 220),
                                          self.on_aboutvivaldi, "About Vivaldi")
         self.statevivaldi = int_button(
-            "Uninstall" if binvi else "Install", (538, 315),
+            "Uninstall" if binvi else "Install", (524, 315),
             self.on_uninstvivaldi if binvi else self.on_instvivaldi, "Vivaldi")
-        self.vi_pgb = progressbar((506, 316))
+        self.vi_pgb = progressbar((489, 316))
 
         # Waterfox
-        create_label("Waterfox", 708, 190)
-        self.aboutwaterfox = about_button(imgwf, (708, 220),
+        create_label("Waterfox", 690, 190)
+        self.aboutwaterfox = about_button(imgwf, (690, 220),
                                           self.on_aboutwaterfox,
                                           "About Waterfox")
         self.statewaterfox = int_button(
-            "Uninstall" if binwf else "Install", (703, 315),
+            "Uninstall" if binwf else "Install", (685, 315),
             self.on_uninstwaterfox if binwf else self.on_instwaterfox,
             "Waterfox")
-        self.wf_pgb = progressbar((671, 316))
+        self.wf_pgb = progressbar((650, 316))
 
         # General Window buttons
-        self.closebtn = int_button("Close", (736, 400), self.on_destroy,
-                                   "Window")
+        self.closebtn = int_button("Close", (705, 400), self.on_destroy,
+                                  "Window")
         self.aboutbtn = int_button("About", (10, 400), self.on_aboutbm,
                                    "Browser Manager")
 
