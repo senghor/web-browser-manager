@@ -647,83 +647,101 @@ class BrowserManager(Gtk.Window):
 
     def on_aboutbrave(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
-                                   Gtk.ButtonsType.OK,
-                                   BrowserManager.desc['brave'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['brave'])
         dialog.run()
         dialog.destroy()
 
     def on_aboutchrome(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
-                                   Gtk.ButtonsType.OK,
-                                   BrowserManager.desc['chrome'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['chrome'])
         dialog.run()
         dialog.destroy()
 
     def on_aboutchromium(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
-                                   Gtk.ButtonsType.OK,
-                                   BrowserManager.desc['chromium'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['chromium'])
         dialog.run()
         dialog.destroy()
 
     def on_aboutfalkon(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
-                                   Gtk.ButtonsType.OK,
-                                   BrowserManager.desc['falkon'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['falkon'])
         dialog.run()
         dialog.destroy()
 
     def on_aboutfirefox(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
-                                   Gtk.ButtonsType.OK,
-                                   BrowserManager.desc['firefox'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['firefox'])
         dialog.run()
         dialog.destroy()
 
     def on_aboutopera(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
-                                   Gtk.ButtonsType.OK,
-                                   BrowserManager.desc['opera'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['opera'])
         dialog.run()
         dialog.destroy()
 
     def on_aboutpalemoon(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
-                                   Gtk.ButtonsType.OK,
-                                   BrowserManager.desc['palemoon'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['palemoon'])
         dialog.run()
         dialog.destroy()
 
     def on_aboutslimjet(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
-                                   Gtk.ButtonsType.OK,
-                                   BrowserManager.desc['slimjet'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['slimjet'])
         dialog.run()
         dialog.destroy()
 
     def on_aboutvivaldi(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self,
-                                   flags=0,
-                                   message_type=Gtk.MessageType.INFO,
-                                   buttons=Gtk.ButtonsType.OK,
-                                   text=BrowserManager.desc['vivaldi'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['vivaldi'])
         dialog.run()
         dialog.destroy()
 
     def on_aboutwaterfox(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO,
-                                   Gtk.ButtonsType.OK,
-                                   BrowserManager.desc['waterfox'])
+        dialog = Gtk.MessageDialog(parent = self, 
+                                   flags = 0,
+                                   message_type = Gtk.MessageType.INFO,
+                                   buttons = Gtk.ButtonsType.OK,
+                                   text = BrowserManager.desc['waterfox'])
         dialog.run()
         dialog.destroy()
 
