@@ -52,16 +52,17 @@ dpkg -l vivaldi-stable | grep -qs ^ii
 
 if [ ! $? -eq 0 ]; then
     if [ ! -e "/usr/bin/vivaldi" ]; then
-        # Log output
-        exec 1>/tmp/vivaldi-install-log 2>&1
         # Add PPA if it doesn't exist
         if [ ! -f /etc/apt/sources.list.d/vivaldi.list ]; then
-            wget -qO - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo tee /usr/share/keyrings/vivaldi-archive-keyring.pub
+            wget -qO - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo tee /usr/share/keyrings/vivaldi-archive-keyring.pub  2>&1 1>/dev/null
             if [ ! $? -eq 0 ]; then
+                echo "Failed to download keyring" >/tmp/vivaldi-install-log 2>&1
                 exit 1
             fi
-            echo "deb [signed-by=/usr/share/keyrings/vivaldi-archive-keyring.pub, arch=amd64] http://repo.vivaldi.com/stable/deb/ stable main" | sudo tee /etc/apt/sources.list.d/vivaldi.list
+            echo "deb [signed-by=/usr/share/keyrings/vivaldi-archive-keyring.pub, arch=amd64] http://repo.vivaldi.com/stable/deb/ stable main" | sudo tee /etc/apt/sources.list.d/vivaldi.list  2>&1 1>/dev/null
         fi
+        # Log output
+        exec 1>/tmp/vivaldi-install-log 2>&1
         sleep 1
         # Install program
         apt-get update

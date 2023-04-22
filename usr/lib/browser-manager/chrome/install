@@ -56,12 +56,15 @@ if [ ! $? -eq 0 ]; then
         exec 1>/tmp/chrome-install-log 2>&1
 
         if [ ! -f /etc/apt/sources.list.d/google-chrome.list ]; then
-            wget -qO - https://dl.google.com/linux/linux_signing_key.pub | sudo tee /usr/share/keyrings/chrome-archive-keyring.pub
+            wget -qO - https://dl.google.com/linux/linux_signing_key.pub | sudo tee /usr/share/keyrings/chrome-archive-keyring.pub  2>&1 1>/dev/null
             if [ ! $? -eq 0 ]; then
+                echo "Failed to download keyring" >/tmp/chrome-install-log 2>&1
                 exit 1
             fi
-            echo -e "deb [signed-by=/usr/share/keyrings/chrome-archive-keyring.pub, arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+            echo -e "deb [signed-by=/usr/share/keyrings/chrome-archive-keyring.pub, arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list  2>&1 1>/dev/null
         fi
+        # Log output
+        exec 1>/tmp/chrome-install-log 2>&1
         sleep 1
         # Install program
         apt-get update

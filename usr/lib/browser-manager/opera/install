@@ -52,17 +52,17 @@ dpkg -l opera-stable | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
     if [ ! -e "/usr/bin/opera" ]; then
-        # Log output
-        exec 1>/tmp/opera-install-log 2>&1
-
         # Add PPA if it doesn't exist
         if [ ! -f /etc/apt/sources.list.d/opera-stable.list ]; then
-            wget -qO - https://deb.opera.com/archive.key | sudo tee /usr/share/keyrings/opera-archive-keyring.key
+            wget -qO - https://deb.opera.com/archive.key | sudo tee /usr/share/keyrings/opera-archive-keyring.key  2>&1 1>/dev/null
             if [ ! $? -eq 0 ]; then
+                echo "Failed to download keyring" >/tmp/opera-install-log 2>&1
                 exit 1
             fi
-            echo "deb [signed-by=/usr/share/keyrings/opera-archive-keyring.key] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera-stable.list
+            echo "deb [signed-by=/usr/share/keyrings/opera-archive-keyring.key] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera-stable.list  2>&1 1>/dev/null
         fi
+        # Log output
+        exec 1>/tmp/opera-install-log 2>&1
         sleep 1
         # Install program
         apt-get update

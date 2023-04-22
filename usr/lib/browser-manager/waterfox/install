@@ -52,16 +52,17 @@ dpkg -l waterfox-g-kpe | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
     if [ ! -e "/usr/bin/waterfox-g" ]; then
-        # Log output
-        exec 1>/tmp/waterfox-install-log 2>&1
         # Add PPA if it doesn't exist
         if [ ! -f /etc/apt/sources.list.d/waterfox.list ]; then
-            curl -fsSL https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /usr/share/keyrings/waterfox-archive-keyring.gpg
+            wget -qO - https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /usr/share/keyrings/waterfox-archive-keyring.gpg  2>&1 1>/dev/null
             if [ ! $? -eq 0 ]; then
+                echo "Failed to download keyring" >/tmp/waterfox-install-log 2>&1
                 exit 1
             fi
-            echo 'deb [signed-by=/usr/share/keyrings/waterfox-archive-keyring.gpg] https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/waterfox.list
+            echo 'deb [signed-by=/usr/share/keyrings/waterfox-archive-keyring.gpg] https://download.opensuse.org/repositories/home:/hawkeye116477:/waterfox/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/waterfox.list  2>&1 1>/dev/null
         fi
+        # Log output
+        exec 1>/tmp/waterfox-install-log 2>&1
         # Install program
         sleep 1
         apt-get update
