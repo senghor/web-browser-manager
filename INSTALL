@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# This file is part of the Bodhi Linux Web Browser Manager.
+#
+# License: GPL-3.0 or later
+#
+# (c) Bodhi Linux Team (2022-2023)
+
+echo "This script will install the Bodhi Linux Web Browser Manager."
+read -p "Do you wish to continue? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo "Installing ..."
+    sudo cp usr/bin/browser-manager /usr/bin
+    sudo rm -rf /usr/lib/browser-manager 2>/dev/null
+    sudo cp -R usr/lib/browser-manager /usr/lib
+    sudo cp usr/share/applications/browser-manager.desktop /usr/share/applications/
+    sudo cp -R usr/share/browser-manager/ /usr/share
+    sudo cp usr/share/pixmaps/browser-manager.svg /usr/share/pixmaps/
+    sudo rm /usr/share/polkit-1/actions/org.bodhi.browser-manager.* 2>/dev/null
+    sudo cp usr/share/polkit-1/actions/org.bodhi.browser-manager.* /usr/share/polkit-1/actions/
+    echo
+    echo "Installation complete!"
+    exit 0
+else
+    echo "Installation aborted!"
+    exit 0
+fi
+
