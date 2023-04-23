@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Web Browser Manager
-Comment=Easily install and uninstall web browsers in feren OS (Originated from Zorin OS).
+Comment=Easily install and uninstall web browsers.
 GenericName=Browser Manager
 Exec=browser-manager
 Icon=browser-manager
