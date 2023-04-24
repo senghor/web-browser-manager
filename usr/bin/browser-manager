@@ -43,7 +43,6 @@ applogo = "/usr/share/pixmaps/browser-manager.svg"
 fixed = Gtk.Fixed()
 browser_data = '/usr/lib/browser-manager/browser-data.json'
 #    Icons
-
 imgbr = '/usr/share/browser-manager/Brave.png'
 imgcr = '/usr/share/browser-manager/Chrome.png'
 imgch = '/usr/share/browser-manager/Chromium.png'
