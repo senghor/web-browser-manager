@@ -174,7 +174,7 @@ class BrowserManager(Gtk.Window):
         self.br_pgb = progressbar((3, 131))
 
         # Google Chrome
-        create_label("Google Chrome", 204, 10)
+        create_label("Chrome", 204, 10)
         self.aboutchrome = about_button(imgcr, (204, 35), self.on_aboutchrome,
                                         "About Chrome")
         self.statechrome = int_button(
@@ -203,7 +203,7 @@ class BrowserManager(Gtk.Window):
         self.fa_pgb = progressbar((486, 131))
 
         # Firefox
-        create_label("Mozilla Firefox", 687, 10)
+        create_label("Firefox", 687, 10)
         self.aboutfirefox = about_button(imgfx, (687, 35), self.on_aboutfirefox,
                                          "About Firefox")
         self.statefirefox = int_button(
