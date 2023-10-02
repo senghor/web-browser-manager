@@ -104,7 +104,10 @@ class BrowserManager(Gtk.Window):
         global _
         domaindir = "../share/locale"
         lang = locale.getdefaultlocale()[0]
-        translation = gettext.translation(domain="browser-manager", localedir=domaindir, fallback=True,languages=[lang])
+        translation = gettext.translation(domain="browser-manager",
+                                          localedir=domaindir,
+                                          fallback=True,
+                                          languages=['fr'])
         translation.install()
         _ = translation.gettext
 
@@ -178,18 +181,18 @@ class BrowserManager(Gtk.Window):
         # Brave
         create_label("Brave", 43, 10)
         self.aboutbrave = about_button(imgbr, (43, 35), self.on_aboutbrave,
-                                       "About Brave")
+                                       _("About Brave"))
         self.statebrave = int_button(
-            "Uninstall" if binbr else "Install", (40, 130),
+            _("Uninstall") if binbr else _("Install"), (40, 130),
             self.on_uninstbrave if binbr else self.on_instbrave, "Brave")
         self.br_pgb = progressbar((3, 131))
 
         # Google Chrome
         create_label("Chrome", 204, 10)
         self.aboutchrome = about_button(imgcr, (204, 35), self.on_aboutchrome,
-                                        "About Chrome")
+                                        _("About Chrome"))
         self.statechrome = int_button(
-            "Uninstall" if bincr else "Install", (201, 130),
+            _("Uninstall") if bincr else _("Install"), (201, 130),
             self.on_uninstchrome if bincr else self.on_instchrome, "Chrome")
         self.cr_pgb = progressbar((165, 131))
 
@@ -197,9 +200,9 @@ class BrowserManager(Gtk.Window):
         create_label("Chromium", 365, 10)
         self.aboutchromium = about_button(imgch, (365, 35),
                                           self.on_aboutchromium,
-                                          "About Chromium")
+                                          _("About Chromium"))
         self.statechromium = int_button(
-            "Uninstall" if binch else "Install", (360, 130),
+            _("Uninstall") if binch else _("Install"), (360, 130),
             self.on_uninstchromium if binch else self.on_instchromium,
             "Chromium")
         self.ch_pgb = progressbar((325, 131))
@@ -207,27 +210,28 @@ class BrowserManager(Gtk.Window):
         # Falkon
         create_label("Falkon", 526, 10)
         self.aboutfalkon = about_button(imgfa, (526, 35), self.on_aboutfalkon,
-                                        "About Falkon")
+                                        _("About Falkon"))
         self.statefalkon = int_button(
-            "Uninstall" if binfa else "Install", (521, 130),
+            _("Uninstall") if binfa else _("Install"), (521, 130),
             self.on_uninstfalkon if binfa else self.on_instfalkon, "Falkon")
         self.fa_pgb = progressbar((486, 131))
 
         # Firefox
         create_label("Firefox", 687, 10)
-        self.aboutfirefox = about_button(imgfx, (687, 35), self.on_aboutfirefox,
-                                         "About Firefox")
+        self.aboutfirefox = about_button(imgfx, (687, 35),
+                                         self.on_aboutfirefox,
+                                         _("About Firefox"))
         self.statefirefox = int_button(
-            "Uninstall" if binfx else "Install", (682, 130),
+            _("Uninstall") if binfx else _("Install"), (682, 130),
             self.on_uninstfirefox if binfx else self.on_instfirefox, "Firefox")
         self.fx_pgb = progressbar((647, 131))
 
         # Opera
         create_label("Opera", 46, 190)
         self.aboutopera = about_button(imgop, (46, 220), self.on_aboutopera,
-                                       "About Opera")
+                                       _("About Opera"))
         self.stateopera = int_button(
-            "Uninstall" if binop else "Install", (41, 315),
+            _("Uninstall") if binop else _("Install"), (41, 315),
             self.on_uninstopera if binop else self.on_instopera, "Opera")
         self.op_pgb = progressbar((6, 316))
 
@@ -235,9 +239,9 @@ class BrowserManager(Gtk.Window):
         create_label("Palemoon", 207, 190)
         self.aboutpalemoon = about_button(imgpm, (207, 220),
                                           self.on_aboutpalemoon,
-                                          "About Palemoon")
+                                          _("About Palemoon"))
         self.statepalemoon = int_button(
-            "Uninstall" if binpm else "Install", (202, 315),
+            _("Uninstall") if binpm else _("Install"), (202, 315),
             self.on_uninstpalemoon if binpm else self.on_instpalemoon,
             "Palemoon")
         self.pm_pgb = progressbar((167, 316))
@@ -245,18 +249,20 @@ class BrowserManager(Gtk.Window):
         # Slimjet
         create_label("Slimjet", 368, 190)
         self.aboutslimjet = about_button(imgsj, (368, 220),
-                                         self.on_aboutslimjet, "About Slimjet")
+                                         self.on_aboutslimjet,
+                                         _("About Slimjet"))
         self.stateslimjet = int_button(
-            "Uninstall" if binsj else "Install", (363, 315),
+            _("Uninstall") if binsj else _("Install"), (363, 315),
             self.on_uninstslimjet if binsj else self.on_instslimjet, "Slimjet")
         self.sj_pgb = progressbar((328, 316))
 
         # Vivaldi
         create_label("Vivaldi", 529, 190)
         self.aboutvivaldi = about_button(imgvi, (529, 220),
-                                         self.on_aboutvivaldi, "About Vivaldi")
+                                         self.on_aboutvivaldi,
+                                         _("About Vivaldi"))
         self.statevivaldi = int_button(
-            "Uninstall" if binvi else "Install", (524, 315),
+            _("Uninstall") if binvi else _("Install"), (524, 315),
             self.on_uninstvivaldi if binvi else self.on_instvivaldi, "Vivaldi")
         self.vi_pgb = progressbar((489, 316))
 
@@ -264,17 +270,17 @@ class BrowserManager(Gtk.Window):
         create_label("Waterfox", 690, 190)
         self.aboutwaterfox = about_button(imgwf, (690, 220),
                                           self.on_aboutwaterfox,
-                                          "About Waterfox")
+                                          _("About Waterfox"))
         self.statewaterfox = int_button(
-            "Uninstall" if binwf else "Install", (685, 315),
+            _("Uninstall") if binwf else _("Install"), (685, 315),
             self.on_uninstwaterfox if binwf else self.on_instwaterfox,
             "Waterfox")
         self.wf_pgb = progressbar((650, 316))
 
         # General Window buttons
-        self.closebtn = int_button("Close", (705, 400), self.on_destroy,
-                                  "Window")
-        self.aboutbtn = int_button("About", (10, 400), self.on_aboutbm,
+        self.closebtn = int_button(_("Close"), (705, 400), self.on_destroy,
+                                   "Window")
+        self.aboutbtn = int_button(_("About"), (10, 400), self.on_aboutbm,
                                    "Browser Manager")
 
         ######################################################
@@ -328,130 +334,130 @@ class BrowserManager(Gtk.Window):
         # Brave
         lb = self.statebrave.get_label()
         if binbr:
-            if lb == "Install":
-                self.statebrave.set_label("Uninstall")
+            if lb == _("Install"):
+                self.statebrave.set_label(_("Uninstall"))
                 self.statebrave.disconnect_by_func(self.on_instbrave)
                 self.statebrave.connect("clicked", self.on_uninstbrave)
         else:
-            if lb == "Uninstall":
-                self.statebrave.set_label("Install")
+            if lb == _("Uninstall"):
+                self.statebrave.set_label(_("Install"))
                 self.statebrave.disconnect_by_func(self.on_uninstbrave)
                 self.statebrave.connect("clicked", self.on_instbrave)
 
         # Google Chrome
         lb = self.statechrome.get_label()
         if bincr:
-            if lb == "Install":
-                self.statechrome.set_label("Uninstall")
+            if lb == _("Install"):
+                self.statechrome.set_label(_("Uninstall"))
                 self.statechrome.disconnect_by_func(self.on_instchrome)
                 self.statechrome.connect("clicked", self.on_uninstchrome)
         else:
-            if lb == "Uninstall":
-                self.statechrome.set_label("Install")
+            if lb == _("Uninstall"):
+                self.statechrome.set_label(_("Install"))
                 self.statechrome.disconnect_by_func(self.on_uninstchrome)
                 self.statechrome.connect("clicked", self.on_instchrome)
 
         # Chromium
         lb = self.statechromium.get_label()
         if binch:
-            if lb == "Install":
-                self.statechromium.set_label("Uninstall")
+            if lb == _("Install"):
+                self.statechromium.set_label(_("Uninstall"))
                 self.statechromium.disconnect_by_func(self.on_instchromium)
                 self.statechromium.connect("clicked", self.on_uninstchromium)
         else:
-            if lb == "Uninstall":
-                self.statechromium.set_label("Install")
+            if lb == _("Uninstall"):
+                self.statechromium.set_label(_("Install"))
                 self.statechromium.disconnect_by_func(self.on_uninstchromium)
                 self.statechromium.connect("clicked", self.on_instchromium)
 
         # Falkon
         lb = self.statefalkon.get_label()
         if binfa:
-            if lb == "Install":
-                self.statefalkon.set_label("Uninstall")
+            if lb == _("Install"):
+                self.statefalkon.set_label(_("Uninstall"))
                 self.statefalkon.disconnect_by_func(self.on_instfalkon)
                 self.statefalkon.connect("clicked", self.on_uninstfalkon)
         else:
-            if lb == "Uninstall":
-                self.statefalkon.set_label("Install")
+            if lb == _("Uninstall"):
+                self.statefalkon.set_label(_("Install"))
                 self.statefalkon.disconnect_by_func(self.on_uninstfalkon)
                 self.statefalkon.connect("clicked", self.on_instfalkon)
 
         # Firefox
         lb = self.statefirefox.get_label()
         if binfx:
-            if lb == "Install":
-                self.statefirefox.set_label("Uninstall")
+            if lb == _("Install"):
+                self.statefirefox.set_label(_("Uninstall"))
                 self.statefirefox.disconnect_by_func(self.on_instfirefox)
                 self.statefirefox.connect("clicked", self.on_uninstfirefox)
         else:
-            if lb == "Uninstall":
-                self.statefirefox.set_label("Install")
+            if lb == _("Uninstall"):
+                self.statefirefox.set_label(_("Install"))
                 self.statefirefox.disconnect_by_func(self.on_uninstfirefox)
                 self.statefirefox.connect("clicked", self.on_instfirefox)
 
         # Opera
         lb = self.stateopera.get_label()
         if binop:
-            if lb == "Install":
-                self.stateopera.set_label("Uninstall")
+            if lb == _("Install"):
+                self.stateopera.set_label(_("Uninstall"))
                 self.stateopera.disconnect_by_func(self.on_instopera)
                 self.stateopera.connect("clicked", self.on_uninstopera)
         else:
-            if lb == "Uninstall":
-                self.stateopera.set_label("Install")
+            if lb == _("Uninstall"):
+                self.stateopera.set_label(_("Install"))
                 self.stateopera.disconnect_by_func(self.on_uninstopera)
                 self.stateopera.connect("clicked", self.on_instopera)
 
         # Palemoon
         lb = self.statepalemoon.get_label()
         if binpm:
-            if lb == "Install":
-                self.statepalemoon.set_label("Uninstall")
+            if lb == _("Install"):
+                self.statepalemoon.set_label(_("Uninstall"))
                 self.statepalemoon.disconnect_by_func(self.on_instpalemoon)
                 self.statepalemoon.connect("clicked", self.on_uninstpalemoon)
         else:
-            if lb == "Uninstall":
-                self.statepalemoon.set_label("Install")
+            if lb == _("Uninstall"):
+                self.statepalemoon.set_label(_("Install"))
                 self.statepalemoon.disconnect_by_func(self.on_uninstpalemoon)
                 self.statepalemoon.connect("clicked", self.on_instpalemoon)
 
         # Slimjet
         lb = self.stateslimjet.get_label()
         if binsj:
-            if lb == "Install":
-                self.stateslimjet.set_label("Uninstall")
+            if lb == _("Install"):
+                self.stateslimjet.set_label(_("Uninstall"))
                 self.stateslimjet.disconnect_by_func(self.on_instslimjet)
                 self.stateslimjet.connect("clicked", self.on_uninstslimjet)
         else:
-            if lb == "Uninstall":
-                self.stateslimjet.set_label("Install")
+            if lb == _("Uninstall"):
+                self.stateslimjet.set_label(_("Install"))
                 self.stateslimjet.disconnect_by_func(self.on_uninstslimjet)
                 self.stateslimjet.connect("clicked", self.on_instslimjet)
 
         # Vivaldi
         lb = self.statevivaldi.get_label()
         if binvi:
-            if lb == "Install":
-                self.statevivaldi.set_label("Uninstall")
+            if lb == _("Install"):
+                self.statevivaldi.set_label(_("Uninstall"))
                 self.statevivaldi.disconnect_by_func(self.on_instvivaldi)
                 self.statevivaldi.connect("clicked", self.on_uninstvivaldi)
         else:
-            if lb == "Uninstall":
-                self.statevivaldi.set_label("Install")
+            if lb == _("Uninstall"):
+                self.statevivaldi.set_label(_("Install"))
                 self.statevivaldi.disconnect_by_func(self.on_uninstvivaldi)
                 self.statevivaldi.connect("clicked", self.on_instvivaldi)
 
         # Waterfox
         lb = self.statewaterfox.get_label()
         if binwf:
-            if lb == "Install":
-                self.statewaterfox.set_label("Uninstall")
+            if lb == _("Install"):
+                self.statewaterfox.set_label(_("Uninstall"))
                 self.statewaterfox.disconnect_by_func(self.on_instwaterfox)
                 self.statewaterfox.connect("clicked", self.on_uninstwaterfox)
         else:
-            if lb == "Uninstall":
-                self.statewaterfox.set_label("Install")
+            if lb == _("Uninstall"):
+                self.statewaterfox.set_label(_("Install"))
                 self.statewaterfox.disconnect_by_func(self.on_uninstwaterfox)
                 self.statewaterfox.connect("clicked", self.on_instwaterfox)
 
@@ -541,14 +547,6 @@ class BrowserManager(Gtk.Window):
         self.pm_pgb.set_visible(True)
         sh_script = Thread(target=BrowserManagerManager,
                            args=("palemoon", "install", self))
-        sh_script.start()
-
-    def on_instslimjet(self, widget):
-        """ Button callback"""
-        self.begin_process()
-        self.sj_pgb.set_visible(True)
-        sh_script = Thread(target=BrowserManagerManager,
-                           args=("slimjet", "install", self))
         sh_script.start()
 
     def on_instslimjet(self, widget):
@@ -657,111 +655,111 @@ class BrowserManager(Gtk.Window):
 
     def on_aboutbrave(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['brave'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['brave']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutchrome(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['chrome'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['chrome']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutchromium(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['chromium'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['chromium']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutfalkon(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['falkon'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['falkon']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutfirefox(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['firefox'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['firefox']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutopera(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['opera'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['opera']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutpalemoon(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['palemoon'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['palemoon']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutslimjet(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['slimjet'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['slimjet']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutvivaldi(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['vivaldi'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['vivaldi']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutwaterfox(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['waterfox'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['waterfox']))
         dialog.run()
         dialog.destroy()
 
     def on_aboutbm(self, widget):
         """ About callback"""
-        dialog = Gtk.MessageDialog(parent = self, 
-                                   flags = 0,
-                                   message_type = Gtk.MessageType.INFO,
-                                   buttons = Gtk.ButtonsType.OK,
-                                   text = BrowserManager.desc['wbm'])
+        dialog = Gtk.MessageDialog(parent=self,
+                                   flags=0,
+                                   message_type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.OK,
+                                   text=_(BrowserManager.desc['wbm']))
         dialog.run()
         dialog.destroy()
 
