@@ -11,19 +11,22 @@
 
 # shellcheck disable=SC2181
 
+export TEXTDOMAIN="browser-manager"
+export TEXTDOMAINDIR="../../../share/locale"
+
 # Check if program is installed
 dpkg -l google-chrome-stable | grep -q ^ii
 
 if [ $? -eq 0 ]; then
     if [ -e "/usr/bin/google-chrome" ]; then
-        zenity --info --title="Information" --text="Google Chrome is already installed" --no-wrap &
+        zenity --info --title="$(gettext "Information")" --text="$(gettext "Google Chrome is already installed")" --no-wrap &
         exit 0
     fi
 fi
 
 # Check for root
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="Continue?" --title="Continue?" --text "The use of Chrome is goverened by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.google.com/chrome/terms/'>https://www.google.com/chrome/terms/</a>\n    <a href='https://www.google.com/chrome/privacy/'>https://www.google.com/chrome/privacy/</a>\n\nAre you sure you want to install Chrome?"
+    zenity --question --title="$(gettext "Continue?")" --title="$(gettext "Continue?")" --text "$(gettext "The use of Chrome is goverened by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.google.com/chrome/terms/'>https://www.google.com/chrome/terms/</a>\n    <a href='https://www.google.com/chrome/privacy/'>https://www.google.com/chrome/privacy/</a>\n\nAre you sure you want to install Chrome?")"
 
     if [ ! $? -eq 0 ]; then
         exit 0
@@ -37,13 +40,13 @@ if [ ! "$(whoami)" = "root" ]; then
 
     # Double Check Package
     if [ -e "/usr/bin/google-chrome" ]; then
-        zenity --info --title="Installation Complete" --text="Google Chrome was successfully installed" --no-wrap &
+        zenity --info --title="$(gettext "Installation Complete")" --text="$(gettext "Google Chrome was successfully installed")" --no-wrap &
         exit 0
     fi
     # Error
-    zenity  --error --text="Web Browser Manager couldn't install Google Chrome successfully
+    zenity  --error --text="$(gettext "Web Browser Manager couldn't install Google Chrome successfully
 
-A log can be found at File System/tmp/chrome-install-log" --title="Error" --no-wrap &
+A log can be found at File System/tmp/chrome-install-log")" --title="$(gettext "Error")" --no-wrap &
     exit 0
 fi
 
@@ -58,7 +61,7 @@ if [ ! $? -eq 0 ]; then
         if [ ! -f /etc/apt/sources.list.d/google-chrome.list ]; then
             wget -qO - https://dl.google.com/linux/linux_signing_key.pub | sudo tee /usr/share/keyrings/chrome-archive-keyring.pub  2>&1 1>/dev/null
             if [ ! $? -eq 0 ]; then
-                echo "Failed to download keyring" >/tmp/chrome-install-log 2>&1
+                echo "$(gettext "Failed to download keyring")" >/tmp/chrome-install-log 2>&1
                 exit 1
             fi
             echo -e "deb [signed-by=/usr/share/keyrings/chrome-archive-keyring.pub, arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list  2>&1 1>/dev/null
@@ -74,5 +77,5 @@ if [ ! $? -eq 0 ]; then
 fi
 
 # Error
-zenity  --error --text="An error occured while initiating the Google Chrome installation process" --title="Error" --no-wrap &
+zenity  --error --text="$(gettext "An error occured while initiating the Google Chrome installation process")" --title="$(gettext "Error")" --no-wrap &
 exit 0

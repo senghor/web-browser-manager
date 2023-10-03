@@ -1,0 +1,82 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Albert Senghor <asenghor@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-02 14:33+0300\n"
+"PO-Revision-Date: 2023-10-02 15:44+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: install:23
+msgid "Information"
+msgstr "Information"
+
+#: install:23
+msgid "Brave is already installed"
+msgstr "Brave est déjà installé"
+
+#: install:30
+msgid "Continue?"
+msgstr "Continuer?"
+
+#: install:30
+msgid ""
+"The use of Brave is governed by the Terms of Use and Privacy Policy found at:"
+"\\n\\n    <a href='https://brave.com/terms-of-use/'>https://brave.com/terms-"
+"of-use/</a>\\n    <a href='https://brave.com/privacy/browser/'>https://brave."
+"com/privacy/browser/</a>\\n\\nAre you sure you want to install Brave?"
+msgstr ""
+"L'utilisation de Brave est régie par les conditions d'utilisation et la "
+"politique de confidentialité disponibles à l'adresse :\\n\\n <a "
+"href='https://brave.com/terms-of-use/'>https://brave.com/terms-d'utilisation/"
+"</a>\\n <a href='https://brave.com/privacy/browser/'>https://brave.com/"
+"privacy/browser/</a>\\n\\nÊtes-vous sûr de vouloir installer Brave ?"
+
+#: install:44
+msgid "Installation Complete"
+msgstr "Installation complète"
+
+#: install:44
+msgid "Brave was successfully installed"
+msgstr "Brave a été installé avec succès"
+
+#: install:49
+msgid ""
+"Web Browser Manager couldn't install Brave successfully\n"
+"\n"
+"A log can be found at File System/tmp/brave-install-log"
+msgstr ""
+"Le gestionnaire de navigateur Web n'a pas pu installer Brave avec succès\n"
+"Un journal peut être trouvé dans File System/tmp/brave-install-log"
+
+#: install:51 install:91
+msgid "Error"
+msgstr "Erreur"
+
+#: install:75
+msgid "Failed to download keyring"
+msgstr "Échec du téléchargement du trousseau de clés"
+
+#: install:78
+msgid ""
+"deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, "
+"arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
+msgstr ""
+"deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, "
+"arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
+
+#: install:91
+msgid "An error occured while initiating the Brave installation process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus d'installation de "
+"Brave"

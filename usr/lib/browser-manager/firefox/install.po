@@ -1,0 +1,72 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Albert Senghor <asenghor@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 08:34+0300\n"
+"PO-Revision-Date: 2023-10-03 08:41+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: install:21
+msgid "Information"
+msgstr "Information"
+
+#: install:21
+msgid "Mozilla Firefox is already installed"
+msgstr "Mozilla Firefox est déjà installé"
+
+#: install:27
+msgid "Continue?"
+msgstr "Continuer?"
+
+#: install:27
+msgid ""
+"The use of Mozilla Firefox is governed by the Terms found at:\\n\\n    <a "
+"href='https://www.mozilla.org/en-US/about/legal/terms/firefox/'>https://www."
+"mozilla.org/en-US/about/legal/terms/firefox/</a>\\n\\nAre you sure you want "
+"to install Mozilla Firefox?"
+msgstr ""
+"L'utilisation de Mozilla Firefox est régie par les conditions disponibles à "
+"l'adresse :\\n\\n <a href='https://www.mozilla.org/en-US/about/legal/terms/"
+"firefox/'>https://www.mozilla.org/en-US/about/legal/terms/firefox/</"
+"a>\\n\\nÊtes-vous sûr de vouloir installer Mozilla Firefox ?"
+
+#: install:41
+msgid "Installation Complete"
+msgstr "Installation complète"
+
+#: install:41
+msgid "Mozilla Firefox was successfully installed"
+msgstr "Mozilla Firefox a été installé avec succès"
+
+#: install:45
+msgid ""
+"Web Browser Manager couldn't install Mozilla Firefox successfully\n"
+"\n"
+"A log can be found at File System/tmp/firefox-install-log"
+msgstr ""
+"Le Gestionnaire de navigateur Web n'a pas pu installer Mozilla Firefox avec "
+"succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/firefox-install-log"
+
+#: install:47 install:67
+msgid "Error"
+msgstr "Erreur"
+
+#: install:67
+msgid ""
+"An error occured while initiating the Mozilla Firefox installation process."
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus d'installation de "
+"Mozilla Firefox."

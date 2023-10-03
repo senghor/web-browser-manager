@@ -1,0 +1,77 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Albert Senghor <asenghor@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-02 17:03+0300\n"
+"PO-Revision-Date: 2023-10-02 17:11+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: install:22
+msgid "Information"
+msgstr "Information"
+
+#: install:22
+msgid "Chromium is already installed"
+msgstr "Chrome est déjà installé"
+
+#: install:29
+msgid "Continue?"
+msgstr "Continuer?"
+
+#: install:29
+msgid ""
+"The use of Chromium is governed by the Terms of Use and Privacy Policy found "
+"at: \\n\\n    <a href='https://creativecommons.org/licenses/by/2.5/'>https://"
+"creativecommons.org/licenses/by/2.5/</a>\\n    <a href='https://developers."
+"google.com/terms/site-policies'>https://developers.google.com/terms/site-"
+"policies</a>\\n    <a href='https://www.chromium.org/Home/chromium-"
+"privacy/'>https://www.chromium.org/Home/chromium-privacy/</a>\\n\\nAre you "
+"sure you want to install Chromium?"
+msgstr ""
+"L'utilisation de Chromium est régie par les conditions d'utilisation et la "
+"politique de confidentialité trouvéesà : \\n\\n <a href='https://"
+"creativecommons.org/licenses/by/2.5/'>https://creativecommons.org/licenses/"
+"by/2.5/</a>\\n <a href='https://developers.google.com/terms/site-"
+"policies'>https://developers.google.com/terms/site-politiques</a>\\n <a "
+"href='https://www.chromium.org/Home/chromium-privacy/'>https://www.chromium."
+"org/Home/chromium-privacy/</a>\\n\\nÊtes-vous Sûr de vouloir installer "
+"Chromium ?"
+
+#: install:43
+msgid "Installation Complete"
+msgstr "Installation complète"
+
+#: install:43
+msgid "Chromium was successfully installed"
+msgstr "Chrome a été installé avec succès"
+
+#: install:47
+msgid ""
+"Web Browser Manager couldn't install Chromium successfully\n"
+"\n"
+"A log can be found at File System/tmp/chromium-install-log"
+msgstr ""
+
+#: install:49 install:68
+msgid "Error"
+msgstr ""
+"Le gestionnaire de navigateur Web n'a pas pu installer Chromium avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/chromium-install-log"
+
+#: install:68
+msgid "An error occured while initiating the Chromium installation process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus d'installation de "
+"Chromium"

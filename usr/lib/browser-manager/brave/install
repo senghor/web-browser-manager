@@ -11,19 +11,23 @@
 
 # shellcheck disable=SC2181
 
+export TEXTDOMAIN="browser-manager"
+export TEXTDOMAINDIR="../../../share/locale"
+
 # Check if program is installed
+
 dpkg -l brave-browser | grep -q ^ii
 
 if [ $? -eq 0 ]; then
     if [ -e "/usr/bin/brave-browser" ]; then
-        zenity --info --title="Information" --text="Brave is already installed" --no-wrap &
+        zenity --info --title="$(gettext "Information")" --text="$(gettext "Brave is already installed")" --no-wrap &
         exit 0
     fi
 fi
 
 # Check for root
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="Continue?" --text "The use of Brave is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://brave.com/terms-of-use/'>https://brave.com/terms-of-use/</a>\n    <a href='https://brave.com/privacy/browser/'>https://brave.com/privacy/browser/</a>\n\nAre you sure you want to install Brave?"
+    zenity --question --title="$(gettext "Continue?")" --text "$(gettext "The use of Brave is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://brave.com/terms-of-use/'>https://brave.com/terms-of-use/</a>\n    <a href='https://brave.com/privacy/browser/'>https://brave.com/privacy/browser/</a>\n\nAre you sure you want to install Brave?")"
 
     if [ ! $? -eq 0 ]; then
         exit 0
@@ -37,14 +41,14 @@ if [ ! "$(whoami)" = "root" ]; then
 
     # Double Check Package
     if [ -e "/usr/bin/brave-browser" ]; then
-        zenity --info --title="Installation Complete" --text="Brave was successfully installed" --no-wrap &
+        zenity --info --title="$(gettext "Installation Complete")" --text="$(gettext "Brave was successfully installed")" --no-wrap &
         exit 0
     fi
 
     # Error
-    zenity  --error --text="Web Browser Manager couldn't install Brave successfully
+    zenity  --error --text="$(gettext "Web Browser Manager couldn't install Brave successfully
 
-A log can be found at File System/tmp/brave-install-log" --title="Error" --no-wrap &
+A log can be found at File System/tmp/brave-install-log")" --title="$(gettext "Error")" --no-wrap &
     exit 0
 fi
 
@@ -68,10 +72,10 @@ if [ ! $? -eq 0 ]; then
         if [ ! -f /etc/apt/sources.list.d/brave.list ]; then
             wget -qO - https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg | sudo tee /usr/share/keyrings/brave-browser-archive-keyring.gpg 2>&1 1>/dev/null
             if [ ! $? -eq 0 ]; then
-                echo "Failed to download keyring" >/tmp/brave-install-log 2>&1
+                echo "$(gettext "Failed to download keyring")" >/tmp/brave-install-log 2>&1
                 exit 1
             fi
-            echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list 2>&1 1>/dev/null
+            echo "$(gettext "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main")" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list 2>&1 1>/dev/null
         fi
         # Log output
         exec 1>/tmp/brave-install-log 2>&1
@@ -84,5 +88,5 @@ if [ ! $? -eq 0 ]; then
 fi
 
 # Error
-zenity  --error --text="An error occured while initiating the Brave installation process" --title="Error" --no-wrap &
+zenity  --error --text="$(gettext "An error occured while initiating the Brave installation process")" --title="$(gettext "Error")" --no-wrap &
 exit 0

@@ -1,0 +1,62 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Albert Senghor <asenghor@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 11:45+0300\n"
+"PO-Revision-Date: 2023-10-03 12:26+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: uninstall:19
+msgid "Information"
+msgstr "Information"
+
+#: uninstall:19
+msgid "Palemoon is not installed"
+msgstr "Palemoon n'est pas installé"
+
+#: uninstall:26
+msgid "Continue?"
+msgstr "Continuer?"
+
+#: uninstall:26
+msgid "Are you sure you want to remove Palemoon?"
+msgstr "Etes-vous sûr de vouloir supprimer Palemoon ?"
+
+#: uninstall:43
+msgid "Uninstalled Palemoon"
+msgstr "Palemoon désinstallé"
+
+#: uninstall:43
+msgid "Palemoon was successfully removed"
+msgstr "Palemoon a été supprimé avec succès"
+
+#: uninstall:47
+msgid ""
+"Web Browser Manager couldn't remove Palemoon successfully\n"
+"\n"
+"A log can be found at File System/tmp/palemoon-removal-log"
+msgstr ""
+"Web Browser Manager n'a pas pu supprimer Palemoon avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/palemoon-removal-log"
+
+#: uninstall:49 uninstall:68
+msgid "Error"
+msgstr "Erreur"
+
+#: uninstall:68
+msgid "An error occured while initiating the Palemoon removal process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus de suppression de "
+"Palemoon"

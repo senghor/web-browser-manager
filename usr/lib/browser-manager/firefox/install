@@ -11,17 +11,20 @@
 
 # shellcheck disable=SC2181
 
+export TEXTDOMAIN="browser-manager"
+export TEXTDOMAINDIR="../../../share/locale"
+
 # Check if program is installed
 dpkg -l firefox | grep -q ^ii
 
 if [ $? -eq 0 ]; then
-    zenity --info --title="Information" --text="Mozilla Firefox is already installed" --no-wrap &
+    zenity --info --title="$(gettext "Information")" --text="$(gettext "Mozilla Firefox is already installed")" --no-wrap &
     exit 0
 fi
 
 # Check for root
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="Continue?" --text "The use of Mozilla Firefox is governed by the Terms found at:\n\n    <a href='https://www.mozilla.org/en-US/about/legal/terms/firefox/'>https://www.mozilla.org/en-US/about/legal/terms/firefox/</a>\n\nAre you sure you want to install Mozilla Firefox?"
+    zenity --question --title="$(gettext "Continue?")" --text "$(gettext "The use of Mozilla Firefox is governed by the Terms found at:\n\n    <a href='https://www.mozilla.org/en-US/about/legal/terms/firefox/'>https://www.mozilla.org/en-US/about/legal/terms/firefox/</a>\n\nAre you sure you want to install Mozilla Firefox?")"
 
     if [ ! $? -eq 0 ]; then
         exit 0
@@ -35,13 +38,13 @@ if [ ! "$(whoami)" = "root" ]; then
 
     # Double Check Package
     if [ -e "/usr/bin/firefox" ]; then
-        zenity --info --title="Installation Complete" --text="Mozilla Firefox was successfully installed" --no-wrap &
+        zenity --info --title="$(gettext "Installation Complete")" --text="$(gettext "Mozilla Firefox was successfully installed")" --no-wrap &
         exit 0
     fi
     # Error
-    zenity  --error --text="Web Browser Manager couldn't install Mozilla Firefox successfully
+    zenity  --error --text="$(gettext "Web Browser Manager couldn't install Mozilla Firefox successfully
 
-A log can be found at File System/tmp/firefox-install-log" --title="Error" --no-wrap &
+A log can be found at File System/tmp/firefox-install-log")" --title="$(gettext "Error")" --no-wrap &
     exit 0
 fi
 
@@ -61,5 +64,5 @@ if [ ! $? -eq 0 ]; then
 fi
 
 # Error
-zenity  --error --text="An error occured while initiating the Mozilla Firefox installation process." --title="Error" --no-wrap &
+zenity  --error --text="$(gettext "An error occured while initiating the Mozilla Firefox installation process.")" --title="$(gettext "Error")" --no-wrap &
 exit 0

@@ -11,19 +11,22 @@
 
 # shellcheck disable=SC2181
 
+export TEXTDOMAIN="browser-manager"
+export TEXTDOMAINDIR="../../../share/locale"
+
 # Check if program is installed
 dpkg -l waterfox-g-kpe | grep -q ^ii
 
 if [ ! $? -eq 0 ]; then
     if [ ! -e "/usr/bin/waterfox-g" ]; then
-        zenity --info --title="Information" --text="Waterfox is not installed" --no-wrap &
+        zenity --info --title="$(gettext "Information")" --text="$(gettext "Waterfox is not installed")" --no-wrap &
         exit 0
     fi
 fi
 
 # Check for root
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="Continue?" --text "Are you sure you want to remove Waterfox?" --no-wrap
+    zenity --question --title="$(gettext "Continue?")" --text "$(gettext "Are you sure you want to remove Waterfox?")" --no-wrap
 
     if [ ! $? -eq 0 ]; then
         exit 0
@@ -44,9 +47,9 @@ if [ ! "$(whoami)" = "root" ]; then
             exit 0
         fi
         # Error
-        zenity  --error --text="Web Browser Manager couldn't remove Waterfox successfully
+        zenity  --error --text="$(gettext "Web Browser Manager couldn't remove Waterfox successfully
 
-A log can be found at File System/tmp/waterfox-removal-log" --title="Error" --no-wrap
+A log can be found at File System/tmp/waterfox-removal-log")" --title="$(gettext "Error")" --no-wrap
         exit 0
     fi
 fi
@@ -68,5 +71,5 @@ if [ $? -eq 0 ]; then
 fi
 
 # Error
-zenity  --error --text="An error occured while initiating the Waterfox removal process" --title="Error" --no-wrap &
+zenity  --error --text="$(gettext "An error occured while initiating the Waterfox removal process")" --title="$(gettext "Error")" --no-wrap &
 exit 0

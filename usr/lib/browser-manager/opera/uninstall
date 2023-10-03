@@ -11,19 +11,22 @@
 
 # shellcheck disable=SC2181
 
+export TEXTDOMAIN="browser-manager"
+export TEXTDOMAINDIR="../../../share/locale"
+
 # Check if program is installed
 dpkg --get-selections | grep -P -q "opera-stable\t*install"
 
 if [ ! $? -eq 0 ]; then
     if [ ! -e "/usr/bin/opera" ]; then
-        zenity --info --title="Information" --text="Opera is not installed" --no-wrap &
+        zenity --info --title="$(gettext "Information")" --text="$(gettext "Opera is not installed")" --no-wrap &
         exit 0
     fi
 fi
 
 # Check for root
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="Continue?" --text "Are you sure you want to remove Opera?" --no-wrap
+    zenity --question --title="$(gettext "Continue?")" --text "$(gettext "Are you sure you want to remove Opera?")" --no-wrap
 
     if [ ! $? -eq 0 ]; then
         exit 0
@@ -41,13 +44,13 @@ if [ ! "$(whoami)" = "root" ]; then
 
     if [ ! $? -eq 0 ]; then
         if [ ! -e "/usr/bin/opera" ]; then
-            zenity --info --title="Uninstalled Opera" --text="Opera was successfully removed" --no-wrap &
+            zenity --info --title="$(gettext "Uninstalled Opera")" --text="$(gettext "Opera was successfully removed")" --no-wrap &
             exit 0
         fi
         # Error
-        zenity  --error --text="Web Browser Manager couldn't remove Opera successfully
+        zenity  --error --text="$(gettext "Web Browser Manager couldn't remove Opera successfully
 
-A log can be found at File System/tmp/opera-removal-log" --title="Error" --no-wrap &
+A log can be found at File System/tmp/opera-removal-log")" --title="$(gettext "Error")" --no-wrap &
         exit 0
     fi
 fi
@@ -70,5 +73,5 @@ if [ $? -eq 0 ]; then
 fi
 
 # Error
-zenity  --error --text="An error occured while initiating the Opera removal process" --title="Error" --no-wrap &
+zenity  --error --text="$(gettext "An error occured while initiating the Opera removal process")" --title="$(gettext "Error")" --no-wrap &
 exit 0

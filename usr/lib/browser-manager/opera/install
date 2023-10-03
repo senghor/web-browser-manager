@@ -11,19 +11,22 @@
 
 # shellcheck disable=SC2181
 
+export TEXTDOMAIN="browser-manager"
+export TEXTDOMAINDIR="../../../share/locale"
+
 # Check if program is installed
 dpkg -l opera-stable | grep -q ^ii
 
 if [ $? -eq 0 ]; then
     if [ -e "/usr/bin/opera" ]; then
-        zenity --info --title="Information" --text="Opera is already installed" --no-wrap &
+        zenity --info --title="$(gettext "Information")" --text="$(gettext "Opera is already installed")" --no-wrap &
         exit 0
     fi
 fi
 
 # Check for root
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="Continue?" --text "The use of Opera is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.opera.com/terms'>https://www.opera.com/terms</a>\n    <a href='https://www.opera.com/privacy'>https://www.opera.com/privacy</a>\n\nAre you sure you want to install Opera?"
+    zenity --question --title="$(gettext "Continue?")" --text "$(gettext = "The use of Opera is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.opera.com/terms'>https://www.opera.com/terms</a>\n    <a href='https://www.opera.com/privacy'>https://www.opera.com/privacy</a>\n\nAre you sure you want to install Opera?")"
 
     if [ ! $? -eq 0 ]; then
         exit 0
@@ -37,13 +40,13 @@ if [ ! "$(whoami)" = "root" ]; then
 
     # Double Check Package
     if [ -e "/usr/bin/opera" ]; then
-        zenity --info --title="Installation Complete" --text="Opera was successfully installed" --no-wrap &
+        zenity --info --title="$(gettext = "Installation Complete")" --text="$(gettext "Opera was successfully installed")" --no-wrap &
         exit 0
     fi
     # Error
-    zenity  --error --text="Web Browser Manager couldn't install Opera successfully
+    zenity  --error --text="$(gettext "Web Browser Manager couldn't install Opera successfully
 
-A log can be found at File System/tmp/opera-install-log" --title="Error" --no-wrap &
+A log can be found at File System/tmp/opera-install-log")" --title="$(gettext "Error")" --no-wrap &
     exit 0
 fi
 
@@ -56,7 +59,7 @@ if [ ! $? -eq 0 ]; then
         if [ ! -f /etc/apt/sources.list.d/opera-stable.list ]; then
             wget -qO - https://deb.opera.com/archive.key | sudo tee /usr/share/keyrings/opera-archive-keyring.key  2>&1 1>/dev/null
             if [ ! $? -eq 0 ]; then
-                echo "Failed to download keyring" >/tmp/opera-install-log 2>&1
+                echo "$(gettext "Failed to download keyring")" >/tmp/opera-install-log 2>&1
                 exit 1
             fi
             echo "deb [signed-by=/usr/share/keyrings/opera-archive-keyring.key] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera-stable.list  2>&1 1>/dev/null
@@ -73,5 +76,5 @@ if [ ! $? -eq 0 ]; then
 fi
 
 # Error
-zenity  --error --text="An error occured while initiating the Opera installation process" --title="Error" --no-wrap &
+zenity  --error --text="$(gettext "An error occured while initiating the Opera installation process")" --title="$(gettext "Error")" --no-wrap &
 exit 0

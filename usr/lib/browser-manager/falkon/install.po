@@ -1,0 +1,50 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Albert Senghor <asenghor@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-02 18:56+0300\n"
+"PO-Revision-Date: 2023-10-02 19:05+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: install:22
+msgid "Information"
+msgstr "Information"
+
+#: install:22 install:29 install:43
+msgid "="
+msgstr ""
+
+#: install:29
+msgid "Continue?"
+msgstr "Continuer?"
+
+#: install:47
+msgid ""
+"Web Browser Manager couldn't install Falkon successfully\n"
+"\n"
+"A log can be found at File System/tmp/falkon-install-log"
+msgstr ""
+"Web Browser Manager n'a pas pu installer Falkon avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/falkon-install-log"
+
+#: install:69
+msgid "An error occured while initiating the Falkon installation process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus d'installation de "
+"Falkon"
+
+#: install:69
+msgid "Error"
+msgstr "Erreur"
