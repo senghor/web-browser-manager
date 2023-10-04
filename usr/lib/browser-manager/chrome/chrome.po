@@ -1,0 +1,123 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2023 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Albert Senghor <asenghor@gmail.com>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-02 16:07+0300\n"
+"PO-Revision-Date: 2023-10-02 16:13+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"#-#-#-#-#  uninstall.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-02 16:23+0300\n"
+"PO-Revision-Date: 2023-10-02 16:31+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: install:22 uninstall:22
+msgid "Information"
+msgstr "Information"
+
+#: install:22
+msgid "Google Chrome is already installed"
+msgstr "Google Chrome est déjà installé"
+
+#: install:29 uninstall:29
+msgid "Continue?"
+msgstr "Continuer?"
+
+#: install:29
+msgid ""
+"The use of Chrome is goverened by the Terms of Use and Privacy Policy found "
+"at:\\n\\n    <a href='https://www.google.com/chrome/terms/'>https://www."
+"google.com/chrome/terms/</a>\\n    <a href='https://www.google.com/chrome/"
+"privacy/'>https://www.google.com/chrome/privacy/</a>\\n\\nAre you sure you "
+"want to install Chrome?"
+msgstr ""
+"L'utilisation de Chrome est régie par les conditions d'utilisation et la "
+"politique de confidentialité trouvéesà :\\n\\n <a href='https://www.google."
+"com/chrome/terms/'>https://www.google.com/chrome/terms/</a>\\n <a "
+"href='https://www.google.com/chrome/privacy/'>https://www.google.com/chrome/"
+"privacy/</a>\\n\\nÊtes-vous sûr de Voulez-vous installer Chrome ?"
+
+#: install:43
+msgid "Installation Complete"
+msgstr "Installation complète"
+
+#: install:43
+msgid "Google Chrome was successfully installed"
+msgstr "Google Chrome a été installé avec succès"
+
+#: install:47
+msgid ""
+"Web Browser Manager couldn't install Google Chrome successfully\n"
+"\n"
+"A log can be found at File System/tmp/chrome-install-log"
+msgstr ""
+"Web Browser Manager n'a pas pu installer Google Chrome avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/chrome-install-log"
+
+#: install:49 install:80 uninstall:52 uninstall:73
+msgid "Error"
+msgstr "Erreur"
+
+#: install:64
+msgid "Failed to download keyring"
+msgstr "Échec du téléchargement du trousseau de clés"
+
+#: install:80
+msgid ""
+"An error occured while initiating the Google Chrome installation process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus d'installation de "
+"Google Chrome"
+
+#: uninstall:22
+msgid "Google Chrome is not installed"
+msgstr "Google Chrome n'est pas installé"
+
+#: uninstall:29
+msgid "Are you sure you want to remove Google Chrome?"
+msgstr "Êtes-vous sûr de vouloir supprimer Google Chrome ?"
+
+#: uninstall:46
+msgid "Uninstalled Google Chrome"
+msgstr "Google Chrome désinstallé"
+
+#: uninstall:46
+msgid "Google Chrome was successfully removed"
+msgstr "Google Chrome a été supprimé avec succès"
+
+#: uninstall:50
+msgid ""
+"Web Browser Manager couldn't remove Google Chrome successfully\n"
+"\n"
+"A log can be found at File System/tmp/chrome-removal-log"
+msgstr ""
+"Web Browser Manager n'a pas pu supprimer Google Chrome avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/chrome-removal-log"
+
+#: uninstall:73
+msgid "An error occured while initiating the Google Chrome removal process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus de suppression de "
+"Google Chrome"

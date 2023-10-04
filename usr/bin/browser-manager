@@ -76,7 +76,7 @@ class BrowserManagerManager():
     """ Execute the Install or uninstall shell script."""
 
     def __init__(self, browsername, option, bmself):
-        script = "/usr/lib/browser-manager/" + browsername + "/" + option
+        script = "/home/al/code/web-browser-manager/usr/lib/browser-manager/" + browsername + "/" + option
         try:
             subprocess.run(script, capture_output=False, check=True)
         except subprocess.CalledProcessError:
