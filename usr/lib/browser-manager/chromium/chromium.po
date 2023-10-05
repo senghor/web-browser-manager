@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 17:03+0300\n"
-"PO-Revision-Date: 2023-10-02 17:11+0300\n"
+"PO-Revision-Date: 2023-10-05 09:30+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 18:35+0300\n"
-"PO-Revision-Date: 2023-10-02 18:41+0300\n"
+"PO-Revision-Date: 2023-10-05 09:31+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -76,13 +76,13 @@ msgid ""
 "\n"
 "A log can be found at File System/tmp/chromium-install-log"
 msgstr ""
-
-#: install:49 install:68
-msgid "Error"
-msgstr ""
-"Le gestionnaire de navigateur Web n'a pas pu installer Chromium avec succès\n"
+"Web Browser Manager couldn't install Chromium successfully\n"
 "\n"
-"Un journal peut être trouvé dans File System/tmp/chromium-install-log"
+"A log can be found at File System/tmp/chromium-install-log"
+
+#: install:49 install:68 uninstall:53 uninstall:72
+msgid "Error"
+msgstr "Erreur"
 
 #: install:68
 msgid "An error occured while initiating the Chromium installation process"
@@ -96,11 +96,11 @@ msgstr "Chrome n'est pas installé"
 
 #: uninstall:29
 msgid "Are you sure you want to remove Chromium?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir supprimer Chromium?"
 
 #: uninstall:46
 msgid "Uninstalled Chromium"
-msgstr "Êtes-vous sûr de vouloir supprimer Chromium ?"
+msgstr "Chrome désinstallé"
 
 #: uninstall:46
 msgid "Chromium was successfully removed"

@@ -26,7 +26,7 @@ fi
 
 # Check for root
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="$(gettext "Continue?")" --text "$(gettext = "The use of Opera is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.opera.com/terms'>https://www.opera.com/terms</a>\n    <a href='https://www.opera.com/privacy'>https://www.opera.com/privacy</a>\n\nAre you sure you want to install Opera?")"
+    zenity --question --title="$(gettext "Continue?")" --text "$(gettext "The use of Opera is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://www.opera.com/terms'>https://www.opera.com/terms</a>\n    <a href='https://www.opera.com/privacy'>https://www.opera.com/privacy</a>\n\nAre you sure you want to install Opera?")"
 
     if [ ! $? -eq 0 ]; then
         exit 0
@@ -40,7 +40,7 @@ if [ ! "$(whoami)" = "root" ]; then
 
     # Double Check Package
     if [ -e "/usr/bin/opera" ]; then
-        zenity --info --title="$(gettext = "Installation Complete")" --text="$(gettext "Opera was successfully installed")" --no-wrap &
+        zenity --info --title="$(gettext  "Installation Complete")" --text="$(gettext "Opera was successfully installed")" --no-wrap &
         exit 0
     fi
     # Error

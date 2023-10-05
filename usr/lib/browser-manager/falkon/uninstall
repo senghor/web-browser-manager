@@ -43,7 +43,7 @@ if [ ! "$(whoami)" = "root" ]; then
 
     if [ ! $? -eq 0 ]; then
         if [ ! -e "/usr/bin/falkon" ]; then
-            zenity --info --title="$(gettext = "Uninstalled Falkon")" --text="$(gettext "Falkon was successfully removed")" --no-wrap &
+            zenity --info --title="$(gettext  "Uninstalled Falkon")" --text="$(gettext "Falkon was successfully removed")" --no-wrap &
             exit 0
         fi
         # Error

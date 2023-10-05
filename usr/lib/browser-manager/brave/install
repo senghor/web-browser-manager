@@ -27,7 +27,7 @@ fi
 
 # Check for root
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="$(gettext "Continue?")" --text "$(gettext "The use of Brave is governed by the Terms of Use and Privacy Policy found at:\n\n    <a href='https://brave.com/terms-of-use/'>https://brave.com/terms-of-use/</a>\n    <a href='https://brave.com/privacy/browser/'>https://brave.com/privacy/browser/</a>\n\nAre you sure you want to install Brave?")"
+    zenity --question --title="$(gettext "Continue?")" --text "$(gettext "The use of Brave is governed by the Terms of Use and Privacy Policy found at:\n\n")    <a href='https://brave.com/terms-of-use/'>https://brave.com/terms-of-use/</a>\n    <a href='https://brave.com/privacy/browser/'>https://brave.com/privacy/browser/</a>\n\n$(gettext "Are you sure you want to install Brave?")"
 
     if [ ! $? -eq 0 ]; then
         exit 0
@@ -75,7 +75,7 @@ if [ ! $? -eq 0 ]; then
                 echo "$(gettext "Failed to download keyring")" >/tmp/brave-install-log 2>&1
                 exit 1
             fi
-            echo "$(gettext "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main")" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list 2>&1 1>/dev/null
+            echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list 2>&1 1>/dev/null
         fi
         # Log output
         exec 1>/tmp/brave-install-log 2>&1

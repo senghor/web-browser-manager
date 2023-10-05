@@ -10,8 +10,8 @@ msgstr ""
 "#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-02 14:33+0300\n"
-"PO-Revision-Date: 2023-10-02 15:44+0300\n"
+"POT-Creation-Date: 2023-10-05 12:29+0300\n"
+"PO-Revision-Date: 2023-10-05 12:36+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -56,37 +56,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"#-#-#-#-#  chromium.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-02 17:03+0300\n"
-"PO-Revision-Date: 2023-10-02 17:11+0300\n"
-"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
-"Language-Team: French <traduc@traduc.org>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"#-#-#-#-#  uninstall.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-02 18:35+0300\n"
-"PO-Revision-Date: 2023-10-02 18:41+0300\n"
-"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
-"Language-Team: French <traduc@traduc.org>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "#-#-#-#-#  falkon.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-02 18:56+0300\n"
-"PO-Revision-Date: 2023-10-02 19:05+0300\n"
+"POT-Creation-Date: 2023-10-05 10:03+0300\n"
+"PO-Revision-Date: 2023-10-05 10:09+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -97,8 +72,8 @@ msgstr ""
 "#-#-#-#-#  uninstall.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-02 19:11+0300\n"
-"PO-Revision-Date: 2023-10-02 19:16+0300\n"
+"POT-Creation-Date: 2023-10-05 10:13+0300\n"
+"PO-Revision-Date: 2023-10-05 10:24+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -110,8 +85,8 @@ msgstr ""
 "#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-03 09:33+0300\n"
-"PO-Revision-Date: 2023-10-03 09:44+0300\n"
+"POT-Creation-Date: 2023-10-05 10:36+0300\n"
+"PO-Revision-Date: 2023-10-05 11:34+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -124,31 +99,6 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-03 09:57+0300\n"
 "PO-Revision-Date: 2023-10-03 10:09+0300\n"
-"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
-"Language-Team: French <traduc@traduc.org>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"#-#-#-#-#  palemoon.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-03 11:12+0300\n"
-"PO-Revision-Date: 2023-10-03 11:27+0300\n"
-"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
-"Language-Team: French <traduc@traduc.org>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"#-#-#-#-#  uninstall.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-03 11:45+0300\n"
-"PO-Revision-Date: 2023-10-03 12:26+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -181,31 +131,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"#-#-#-#-#  vivaldi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-03 13:15+0300\n"
-"PO-Revision-Date: 2023-10-03 13:39+0300\n"
-"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
-"Language-Team: French <traduc@traduc.org>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"#-#-#-#-#  uninstall.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-03 13:51+0300\n"
-"PO-Revision-Date: 2023-10-03 14:00+0300\n"
-"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
-"Language-Team: French <traduc@traduc.org>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "#-#-#-#-#  waterfox.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -224,6 +149,31 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-03 15:08+0300\n"
 "PO-Revision-Date: 2023-10-03 15:15+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"#-#-#-#-#  chromium.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-02 17:03+0300\n"
+"PO-Revision-Date: 2023-10-05 09:30+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"#-#-#-#-#  uninstall.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-02 18:35+0300\n"
+"PO-Revision-Date: 2023-10-05 09:31+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -256,8 +206,58 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"#-#-#-#-#  palemoon.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 11:12+0300\n"
+"PO-Revision-Date: 2023-10-03 11:27+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"#-#-#-#-#  uninstall.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 11:45+0300\n"
+"PO-Revision-Date: 2023-10-03 12:26+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"#-#-#-#-#  vivaldi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 13:15+0300\n"
+"PO-Revision-Date: 2023-10-03 13:39+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"#-#-#-#-#  uninstall.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 13:51+0300\n"
+"PO-Revision-Date: 2023-10-03 14:00+0300\n"
+"Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: install:23 uninstall:22 install:22 uninstall:19 install:21 uninstall:21
+#: install:23 uninstall:22 install:22 install:21 uninstall:21 uninstall:19
 msgid "Information"
 msgstr "Information"
 
@@ -265,23 +265,22 @@ msgstr "Information"
 msgid "Brave is already installed"
 msgstr "Brave est déjà installé"
 
-#: install:30 uninstall:30 install:29 uninstall:29 uninstall:26 install:27
-#: uninstall:27
+#: install:30 uninstall:30 install:29 uninstall:29 install:27 uninstall:27
+#: uninstall:26
 msgid "Continue?"
 msgstr "Continuer?"
 
 #: install:30
 msgid ""
 "The use of Brave is governed by the Terms of Use and Privacy Policy found at:"
-"\\n\\n    <a href='https://brave.com/terms-of-use/'>https://brave.com/terms-"
-"of-use/</a>\\n    <a href='https://brave.com/privacy/browser/'>https://brave."
-"com/privacy/browser/</a>\\n\\nAre you sure you want to install Brave?"
+"\\n\\n"
 msgstr ""
 "L'utilisation de Brave est régie par les conditions d'utilisation et la "
-"politique de confidentialité disponibles à l'adresse :\\n\\n <a "
-"href='https://brave.com/terms-of-use/'>https://brave.com/terms-d'utilisation/"
-"</a>\\n <a href='https://brave.com/privacy/browser/'>https://brave.com/"
-"privacy/browser/</a>\\n\\nÊtes-vous sûr de vouloir installer Brave ?"
+"politique de confidentialité disponibles à l'adresse : \\n\\n"
+
+#: install:30
+msgid "Are you sure you want to install Brave?"
+msgstr "Êtes-vous sûr de vouloir installer Brave?"
 
 #: install:44 install:43 install:41
 msgid "Installation Complete"
@@ -297,48 +296,31 @@ msgid ""
 "\n"
 "A log can be found at File System/tmp/brave-install-log"
 msgstr ""
-"Le gestionnaire de navigateur Web n'a pas pu installer Brave avec succès\n"
+"Web Browser Manager n'a pas pu installer Brave avec succès\n"
+"\n"
 "Un journal peut être trouvé dans File System/tmp/brave-install-log"
 
 #: install:51 install:91 uninstall:55 uninstall:76 install:49 install:80
-#: uninstall:52 uninstall:73 install:68 install:69 uninstall:72 install:79
-#: uninstall:53 uninstall:49 uninstall:68 uninstall:71 install:78 uninstall:74
-#: install:47 install:67 uninstall:67
-#, fuzzy
+#: uninstall:52 uninstall:73 install:69 uninstall:72 uninstall:53 install:68
+#: uninstall:71 install:47 install:67 uninstall:49 uninstall:67 uninstall:68
+#: install:78 uninstall:74
 msgid "Error"
-msgstr ""
-"#-#-#-#-#  brave.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erreur\n"
-"#-#-#-#-#  chrome.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erreur\n"
-"#-#-#-#-#  chromium.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Le gestionnaire de navigateur Web n'a pas pu installer Chromium avec succès\n"
-"\n"
-"Un journal peut être trouvé dans File System/tmp/chromium-install-log\n"
-"#-#-#-#-#  falkon.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erreur\n"
-"#-#-#-#-#  opera.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erreur\n"
-"#-#-#-#-#  palemoon.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erreur\n"
-"#-#-#-#-#  slimjet.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erreur\n"
-"#-#-#-#-#  vivaldi.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erreur\n"
-"#-#-#-#-#  firefox.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Erreur"
+msgstr "Erreur"
 
 #: install:75 install:64 install:62
+#, fuzzy
 msgid "Failed to download keyring"
-msgstr "Échec du téléchargement du trousseau de clés"
-
-#: install:78
-msgid ""
-"deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, "
-"arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
 msgstr ""
-"deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, "
-"arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
+"#-#-#-#-#  brave.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Échec du téléchargement du trousseau de clés\n"
+"#-#-#-#-#  chrome.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Échec du téléchargement du trousseau de clés\n"
+"#-#-#-#-#  opera.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Erreur\n"
+"#-#-#-#-#  waterfox.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Échec du téléchargement du trousseau de clés\n"
+"#-#-#-#-#  vivaldi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Échec du téléchargement du trousseau de clés"
 
 #: install:91
 msgid "An error occured while initiating the Brave installation process"
@@ -450,80 +432,27 @@ msgstr ""
 "Google Chrome"
 
 #: install:22
-msgid "Chromium is already installed"
-msgstr "Chrome est déjà installé"
+msgid "Falkon is already installed"
+msgstr "Falkon est déjà installé"
 
 #: install:29
 msgid ""
-"The use of Chromium is governed by the Terms of Use and Privacy Policy found "
-"at: \\n\\n    <a href='https://creativecommons.org/licenses/by/2.5/'>https://"
-"creativecommons.org/licenses/by/2.5/</a>\\n    <a href='https://developers."
-"google.com/terms/site-policies'>https://developers.google.com/terms/site-"
-"policies</a>\\n    <a href='https://www.chromium.org/Home/chromium-"
-"privacy/'>https://www.chromium.org/Home/chromium-privacy/</a>\\n\\nAre you "
-"sure you want to install Chromium?"
+"The use of Falkon is governed by the Terms of Use and Privacy Policy found "
+"at: \\n\\n    <a href='https://community.kde.org/Policies/"
+"Licensing_Policy'>https://community.kde.org/Policies/Licensing_Policy</"
+"a>\\n    <a href='https://kde.org/privacypolicy-apps/'>https://kde.org/"
+"privacypolicy-apps/</a>\\n\\nAre you sure you want to install Falkon?"
 msgstr ""
-"L'utilisation de Chromium est régie par les conditions d'utilisation et la "
-"politique de confidentialité trouvéesà : \\n\\n <a href='https://"
-"creativecommons.org/licenses/by/2.5/'>https://creativecommons.org/licenses/"
-"by/2.5/</a>\\n <a href='https://developers.google.com/terms/site-"
-"policies'>https://developers.google.com/terms/site-politiques</a>\\n <a "
-"href='https://www.chromium.org/Home/chromium-privacy/'>https://www.chromium."
-"org/Home/chromium-privacy/</a>\\n\\nÊtes-vous Sûr de vouloir installer "
-"Chromium ?"
+"L'utilisation de Falkon est régie par les conditions d'utilisation et la "
+"politique de confidentialité trouvéesà : \\n\\n <a href='https://community."
+"kde.org/Policies/Licensing_Policy'>https://community.kde.org/Policies/"
+"Licensing_Policy</a>\\n <a href='https://kde.org/privacypolicy-"
+"apps/'>https://kde.org/privacypolicy-apps/</a>\\n\\nÊtes-vous sûr de vouloir "
+"installer Falkon ?"
 
 #: install:43
-msgid "Chromium was successfully installed"
-msgstr "Chrome a été installé avec succès"
-
-#: install:47
-msgid ""
-"Web Browser Manager couldn't install Chromium successfully\n"
-"\n"
-"A log can be found at File System/tmp/chromium-install-log"
-msgstr ""
-
-#: install:68
-msgid "An error occured while initiating the Chromium installation process"
-msgstr ""
-"Une erreur s'est produite lors du lancement du processus d'installation de "
-"Chromium"
-
-#: uninstall:22
-msgid "Chromium is not installed"
-msgstr "Chrome n'est pas installé"
-
-#: uninstall:29
-msgid "Are you sure you want to remove Chromium?"
-msgstr ""
-
-#: uninstall:46
-msgid "Uninstalled Chromium"
-msgstr "Êtes-vous sûr de vouloir supprimer Chromium ?"
-
-#: uninstall:46
-msgid "Chromium was successfully removed"
-msgstr "Chrome a été supprimé avec succès"
-
-#: uninstall:51
-msgid ""
-"Web Browser Manager couldn't remove Chromium successfully\n"
-"\n"
-"A log can be found at File System/tmp/chromium-removal-log"
-msgstr ""
-"Le Gestionnaire du navigateur Web n'a pas pu supprimer Chromium avec succès\n"
-"\n"
-"Un journal peut être trouvé dans File System/tmp/chromium-removal-log"
-
-#: uninstall:72
-msgid "An error occured while initiating the Chromium removal process"
-msgstr ""
-"Une erreur s'est produite lors du lancement du processus de suppression de "
-"Chromium"
-
-#: install:22 install:29 install:43 uninstall:46
-msgid "="
-msgstr ""
+msgid "Falkon was successfully installed"
+msgstr "Falkon a été installé avec succès"
 
 #: install:47
 msgid ""
@@ -547,7 +476,11 @@ msgstr "Falkon n'est pas installé"
 
 #: uninstall:29
 msgid "Are you sure you want to remove Falkon?"
-msgstr "Êtes-vous sûr de vouloir supprimer Falkon ?"
+msgstr "Êtes-vous sûr de vouloir supprimer Falkon?"
+
+#: uninstall:46
+msgid "Uninstalled Falkon"
+msgstr "Falkon désinstallé"
 
 #: uninstall:46
 msgid "Falkon was successfully removed"
@@ -572,6 +505,19 @@ msgstr ""
 #: install:22
 msgid "Opera is already installed"
 msgstr "Opera est déjà installé"
+
+#: install:29
+msgid ""
+"The use of Opera is governed by the Terms of Use and Privacy Policy found at:"
+"\\n\\n    <a href='https://www.opera.com/terms'>https://www.opera.com/terms</"
+"a>\\n    <a href='https://www.opera.com/privacy'>https://www.opera.com/"
+"privacy</a>\\n\\nAre you sure you want to install Opera?"
+msgstr ""
+"L'utilisation d'Opera est régie par les conditions d'utilisation et la "
+"politique de confidentialité disponibles à l'adresse : \\n\\n <a "
+"href='https://www.opera.com/terms'>https://www.opera.com/terms</a>\\n <a "
+"href='https://www.opera.com/privacy'>https://www.opera.com/Confidentialité</"
+"a>\\n\\nÊtes-vous sûr de vouloir installer Opera ?"
 
 #: install:43
 msgid "Opera was successfully installed"
@@ -624,71 +570,6 @@ msgid "An error occured while initiating the Opera removal process"
 msgstr ""
 "Une erreur s'est produite lors du lancement du processus de suppression "
 "d'Opera"
-
-#: install:22
-msgid "Palemoon is already installed"
-msgstr "Palemoon est déjà installé"
-
-#: install:29
-msgid ""
-"The use of Palemoon is governed by the Terms of Use and Privacy Policy found "
-"at:\\n\\n    <a href='https://www.palemoon.org/licensing.shtml'>https://www."
-"palemoon.org/licensing.shtml</a>\\n    <a href='https://www.palemoon.org/"
-"policies/privacy.shtml'>https://www.palemoon.org/policies/privacy.shtml</"
-"a>\\n\\nAre you sure you want to install Palemoon?"
-msgstr ""
-"L'utilisation de Palemoon est régie par les conditions d'utilisation et la "
-"politique de confidentialité trouvéesà :\\n\\n <a href='https://www.palemoon."
-"org/licensing.shtml'>https://www.palemoon.org/licensing.shtml</a>\\n <a "
-"href='https://www.palemoon.org/policies/privacy.shtml'>https://www.palemoon."
-"org/policies/privacy.shtml</a>\\n\\nÊtes-vous sûr de vouloir installer "
-"Palemoon ?"
-
-#: install:43
-msgid "Palemoon was successfully installed"
-msgstr "Palemoon a été installé avec succès"
-
-#: install:47
-msgid ""
-"Web Browser Manager couldn't install Palemoon successfully\n"
-"\n"
-"A log can be found at File System/tmp/palemoon-install-log"
-msgstr ""
-"Web Browser Manager n'a pas pu installer Palemoon avec succès\n"
-"\n"
-"Un journal peut être trouvé dans File System/tmp/palemoon-install-log"
-
-#: uninstall:19
-msgid "Palemoon is not installed"
-msgstr "Palemoon n'est pas installé"
-
-#: uninstall:26
-msgid "Are you sure you want to remove Palemoon?"
-msgstr "Etes-vous sûr de vouloir supprimer Palemoon ?"
-
-#: uninstall:43
-msgid "Uninstalled Palemoon"
-msgstr "Palemoon désinstallé"
-
-#: uninstall:43
-msgid "Palemoon was successfully removed"
-msgstr "Palemoon a été supprimé avec succès"
-
-#: uninstall:47
-msgid ""
-"Web Browser Manager couldn't remove Palemoon successfully\n"
-"\n"
-"A log can be found at File System/tmp/palemoon-removal-log"
-msgstr ""
-"Web Browser Manager n'a pas pu supprimer Palemoon avec succès\n"
-"\n"
-"Un journal peut être trouvé dans File System/tmp/palemoon-removal-log"
-
-#: uninstall:68
-msgid "An error occured while initiating the Palemoon removal process"
-msgstr ""
-"Une erreur s'est produite lors du lancement du processus de suppression de "
-"Palemoon"
 
 #: install:22
 msgid "Slimjet is already installed"
@@ -762,78 +643,6 @@ msgstr ""
 "Slimjet."
 
 #: install:22
-msgid "Vivaldi is already installed"
-msgstr "Vivaldi est déjà installé"
-
-#: install:29
-msgid ""
-"The usage of Vivaldi is governed by the Vivaldi EULA and Privacy Policy "
-"found at:\\n\\n    <a href='https://vivaldi.com/privacy/vivaldi-end-user-"
-"license-agreement/'>https://vivaldi.com/privacy/vivaldi-end-user-license-"
-"agreement/</a>\\n    <a href='https://vivaldi.com/privacy/browser/'>https://"
-"vivaldi.com/privacy/browser/</a>\\n\\nAre you sure you want to install "
-"Vivaldi?"
-msgstr ""
-"L'utilisation de Vivaldi est régie par le CLUF et la Politique de "
-"Confidentialité de Vivalditrouvé à :\\n\\n <a href='https://vivaldi.com/"
-"privacy/vivaldi-end-user-accord de licence/'>https://vivaldi.com/privacy/"
-"vivaldi-end-user-license-accord/</a>\\n <a href='https://vivaldi.com/privacy/"
-"browser/'>https://vivaldi.com/privacy/browser/</a>\\n\\nÊtes-vous sûr de "
-"vouloir installer Vivaldi?"
-
-#: install:43
-msgid "Vivaldi was successfully installed"
-msgstr "Vivaldi a été installé avec succès"
-
-#: install:47
-msgid ""
-"Web Browser Manager couldn't install Vivaldi successfully\n"
-"\n"
-"A log can be found at File System/tmp/vivaldi-install-log"
-msgstr ""
-"Le gestionnaire de navigateur Web n'a pas pu installer Vivaldi avec succès\n"
-"\n"
-"Un journal peut être trouvé dans File System/tmp/vivaldi-install-log"
-
-#: install:78
-msgid "An error occured while initiating the Vivaldi installation process"
-msgstr ""
-"Une erreur s'est produite lors du lancement du processus d'installation de "
-"Vivaldi"
-
-#: uninstall:22
-msgid "Vivaldi is not installed"
-msgstr "Vivaldi n'est pas installé"
-
-#: uninstall:29
-msgid "Are you sure you want to remove Vivaldi?"
-msgstr ""
-
-#: uninstall:46
-msgid "Uninstalled Vivaldi"
-msgstr ""
-
-#: uninstall:46
-msgid "Vivaldi was successfully removed"
-msgstr "Êtes-vous sûr de vouloir supprimer Vivaldi?"
-
-#: uninstall:50
-msgid ""
-"Web Browser Manager couldn't remove Vivaldi successfully\n"
-"\n"
-"A log can be found at File System/tmp/vivaldi-removal-log"
-msgstr ""
-"Le gestionnaire de navigateur Web n'a pas pu supprimer Vivaldi avec succès\n"
-"\n"
-"Un journal peut être trouvé dans File System/tmp/vivaldi-removal-log"
-
-#: uninstall:74
-msgid "An error occured while initiating the Vivaldi removal process"
-msgstr ""
-"Une erreur s'est produite lors du lancement du processus de suppression de "
-"Vivaldi"
-
-#: install:22
 msgid "Waterfox is already installed"
 msgstr "Waterfox est déjà installé"
 
@@ -892,6 +701,81 @@ msgid "An error occured while initiating the Waterfox removal process"
 msgstr ""
 "Une erreur s'est produite lors du lancement du processus de suppression de "
 "Waterfox"
+
+#: install:22
+msgid "Chromium is already installed"
+msgstr "Chrome est déjà installé"
+
+#: install:29
+msgid ""
+"The use of Chromium is governed by the Terms of Use and Privacy Policy found "
+"at: \\n\\n    <a href='https://creativecommons.org/licenses/by/2.5/'>https://"
+"creativecommons.org/licenses/by/2.5/</a>\\n    <a href='https://developers."
+"google.com/terms/site-policies'>https://developers.google.com/terms/site-"
+"policies</a>\\n    <a href='https://www.chromium.org/Home/chromium-"
+"privacy/'>https://www.chromium.org/Home/chromium-privacy/</a>\\n\\nAre you "
+"sure you want to install Chromium?"
+msgstr ""
+"L'utilisation de Chromium est régie par les conditions d'utilisation et la "
+"politique de confidentialité trouvéesà : \\n\\n <a href='https://"
+"creativecommons.org/licenses/by/2.5/'>https://creativecommons.org/licenses/"
+"by/2.5/</a>\\n <a href='https://developers.google.com/terms/site-"
+"policies'>https://developers.google.com/terms/site-politiques</a>\\n <a "
+"href='https://www.chromium.org/Home/chromium-privacy/'>https://www.chromium."
+"org/Home/chromium-privacy/</a>\\n\\nÊtes-vous Sûr de vouloir installer "
+"Chromium ?"
+
+#: install:43
+msgid "Chromium was successfully installed"
+msgstr "Chrome a été installé avec succès"
+
+#: install:47
+msgid ""
+"Web Browser Manager couldn't install Chromium successfully\n"
+"\n"
+"A log can be found at File System/tmp/chromium-install-log"
+msgstr ""
+"Web Browser Manager couldn't install Chromium successfully\n"
+"\n"
+"A log can be found at File System/tmp/chromium-install-log"
+
+#: install:68
+msgid "An error occured while initiating the Chromium installation process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus d'installation de "
+"Chromium"
+
+#: uninstall:22
+msgid "Chromium is not installed"
+msgstr "Chrome n'est pas installé"
+
+#: uninstall:29
+msgid "Are you sure you want to remove Chromium?"
+msgstr "Êtes-vous sûr de vouloir supprimer Chromium?"
+
+#: uninstall:46
+msgid "Uninstalled Chromium"
+msgstr "Chrome désinstallé"
+
+#: uninstall:46
+msgid "Chromium was successfully removed"
+msgstr "Chrome a été supprimé avec succès"
+
+#: uninstall:51
+msgid ""
+"Web Browser Manager couldn't remove Chromium successfully\n"
+"\n"
+"A log can be found at File System/tmp/chromium-removal-log"
+msgstr ""
+"Le Gestionnaire du navigateur Web n'a pas pu supprimer Chromium avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/chromium-removal-log"
+
+#: uninstall:72
+msgid "An error occured while initiating the Chromium removal process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus de suppression de "
+"Chromium"
 
 #: install:21
 msgid "Mozilla Firefox is already installed"
@@ -963,3 +847,140 @@ msgid "An error occured while initiating the Mozilla Firefox removal process"
 msgstr ""
 "Une erreur s'est produite lors du lancement du processus de suppression de "
 "Mozilla Firefox"
+
+#: install:22
+msgid "Palemoon is already installed"
+msgstr "Palemoon est déjà installé"
+
+#: install:29
+msgid ""
+"The use of Palemoon is governed by the Terms of Use and Privacy Policy found "
+"at:\\n\\n    <a href='https://www.palemoon.org/licensing.shtml'>https://www."
+"palemoon.org/licensing.shtml</a>\\n    <a href='https://www.palemoon.org/"
+"policies/privacy.shtml'>https://www.palemoon.org/policies/privacy.shtml</"
+"a>\\n\\nAre you sure you want to install Palemoon?"
+msgstr ""
+"L'utilisation de Palemoon est régie par les conditions d'utilisation et la "
+"politique de confidentialité trouvéesà :\\n\\n <a href='https://www.palemoon."
+"org/licensing.shtml'>https://www.palemoon.org/licensing.shtml</a>\\n <a "
+"href='https://www.palemoon.org/policies/privacy.shtml'>https://www.palemoon."
+"org/policies/privacy.shtml</a>\\n\\nÊtes-vous sûr de vouloir installer "
+"Palemoon ?"
+
+#: install:43
+msgid "Palemoon was successfully installed"
+msgstr "Palemoon a été installé avec succès"
+
+#: install:47
+msgid ""
+"Web Browser Manager couldn't install Palemoon successfully\n"
+"\n"
+"A log can be found at File System/tmp/palemoon-install-log"
+msgstr ""
+"Web Browser Manager n'a pas pu installer Palemoon avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/palemoon-install-log"
+
+#: uninstall:19
+msgid "Palemoon is not installed"
+msgstr "Palemoon n'est pas installé"
+
+#: uninstall:26
+msgid "Are you sure you want to remove Palemoon?"
+msgstr "Etes-vous sûr de vouloir supprimer Palemoon ?"
+
+#: uninstall:43
+msgid "Uninstalled Palemoon"
+msgstr "Palemoon désinstallé"
+
+#: uninstall:43
+msgid "Palemoon was successfully removed"
+msgstr "Palemoon a été supprimé avec succès"
+
+#: uninstall:47
+msgid ""
+"Web Browser Manager couldn't remove Palemoon successfully\n"
+"\n"
+"A log can be found at File System/tmp/palemoon-removal-log"
+msgstr ""
+"Web Browser Manager n'a pas pu supprimer Palemoon avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/palemoon-removal-log"
+
+#: uninstall:68
+msgid "An error occured while initiating the Palemoon removal process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus de suppression de "
+"Palemoon"
+
+#: install:22
+msgid "Vivaldi is already installed"
+msgstr "Vivaldi est déjà installé"
+
+#: install:29
+msgid ""
+"The usage of Vivaldi is governed by the Vivaldi EULA and Privacy Policy "
+"found at:\\n\\n    <a href='https://vivaldi.com/privacy/vivaldi-end-user-"
+"license-agreement/'>https://vivaldi.com/privacy/vivaldi-end-user-license-"
+"agreement/</a>\\n    <a href='https://vivaldi.com/privacy/browser/'>https://"
+"vivaldi.com/privacy/browser/</a>\\n\\nAre you sure you want to install "
+"Vivaldi?"
+msgstr ""
+"L'utilisation de Vivaldi est régie par le CLUF et la Politique de "
+"Confidentialité de Vivalditrouvé à :\\n\\n <a href='https://vivaldi.com/"
+"privacy/vivaldi-end-user-accord de licence/'>https://vivaldi.com/privacy/"
+"vivaldi-end-user-license-accord/</a>\\n <a href='https://vivaldi.com/privacy/"
+"browser/'>https://vivaldi.com/privacy/browser/</a>\\n\\nÊtes-vous sûr de "
+"vouloir installer Vivaldi?"
+
+#: install:43
+msgid "Vivaldi was successfully installed"
+msgstr "Vivaldi a été installé avec succès"
+
+#: install:47
+msgid ""
+"Web Browser Manager couldn't install Vivaldi successfully\n"
+"\n"
+"A log can be found at File System/tmp/vivaldi-install-log"
+msgstr ""
+"Le gestionnaire de navigateur Web n'a pas pu installer Vivaldi avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/vivaldi-install-log"
+
+#: install:78
+msgid "An error occured while initiating the Vivaldi installation process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus d'installation de "
+"Vivaldi"
+
+#: uninstall:22
+msgid "Vivaldi is not installed"
+msgstr "Vivaldi n'est pas installé"
+
+#: uninstall:29
+msgid "Are you sure you want to remove Vivaldi?"
+msgstr ""
+
+#: uninstall:46
+msgid "Uninstalled Vivaldi"
+msgstr ""
+
+#: uninstall:46
+msgid "Vivaldi was successfully removed"
+msgstr "Êtes-vous sûr de vouloir supprimer Vivaldi?"
+
+#: uninstall:50
+msgid ""
+"Web Browser Manager couldn't remove Vivaldi successfully\n"
+"\n"
+"A log can be found at File System/tmp/vivaldi-removal-log"
+msgstr ""
+"Le gestionnaire de navigateur Web n'a pas pu supprimer Vivaldi avec succès\n"
+"\n"
+"Un journal peut être trouvé dans File System/tmp/vivaldi-removal-log"
+
+#: uninstall:74
+msgid "An error occured while initiating the Vivaldi removal process"
+msgstr ""
+"Une erreur s'est produite lors du lancement du processus de suppression de "
+"Vivaldi"

@@ -9,8 +9,8 @@ msgstr ""
 "#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-03 09:33+0300\n"
-"PO-Revision-Date: 2023-10-03 09:44+0300\n"
+"POT-Creation-Date: 2023-10-05 10:36+0300\n"
+"PO-Revision-Date: 2023-10-05 11:34+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -43,9 +43,22 @@ msgstr "Opera est déjà installé"
 msgid "Continue?"
 msgstr "Continuer?"
 
-#: install:29 install:43
-msgid "="
+#: install:29
+msgid ""
+"The use of Opera is governed by the Terms of Use and Privacy Policy found at:"
+"\\n\\n    <a href='https://www.opera.com/terms'>https://www.opera.com/terms</"
+"a>\\n    <a href='https://www.opera.com/privacy'>https://www.opera.com/"
+"privacy</a>\\n\\nAre you sure you want to install Opera?"
 msgstr ""
+"L'utilisation d'Opera est régie par les conditions d'utilisation et la "
+"politique de confidentialité disponibles à l'adresse : \\n\\n <a "
+"href='https://www.opera.com/terms'>https://www.opera.com/terms</a>\\n <a "
+"href='https://www.opera.com/privacy'>https://www.opera.com/Confidentialité</"
+"a>\\n\\nÊtes-vous sûr de vouloir installer Opera ?"
+
+#: install:43
+msgid "Installation Complete"
+msgstr "Installation complète"
 
 #: install:43
 msgid "Opera was successfully installed"
@@ -61,13 +74,13 @@ msgstr ""
 "\n"
 "Un journal peut être trouvé dans File System/tmp/opera-install-log"
 
-#: install:49 install:79 uninstall:53 uninstall:76
+#: uninstall:53 uninstall:76
 msgid "Error"
 msgstr "Erreur"
 
 #: install:62
 msgid "Failed to download keyring"
-msgstr "Échec du téléchargement du trousseau de clés"
+msgstr "Erreur"
 
 #: install:79
 msgid "An error occured while initiating the Opera installation process"

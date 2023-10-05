@@ -19,14 +19,14 @@ dpkg -l falkon | grep -q ^ii
 
 if [ $? -eq 0 ]; then
     if [ -e "/usr/bin/falkon" ]; then
-        zenity --info --title="$(gettext "Information")" --text="$(gettext = "Falkon is already installed")" --no-wrap &
+        zenity --info --title="$(gettext "Information")" --text="$(gettext  "Falkon is already installed")" --no-wrap &
         exit 0
     fi
 fi
 
 # Check for root
 if [ ! "$(whoami)" = "root" ]; then
-    zenity --question --title="$(gettext "Continue?")" --text "$(gettext = "The use of Falkon is governed by the Terms of Use and Privacy Policy found at: \n\n    <a href='https://community.kde.org/Policies/Licensing_Policy'>https://community.kde.org/Policies/Licensing_Policy</a>\n    <a href='https://kde.org/privacypolicy-apps/'>https://kde.org/privacypolicy-apps/</a>\n\nAre you sure you want to install Falkon?")"
+    zenity --question --title="$(gettext "Continue?")" --text "$(gettext  "The use of Falkon is governed by the Terms of Use and Privacy Policy found at: \n\n    <a href='https://community.kde.org/Policies/Licensing_Policy'>https://community.kde.org/Policies/Licensing_Policy</a>\n    <a href='https://kde.org/privacypolicy-apps/'>https://kde.org/privacypolicy-apps/</a>\n\nAre you sure you want to install Falkon?")"
 
     if [ ! $? -eq 0 ]; then
         exit 0
@@ -40,7 +40,7 @@ if [ ! "$(whoami)" = "root" ]; then
 
     # Double Check Package
     if [ -e "/usr/bin/falkon" ]; then
-        zenity --info --title="$(gettext = "Installation Complete")" --text="$(gettext = "Falkon was successfully installed")" --no-wrap &
+        zenity --info --title="$(gettext  "Installation Complete")" --text="$(gettext  "Falkon was successfully installed")" --no-wrap &
         exit 0
     fi
     # Error

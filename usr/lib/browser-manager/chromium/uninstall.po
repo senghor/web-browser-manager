@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 18:35+0300\n"
-"PO-Revision-Date: 2023-10-02 18:41+0300\n"
+"PO-Revision-Date: 2023-10-05 09:31+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -31,11 +31,11 @@ msgstr "Continuer?"
 
 #: uninstall:29
 msgid "Are you sure you want to remove Chromium?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir supprimer Chromium?"
 
 #: uninstall:46
 msgid "Uninstalled Chromium"
-msgstr "Êtes-vous sûr de vouloir supprimer Chromium ?"
+msgstr "Chrome désinstallé"
 
 #: uninstall:46
 msgid "Chromium was successfully removed"
@@ -53,7 +53,7 @@ msgstr ""
 
 #: uninstall:53 uninstall:72
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: uninstall:72
 msgid "An error occured while initiating the Chromium removal process"

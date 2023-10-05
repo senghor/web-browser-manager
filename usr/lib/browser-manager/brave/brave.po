@@ -9,8 +9,8 @@ msgstr ""
 "#-#-#-#-#  install.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-02 14:33+0300\n"
-"PO-Revision-Date: 2023-10-02 15:44+0300\n"
+"POT-Creation-Date: 2023-10-05 12:29+0300\n"
+"PO-Revision-Date: 2023-10-05 12:36+0300\n"
 "Last-Translator: Albert Senghor <asenghor@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -46,15 +46,14 @@ msgstr "Continuer?"
 #: install:30
 msgid ""
 "The use of Brave is governed by the Terms of Use and Privacy Policy found at:"
-"\\n\\n    <a href='https://brave.com/terms-of-use/'>https://brave.com/terms-"
-"of-use/</a>\\n    <a href='https://brave.com/privacy/browser/'>https://brave."
-"com/privacy/browser/</a>\\n\\nAre you sure you want to install Brave?"
+"\\n\\n"
 msgstr ""
 "L'utilisation de Brave est régie par les conditions d'utilisation et la "
-"politique de confidentialité disponibles à l'adresse :\\n\\n <a "
-"href='https://brave.com/terms-of-use/'>https://brave.com/terms-d'utilisation/"
-"</a>\\n <a href='https://brave.com/privacy/browser/'>https://brave.com/"
-"privacy/browser/</a>\\n\\nÊtes-vous sûr de vouloir installer Brave ?"
+"politique de confidentialité disponibles à l'adresse : \\n\\n"
+
+#: install:30
+msgid "Are you sure you want to install Brave?"
+msgstr "Êtes-vous sûr de vouloir installer Brave?"
 
 #: install:44
 msgid "Installation Complete"
@@ -70,7 +69,8 @@ msgid ""
 "\n"
 "A log can be found at File System/tmp/brave-install-log"
 msgstr ""
-"Le gestionnaire de navigateur Web n'a pas pu installer Brave avec succès\n"
+"Web Browser Manager n'a pas pu installer Brave avec succès\n"
+"\n"
 "Un journal peut être trouvé dans File System/tmp/brave-install-log"
 
 #: install:51 install:91 uninstall:55 uninstall:76
@@ -80,14 +80,6 @@ msgstr "Erreur"
 #: install:75
 msgid "Failed to download keyring"
 msgstr "Échec du téléchargement du trousseau de clés"
-
-#: install:78
-msgid ""
-"deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, "
-"arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
-msgstr ""
-"deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg, "
-"arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
 
 #: install:91
 msgid "An error occured while initiating the Brave installation process"
