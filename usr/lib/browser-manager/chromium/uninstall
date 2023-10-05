@@ -12,7 +12,7 @@
 # shellcheck disable=SC2181
 
 export TEXTDOMAIN="browser-manager"
-export TEXTDOMAINDIR="../../../share/locale"
+export TEXTDOMAINDIR="/home/al/code/web-browser-manager/usr/share/locale"
 
 # Check if program is installed
 dpkg -l bodhi-chromium | grep -q ^ii
